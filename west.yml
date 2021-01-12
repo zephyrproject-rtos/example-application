@@ -1,0 +1,25 @@
+# The west manifest file for downstream Zephyr module ZXA.
+#
+# The per-installation west configuration file, .west/config, sets the
+# path to the project containing this file in the [manifest] section's
+# "path" variable.
+#
+# This imports the latest upstream Zephyr manifest file.
+
+manifest:
+  version: 0.7
+
+  defaults:
+    remote: zephyrproject-rtos
+
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+
+  #
+  # Please add items below based on alphabetical order
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: master
+      import: true

@@ -1,0 +1,13 @@
+sample:
+  description: Example of the simplest <module> project
+  name: ZXA Example Project
+common:
+    tags: introduction
+    harness: console
+    harness_config:
+      type: one_line
+      regex:
+        - "(.*)<inf> zxa: Hello from zxa_example_project!"
+tests:
+  project.zxa_example_project:
+    tags: introduction
