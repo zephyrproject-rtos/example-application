@@ -1,0 +1,42 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: zephyrprojectrtos/ci:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: example-application
+
+      - name: Cache Zephyr
+        uses: actions/cache@v2
+        with:
+          path: |
+            bootloader
+            modules
+            tools
+            zephyr
+          key: ${{ hashFiles('example-application/west.yml') }}
+
+      - name: Initialize
+        working-directory: example-application
+        run: |
+          pip3 install -U west
+          west init -l .
+          west update
+          pip3 install -r ../zephyr/scripts/requirements-base.txt
+
+      - name: Build firmware
+        working-directory: example-application
+        run: |
+          west build -b custom_plank -s app
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware
+          path: example-application/build/zephyr/zephyr.*
