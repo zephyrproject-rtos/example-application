@@ -43,8 +43,11 @@ The application can be built by running:
 west build -b $BOARD -s app
 ```
 
-where `$BOARD` is the target board. A sample debug configuration is also
-provided. You can apply it by running:
+where `$BOARD` is the target board. The `custom_plank` board found in this
+repository can be used. Note that Zephyr sample boards may be used if an
+appropriate overlay is provided (see `app/boards`).
+
+A sample debug configuration is also provided. You can apply it by running:
 
 ```shell
 west build -b $BOARD -s app -- -DOVERLAY_CONFIG=debug.conf
