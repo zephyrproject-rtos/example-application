@@ -75,7 +75,7 @@ static int examplesensor_init(const struct device *dev)
 	static struct examplesensor_data examplesensor_data_##i;	       \
 									       \
 	static const struct examplesensor_config examplesensor_config_##i = {  \
-		.input = GPIO_DT_SPEC_GET(DT_DRV_INST(i), input_gpios),	       \
+		.input = GPIO_DT_SPEC_INST_GET(i, input_gpios),		       \
 	};								       \
 									       \
 	DEVICE_DT_INST_DEFINE(i, examplesensor_init, NULL,		       \
