@@ -1,0 +1,7 @@
+# Copyright (c) 2021 Legrand North America, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+# Subsystem configuration options
+
+menu "Subsystems"
+endmenu

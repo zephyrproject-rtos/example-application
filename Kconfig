@@ -7,3 +7,4 @@
 
 rsource "drivers/Kconfig"
 rsource "lib/Kconfig"
+rsource "subsys/Kconfig"

@@ -11,6 +11,7 @@ applications. Some of the features demonstrated in this example are:
 - Custom [devicetree bindings][bindings]
 - Out-of-tree [drivers][drivers]
 - Out-of-tree libraries
+- Custom subsystems
 - Example CI configuration (using Github Actions)
 - Custom [west extension][west_ext]
 
