@@ -1,0 +1,3 @@
+tests:
+  subsys.module_hello:
+    tags: extensibility

@@ -4,4 +4,7 @@
 # Subsystem configuration options
 
 menu "Subsystems"
+
+rsource "module_hello/Kconfig"
+
 endmenu

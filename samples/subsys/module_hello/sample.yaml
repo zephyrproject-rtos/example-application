@@ -1,0 +1,12 @@
+sample:
+  description: Module Hello sample, application made entirely from
+    subsystems and drivers
+  name: module hello
+common:
+    tags: introduction
+    integration_platforms:
+      - native_posix
+tests:
+  sample.basic.hello-module:
+    tags: introduction
+

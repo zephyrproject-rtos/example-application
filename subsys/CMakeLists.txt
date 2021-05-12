@@ -4,3 +4,5 @@
 # with a Kconfig setting as follows:
 #
 # add_subdirectory_ifdef(CONFIG_MODULE_HELLO       module_hello)
+
+add_subdirectory_ifdef(CONFIG_MODULE_HELLO       module_hello)

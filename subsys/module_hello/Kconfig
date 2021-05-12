@@ -1,0 +1,16 @@
+# Copyright (c) 2020 Legrand North America, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config MODULE_HELLO
+    bool "Module \"Hello\""
+    select LOG
+    help
+      This option enables Module Hello service
+
+if MODULE_HELLO
+
+module = MODULE_HELLO
+module-str = Log level for Module Hello
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # MODULE_HELLO
