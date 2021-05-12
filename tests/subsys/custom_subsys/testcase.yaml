@@ -1,0 +1,3 @@
+tests:
+  example-application.subsys.custom_subsys:
+    tags: extensibility

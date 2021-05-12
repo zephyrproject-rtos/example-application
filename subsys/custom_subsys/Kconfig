@@ -1,0 +1,17 @@
+# Copyright (c) 2020 Legrand North America, LLC.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+config CUSTOM_SUBSYS
+    bool "Custom Subsys"
+    select LOG
+    help
+      This option enables Custom Subsys service
+
+if CUSTOM_SUBSYS
+
+module = CUSTOM_SUBSYS
+module-str = Log level for Custom Subsys
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # CUSTOM_SUBSYS

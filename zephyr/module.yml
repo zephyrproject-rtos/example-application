@@ -18,3 +18,8 @@ build:
     # `<dts_root>/dts/bindings` for additional dts binding files. The `.` is
     # the root of this repository.
     dts_root: .
+
+tests:
+  # Path(s) to the directory tree(s) containing `testcase.yaml` files.
+  # This is for use by `twister` to discover testcases to run.
+  - ./tests

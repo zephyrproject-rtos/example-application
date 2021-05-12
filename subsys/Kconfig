@@ -4,4 +4,7 @@
 # Subsystem configuration options
 
 menu "Subsystems"
+
+rsource "custom_subsys/Kconfig"
+
 endmenu
