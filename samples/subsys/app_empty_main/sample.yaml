@@ -1,0 +1,16 @@
+sample:
+  description: App Empty Main, sample made entirely from
+    subsystems and drivers, and no console output
+  name: App Empty Main
+common:
+    tags: introduction
+    integration_platforms:
+      - native_posix
+    harness: console
+    harness_config:
+      type: one_line
+      regex:
+      - "\\[.*\\] .*<inf> custom_subsys: Hello from \"example-application\".*"
+tests:
+  sample.basic.app_empty_main:
+    tags: introduction

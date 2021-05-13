@@ -12,6 +12,8 @@ applications. Some of the features demonstrated in this example are:
 - Out-of-tree [drivers][drivers]
 - Out-of-tree libraries
 - Custom subsystems
+- Custom samples
+- Documentation using Doxygen and Sphinx
 - Example CI configuration (using Github Actions)
 - Custom [west extension][west_ext]
 

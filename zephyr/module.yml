@@ -1,6 +1,8 @@
 # Copyright (c) 2021 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
 
+name: example-application
+
 build:
   # Path to the Kconfig file that will be sourced into Zephyr Kconfig tree under
   # Zephyr > Modules > example-application. Path is relative from root of this
@@ -23,3 +25,8 @@ tests:
   # Path(s) to the directory tree(s) containing `testcase.yaml` files.
   # This is for use by `twister` to discover testcases to run.
   - ./tests
+
+samples:
+  # Path(s) to the directory tree(s) containing `sample.yaml` files.
+  # This is for use by <TBD> to discover samples to <TBD>
+  - ./samples 
