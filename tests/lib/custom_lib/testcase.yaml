@@ -1,0 +1,7 @@
+common:
+  tags: extensibility
+tests:
+  lib.custom_lib:
+    build_only: false   # something benign to make a non-empty list
+  lib.custom_lib.non_default:
+    extra_args: CONFIG_CUSTOM_LIB_GET_VALUE_DEFAULT=6
