@@ -12,16 +12,6 @@ jobs:
         with:
           path: example-application
 
-      - name: Cache Zephyr
-        uses: actions/cache@v2
-        with:
-          path: |
-            bootloader
-            modules
-            tools
-            zephyr
-          key: ${{ hashFiles('example-application/west.yml') }}
-
       - name: Initialize
         working-directory: example-application
         run: |
