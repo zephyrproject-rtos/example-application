@@ -10,9 +10,17 @@ applications. Some of the features demonstrated in this example are:
 - Out-of-tree [drivers][drivers]
 - Example CI configuration (using Github Actions)
 
+This repository is versioned together with the [Zephyr main tree][zephyr]. This
+means that every time that Zephyr is tagged, this repository is tagged as well
+with the same version number, and the [manifest](west.yml) entry for `zephyr`
+will point to the corresponding Zephyr tag. For example, `example-application`
+v2.6.0 will point to Zephyr v2.6.0. Note that the `main` branch will always
+point to the development branch of Zephyr, also `main`.
+
 [board_porting]: https://docs.zephyrproject.org/latest/guides/porting/board_porting.html
 [bindings]: https://docs.zephyrproject.org/latest/guides/dts/bindings.html
 [drivers]: https://docs.zephyrproject.org/latest/reference/drivers/index.html
+[zephyr]: https://github.com/zephyrproject-rtos/zephyr
 
 ## Getting Started
 
