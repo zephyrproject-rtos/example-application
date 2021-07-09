@@ -7,7 +7,6 @@
 #include <drivers/sensor.h>
 
 #include "app_version.h"
-#include "foo.h"
 
 #include <logging/log.h>
 LOG_MODULE_REGISTER(main, CONFIG_APP_LOG_LEVEL);
@@ -18,12 +17,6 @@ void main(void)
 	const struct device *sensor;
 
 	printk("Zephyr Example Application %s\n", APP_VERSION_STR);
-
-	ret = app_foo_bar();
-	if (ret < 0) {
-		LOG_ERR("app_foo_bar failed (%d)", ret);
-		return;
-	}
 
 	sensor = DEVICE_DT_GET(DT_NODELABEL(examplesensor0));
 	if (!device_is_ready(sensor)) {
