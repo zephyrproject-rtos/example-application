@@ -26,6 +26,8 @@ static int examplesensor_sample_fetch(const struct device *dev,
 	const struct examplesensor_config *config = dev->config;
 	struct examplesensor_data *data = dev->data;
 
+	ARG_UNUSED(chan);
+
 	data->state = gpio_pin_get(config->input.port, config->input.pin);
 
 	return 0;
