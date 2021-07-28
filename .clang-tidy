@@ -1,0 +1,21 @@
+---
+Checks: "\
+bugprone-*,\
+-bugprone-branch-clone,\
+-bugprone-macro-parentheses,\
+-bugprone-reserved-identifier,\
+cert-*-c,\
+-cert-dcl37-c,\
+clang-analyzer-*,\
+clang-diagnostic-*,\
+misc-*,\
+-misc-redundant-expression,\
+modernize-*,\
+performance-*,\
+readability-*,\
+-readability-function-cognitive-complexity,\
+-readability-function-size,\
+"
+
+WarningsAsErrors: '*'
+...

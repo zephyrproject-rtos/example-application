@@ -6,7 +6,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: zephyrprojectrtos/ci:latest
+    strategy:
+      matrix:
+        board:
+        - custom_plank
+        tidy:
+        - false
+
+        include:
+        - board: custom_plank
+          tidy: true
     steps:
+      - name: Install latest LLVM
+        if: matrix.tidy
+        run: |
+          sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+      - name: Install apt dependencies
+        if: matrix.tidy
+        run: |
+          sudo apt-get install -y jq clang-tidy-12
+
+      - name: Install cdbpatch
+        if: matrix.tidy
+        run: |
+          wget \
+            https://github.com/M1cha/cdbpatch/releases/download/v0.1.0/cdbpatch-20210726-164556UTC-3e8266d-x86_64-unknown-linux-gnu.tar.gz
+          sudo tar -C /usr/bin/ -xf cdbpatch-*.tar.gz
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -21,12 +48,30 @@ jobs:
           pip3 install -r ../zephyr/scripts/requirements-base.txt
 
       - name: Build firmware
-        working-directory: example-application
         run: |
-          west build -b custom_plank -s app
+          if [ "${{ matrix.tidy }}" = "true" ]; then
+            cmake_args="-DCONFIG_ASSERT=y -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+          fi
+          west build -b "${{ matrix.board }}" -s example-application/app -- $cmake_args
+
+      - name: Static analysis
+        if: matrix.tidy
+        run: |
+          cdbpatch \
+            --resolve-toolchain-includes \
+            --ccdel=-fno-reorder-functions \
+            -o build/compile_commands.json \
+            build/compile_commands.json
+
+          clang-tidy-12 \
+              -header-filter="$(realpath example-application)"'/.*' \
+              -extra-arg=-Wno-unknown-warning-option \
+              -p build \
+              $(jq -r .[].file build/compile_commands.json | grep "^$(realpath example-application)")
 
       - name: Archive firmware
+        if: ${{ ! matrix.tidy }}
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: example-application/build/zephyr/zephyr.*
+          path: build/zephyr/zephyr.*
