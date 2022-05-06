@@ -5,11 +5,11 @@
 
 #define DT_DRV_COMPAT zephyr_examplesensor
 
-#include <device.h>
-#include <drivers/gpio.h>
-#include <drivers/sensor.h>
+#include <zephyr/device.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/sensor.h>
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(examplesensor, CONFIG_SENSOR_LOG_LEVEL);
 
 struct examplesensor_data {
