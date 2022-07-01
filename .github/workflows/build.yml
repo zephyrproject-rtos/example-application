@@ -25,7 +25,7 @@ jobs:
       - name: Build firmware
         working-directory: example-application
         run: |
-          west build -b custom_plank -s app
+          west build -b custom_plank app
 
       - name: Archive firmware
         uses: actions/upload-artifact@v2

@@ -47,7 +47,7 @@ west update
 The application can be built by running:
 
 ```shell
-west build -b $BOARD -s app
+west build -b $BOARD app
 ```
 
 where `$BOARD` is the target board. The `custom_plank` board found in this
@@ -57,7 +57,7 @@ appropriate overlay is provided (see `app/boards`).
 A sample debug configuration is also provided. You can apply it by running:
 
 ```shell
-west build -b $BOARD -s app -- -DOVERLAY_CONFIG=debug.conf
+west build -b $BOARD app -- -DOVERLAY_CONFIG=debug.conf
 ```
 
 Note that you may also use it together with `rtt.conf` if using Segger RTT. Once
