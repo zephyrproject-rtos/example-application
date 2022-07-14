@@ -4,7 +4,9 @@ This repository contains a Zephyr example application. The main purpose of this
 repository is to serve as a reference on how to structure Zephyr based
 applications. Some of the features demonstrated in this example are:
 
-- Basic application skeleton
+- Basic [Zephyr application][app_dev] skeleton
+- [Zephyr workspace applications][workspace_app]
+- [West T2 topology][west_t2]
 - [Custom boards][board_porting]
 - Custom [devicetree bindings][bindings]
 - Out-of-tree [drivers][drivers]
@@ -17,6 +19,9 @@ will point to the corresponding Zephyr tag. For example, `example-application`
 v2.6.0 will point to Zephyr v2.6.0. Note that the `main` branch will always
 point to the development branch of Zephyr, also `main`.
 
+[app_dev]: https://docs.zephyrproject.org/latest/develop/application/index.html
+[workspace_app]: https://docs.zephyrproject.org/latest/develop/application/index.html#zephyr-workspace-app
+[west_t2]: https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
 [board_porting]: https://docs.zephyrproject.org/latest/guides/porting/board_porting.html
 [bindings]: https://docs.zephyrproject.org/latest/guides/dts/bindings.html
 [drivers]: https://docs.zephyrproject.org/latest/reference/drivers/index.html
