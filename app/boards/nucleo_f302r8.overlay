@@ -12,7 +12,6 @@
 / {
 	examplesensor0: examplesensor_0 {
 		compatible = "zephyr,examplesensor";
-		label = "EXAMPLESENSOR_0";
 		input-gpios = <&gpioc 13 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 	};
 };
