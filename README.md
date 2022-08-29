@@ -11,6 +11,7 @@ applications. Some of the features demonstrated in this example are:
 - Custom [devicetree bindings][bindings]
 - Out-of-tree [drivers][drivers]
 - Example CI configuration (using Github Actions)
+- Custom [west extension][west_ext]
 
 This repository is versioned together with the [Zephyr main tree][zephyr]. This
 means that every time that Zephyr is tagged, this repository is tagged as well
@@ -26,6 +27,7 @@ point to the development branch of Zephyr, also `main`.
 [bindings]: https://docs.zephyrproject.org/latest/guides/dts/bindings.html
 [drivers]: https://docs.zephyrproject.org/latest/reference/drivers/index.html
 [zephyr]: https://github.com/zephyrproject-rtos/zephyr
+[west_ext]: https://docs.zephyrproject.org/latest/develop/west/extensions.html
 
 ## Getting Started
 
