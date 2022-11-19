@@ -17,10 +17,8 @@ jobs:
       - name: Initialize
         working-directory: example-application
         run: |
-          pip3 install -U west
           west init -l .
           west update
-          pip3 install -r ../zephyr/scripts/requirements-base.txt
 
       - name: Build firmware
         working-directory: example-application
