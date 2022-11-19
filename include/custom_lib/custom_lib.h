@@ -12,7 +12,7 @@
  *
  * Function returns the provided value if non-zero, or a Kconfig-controlled
  * default value if the parameter is zero.  This trivial function is
- * provided in order to have a library interface example that is trivial 
+ * provided in order to have a library interface example that is trivial
  * to test.
  *
  * @param return_value_if_nonzero Value to return if non-zero
