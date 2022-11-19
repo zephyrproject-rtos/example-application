@@ -1,5 +1,8 @@
 common:
   tags: extensibility
+  integration_platforms:
+    - custom_plank
+    - qemu_cortex_m0
 tests:
   lib.custom_lib:
     build_only: false   # something benign to make a non-empty list

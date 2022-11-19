@@ -25,10 +25,10 @@ jobs:
         run: |
           west build -b custom_plank app
 
-      - name: Twister Unit Tests
+      - name: Twister Tests
         working-directory: example-application
         run: |
-          ../zephyr/scripts/twister -p qemu_cortex_m0 --testcase-root ./tests/
+          ../zephyr/scripts/twister -G --board-root boards/ --testsuite-root ./tests/
 
       - name: Archive firmware
         uses: actions/upload-artifact@v2
