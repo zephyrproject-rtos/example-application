@@ -3,13 +3,13 @@
 
 config CUSTOM_LIB
 	bool "custom_lib Support"
-	help 
+	help
 	  This option enables the custom_lib library
 
 config CUSTOM_LIB_GET_VALUE_DEFAULT
 	int "custom_lib_get_value() default return value"
 	depends on CUSTOM_LIB
-	default 0 
+	default 0
 	help
 	  This option primarily exists as an example of a library Kconfig
 	  setting.
