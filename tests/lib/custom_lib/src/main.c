@@ -15,7 +15,7 @@
 #include <zephyr/ztest.h>
 #include <custom_lib/custom_lib.h>
 
-static void test_get_value(void)
+ZTEST(custom_lib, test_get_value)
 {
 	/* Verify standard behavior */
 	zassert_equal(custom_lib_get_value(INT_MIN), INT_MIN,
@@ -37,11 +37,4 @@ static void test_get_value(void)
 		"get_value failed input of 0");
 }
 
-void test_main(void)
-{
-	ztest_test_suite(lib_custom_lib_test,
-			 ztest_unit_test(test_get_value)
-			 );
-
-	ztest_run_test_suite(lib_custom_lib_test);
-}
+ZTEST_SUITE(custom_lib, NULL, NULL, NULL, NULL, NULL);
