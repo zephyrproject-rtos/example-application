@@ -11,8 +11,8 @@
  * library works correctly.
  */
 
-#include <zephyr.h>
-#include <ztest.h>
+#include <zephyr/kernel.h>
+#include <zephyr/ztest.h>
 #include <custom_lib/custom_lib.h>
 
 static void test_get_value(void)
