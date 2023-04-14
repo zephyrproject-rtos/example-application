@@ -6,6 +6,7 @@ applications. Some of the features demonstrated in this example are:
 
 - Basic [Zephyr application][app_dev] skeleton
 - [Zephyr workspace applications][workspace_app]
+- [Zephyr modules][modules]
 - [West T2 topology][west_t2]
 - [Custom boards][board_porting]
 - Custom [devicetree bindings][bindings]
@@ -23,6 +24,7 @@ points to the development branch of Zephyr, also `main`.
 
 [app_dev]: https://docs.zephyrproject.org/latest/develop/application/index.html
 [workspace_app]: https://docs.zephyrproject.org/latest/develop/application/index.html#zephyr-workspace-app
+[modules]: https://docs.zephyrproject.org/latest/develop/modules.html
 [west_t2]: https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
 [board_porting]: https://docs.zephyrproject.org/latest/guides/porting/board_porting.html
 [bindings]: https://docs.zephyrproject.org/latest/guides/dts/bindings.html
