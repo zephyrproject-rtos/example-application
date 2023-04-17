@@ -14,7 +14,7 @@ jobs:
       CMAKE_PREFIX_PATH: /opt/toolchains
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: example-application
 
@@ -35,7 +35,7 @@ jobs:
           ../zephyr/scripts/twister -G --board-root boards/ --testsuite-root ./tests/
 
       - name: Archive firmware
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: firmware
           path: example-application/build/zephyr/zephyr.*
