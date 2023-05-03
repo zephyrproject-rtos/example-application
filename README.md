@@ -73,8 +73,7 @@ command:
 west build -b $BOARD app -- -DOVERLAY_CONFIG=debug.conf
 ```
 
-You can also use it together with the `rtt.conf` file if using Segger RTT. Once
-you have built the application, run the following command to flash it:
+Once you have built the application, run the following command to flash it:
 
 ```shell
 west flash
