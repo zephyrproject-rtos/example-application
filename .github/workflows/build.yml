@@ -27,7 +27,7 @@ jobs:
       - name: Build firmware
         working-directory: example-application
         run: |
-          west build -b custom_plank app
+          west twister -T app -v --inline-logs --integration
 
       - name: Twister Tests
         working-directory: example-application
