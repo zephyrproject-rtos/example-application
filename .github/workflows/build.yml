@@ -33,9 +33,3 @@ jobs:
         working-directory: example-application
         run: |
           west twister -T tests --integration
-
-      - name: Archive firmware
-        uses: actions/upload-artifact@v3
-        with:
-          name: firmware
-          path: example-application/build/zephyr/zephyr.*
