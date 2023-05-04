@@ -12,4 +12,5 @@ common:
 tests:
   app.default: {}
   app.debug:
-    extra_args: OVERLAY_CONFIG="debug.conf"
+    extra_overlay_confs:
+      - debug.conf
