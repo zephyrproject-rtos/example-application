@@ -54,6 +54,12 @@ west update
 
 ### Building and running
 
+Now enter the directory west has just created:
+
+```shell
+cd example-application
+```
+
 To build the application, run the following command:
 
 ```shell
