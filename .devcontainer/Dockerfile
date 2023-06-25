@@ -157,6 +157,7 @@ RUN	sudo apt-get -y update && \
 	sudo apt-get install --no-install-recommends -y \
 		bash-completion \
 		clang-format \
+		openocd \
 		vim \
 	&& sudo ln -s /usr/bin/clang-format /usr/bin/clang-format-9
 

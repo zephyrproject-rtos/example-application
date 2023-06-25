@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+			"type": "cortex-debug",
+			"request": "launch",
+			"servertype": "openocd",
+			"cwd": "${workspaceRoot}",
+			"executable": "${workspaceRoot}/build/zephyr/zephyr.elf",
+			"name": "example app for custom_plank board",
+			"device": "nRF52840_xxAA",
+            "preLaunchTask": "Build example app for custom_plank",
+			"configFiles": [
+				"interface/cmsis-dap.cfg",
+				"target/nrf52.cfg"
+					]
+		},
+    ]
+}
+

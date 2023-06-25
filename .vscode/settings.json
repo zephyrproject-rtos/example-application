@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "functional": "c",
+        "*.ipp": "cpp",
+        "string": "c",
+        "sbc_encoder.h": "c",
+        "bitset": "c",
+        "regex": "c",
+        "esp_bt_main.h": "c"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "editor.formatOnSave": true,
+    "clang-format.executable": "/usr/bin/clang-format-9",
+    "clang-format.language.c.enable": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "clang-format.assumeFilename": ".clang-format"
+}

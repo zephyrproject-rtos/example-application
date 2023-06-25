@@ -1,0 +1,24 @@
+{
+    "env" : {
+        "myZephyrSourcePath": "${workspaceFolder}/../zephyr",
+        "myZephyrSDKPath": "${workspaceFolder}/../../sdk_0.16.0/"
+    },
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+                "${myZephyrSourcePath}/include/",
+                "${myZephyrSourcePath}/lib/libc/minimal/include/",
+                "${myZephyrSourcePath}/arch/arm/include/",
+                "${workspaceFolder}/build/zephyr/include/generated/"
+            ],
+            "defines": [],
+            "compilerPath": "${myZephyrSDKPath}/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

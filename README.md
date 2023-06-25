@@ -1,10 +1,12 @@
-# Zephyr Example Application
+# Zephyr Example Docker Environment
 
 This repository is based off of the zephyr example application repo https://github.com/zephyrproject-rtos/example-application.
 This repository has the following added feature.
 
 - Docker container to manage and isolate your workspace
 - west autocomplete
+- vscode cortex debugger integration
+- Auto format on save using clang-format
 
 # Zephyr Example Application
 

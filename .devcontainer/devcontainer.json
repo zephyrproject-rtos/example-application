@@ -20,7 +20,8 @@
 				"trond-snekvik.devicetree",
 				"mhutchie.git-graph",
 				"eamodio.gitlens",
-				"trond-snekvik.kconfig-lang"
+				"trond-snekvik.kconfig-lang",
+				"marus25.cortex-debug"
 			]
 		}
 	}

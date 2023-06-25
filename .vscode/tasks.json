@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build example app for custom_plank",
+        "type": "shell",
+        "command": "west build app -b custom_plank"
+      }
+    ]
+  }
