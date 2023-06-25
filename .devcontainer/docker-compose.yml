@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  container_name:
+    build: .
+    user: mainUser
+    tty: true
+    init: true
+    privileged: true
+    command: bash
+    working_dir: /home/mainUser/zephyrproject/zephyr_docker_example_application
+    volumes:
+      - type: bind
+        source: /dev
+        target: /dev
+      - type: bind
+        source: ../
+        target: /home/mainUser/zephyrproject/zephyr_docker_example_application
+      - type: bind
+        source: ~/.gitconfig
+        target: /home/mainUser/.gitconfig
+
+volumes:
+  bashhistory:
+  ccache:
+    name: zephyr_docker_ccache

@@ -1,5 +1,13 @@
 # Zephyr Example Application
 
+This repository is based off of the zephyr example application repo https://github.com/zephyrproject-rtos/example-application.
+This repository has the following added feature.
+
+- Docker container to manage and isolate your workspace
+- west autocomplete
+
+# Zephyr Example Application
+
 This repository contains a Zephyr example application. The main purpose of this
 repository is to serve as a reference on how to structure Zephyr-based
 applications. Some of the features demonstrated in this example are:
@@ -40,17 +48,13 @@ environment. Follow the official
 
 ### Initialization
 
-The first step is to initialize the workspace folder (``my-workspace``) where
-the ``example-application`` and all Zephyr modules will be cloned. Run the following
-command:
+1. Install docker and docker-compose. Follow the installation guide at https://docs.docker.com/compose/install/.
 
-```shell
-# initialize my-workspace for the example-application (main branch)
-west init -m https://github.com/zephyrproject-rtos/example-application --mr main my-workspace
-# update Zephyr modules
-cd my-workspace
-west update
-```
+2. Install the "Dev Containers" extension in vscode.
+
+3. Open this repository in vscode. Select the blue icon in the lower left corner and select "Reopen in Container" from the menu.
+
+
 
 ### Building and running
 
