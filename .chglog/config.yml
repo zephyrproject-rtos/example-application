@@ -1,0 +1,35 @@
+style: none
+template: CHANGELOG.tpl.md
+info:
+  title: CHANGELOG
+  repository_url: ""
+options:
+  commits:
+    # filters:
+    #   Type:
+    #     - feat
+    #     - fix
+    #     - perf
+    #     - refactor
+  commit_groups:
+    title_maps:
+      feat: Features
+      fix: Bug Fixes
+      refactor: Code Refactoring
+      docs: Documentation
+      style: Formatting
+      test: Tests
+      ci: CI
+      chore: Tooling/Configuration/Other
+  commit_filters:
+    exclude:
+    - Merge branch '{{.Branch}}' of {{.RepoURL}} into {{.Branch}}
+    - Merge branch '{{.Branch}}' into {{.Branch}}
+  header:
+    pattern: "^(\\w*)\\:\\s(.*)$"
+    pattern_maps:
+      - Type
+      - Subject
+  notes:
+    keywords:
+      - BREAKING CHANGE
