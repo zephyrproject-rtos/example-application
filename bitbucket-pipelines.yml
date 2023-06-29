@@ -1,0 +1,41 @@
+# This pipeline uses the Zephyr Docker image defined here:
+# https://github.com/zephyrproject-rtos/docker-image
+# It contains all tooling and SDK to build Zephyr based applications
+image: zephyrprojectrtos/zephyr-build:latest
+
+pipelines:
+  default:
+    - step:
+        name: 'Lint'
+        #runs-on:
+        #  - 'self.hosted'
+        script:
+          - echo "Your linting goes here..."
+    - step:
+        name: 'Build'
+        #runs-on:
+        #  - 'self.hosted'
+        caches:
+          - zephyr
+        script:
+          - echo "Starting build"
+          - unset ZEPHYR_BASE
+          - git config --global --add safe.directory $(pwd)/zephyr
+          - west update
+          - west zephyr-export
+          - west build -b custom_plank app
+        artifacts:
+          - build/**
+          - zephyr/**
+    - step:
+        name: 'Test'
+        #runs-on:
+        #  - 'self.hosted'
+        script:
+          - echo "Starting tests"
+          - unset ZEPHYR_BASE
+          - git config --global --add safe.directory $(pwd)/zephyr
+          - ./zephyr/scripts/twister --platform native_posix_64 -o test-reports -T zephyr/tests/kernel/device
+definitions:
+  caches:
+    zephyr: zephyr
