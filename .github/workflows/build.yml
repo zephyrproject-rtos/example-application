@@ -1,12 +1,28 @@
-name: Build
+name: SemVer Release & Build
 
 on:
-  push:
   pull_request:
-  schedule:
-    - cron: "0 0 * * *"
+    types: [opened, synchronize, closed]
+    branches: main
 
 jobs:
+  version:
+    outputs:
+      next: ${{steps.semver.outputs.next}}
+      nextStrict: ${{steps.semver.outputs.nextStrict}}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Get Next Version
+        id: semver
+        uses: ietf-tools/semver-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
   build:
     runs-on: ubuntu-22.04
     container: ghcr.io/zephyrproject-rtos/ci:v0.26.2 
@@ -33,3 +49,21 @@ jobs:
         working-directory: example-application
         run: |
           west twister -T tests --integration
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [version,build]
+    steps:
+      - name: Create Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          allowUpdates: true
+          draft: false
+          makeLatest: true
+          generateReleaseNotes: true
+          name: ${{ needs.version.outputs.next }}
+          body: Changelog Contents
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "README.md,LICENSE,app/build/zephyr/${{ github.repository }}-${{ needs.version.outputs.nextStrict }}.uf2"
+          commit: ${{ github.sha }}
+          tag: ${{ needs.version.outputs.next }}
