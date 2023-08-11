@@ -22,7 +22,7 @@ jobs:
         working-directory: example-application
         run: |
           west init -l .
-          west update
+          west update -o=--depth=1 -n
 
       - name: Build firmware
         working-directory: example-application
