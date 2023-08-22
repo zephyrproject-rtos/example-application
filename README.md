@@ -78,3 +78,11 @@ Once you have built the application, run the following command to flash it:
 ```shell
 west flash
 ```
+
+### Testing
+
+To execute Twister integration tests, run the following command:
+
+```shell
+west twister -T tests --integration
+```
