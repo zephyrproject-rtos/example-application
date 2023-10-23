@@ -23,6 +23,10 @@
 	};
 };
 
+&uicr {
+	gpio-as-nreset;
+};
+
 &gpio0 {
 	status = "okay";
 };
