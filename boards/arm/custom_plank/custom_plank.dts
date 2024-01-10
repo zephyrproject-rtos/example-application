@@ -27,6 +27,10 @@
 	gpio-as-nreset;
 };
 
+&gpiote {
+	status = "okay";
+};
+
 &gpio0 {
 	status = "okay";
 };
