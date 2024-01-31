@@ -1,0 +1,8 @@
+# Copyright (c) 2021, Legrand North America, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config BUTTON_LIB
+	bool "button_lib Support"
+	help
+	  This option enables the button_lib library
+

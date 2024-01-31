@@ -4,5 +4,7 @@
 menu "Libraries"
 
 rsource "custom_lib/Kconfig"
+rsource "led_lib/Kconfig"
+rsource "button_lib/Kconfig"
 
 endmenu
