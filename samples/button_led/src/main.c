@@ -10,7 +10,7 @@ int main() {
     button_init(&button0);
     led_init(&led0);
     while (1) {
-        if(button_state(&button0)) led_on(&led0);
+        if(!button_state(&button0)) led_on(&led0);
         else led_off(&led0);
     }
     return 0;
