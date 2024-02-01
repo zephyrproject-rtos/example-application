@@ -1,0 +1,70 @@
+The target system is: Generic - 3.5.99 - arm
+The host system is: Linux - 6.5.0-14-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/quentin/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "/home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/3.20.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/quentin/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is GNU, found in "/home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/3.20.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+arm-zephyr-eabi-gcc (Zephyr SDK 0.16.1) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Performing C SOURCE FILE Test check_Wdouble_promotion_C__nostartfiles__nostdlib__isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0 succeeded with the following output:
+Change Dir: /home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/quentin/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_b2a03 && [1/2] Building C object CMakeFiles/cmTC_b2a03.dir/src.c.obj
+[2/2] Linking C executable cmTC_b2a03
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test check_fmacro_prefix_map__home_quentin_Documents_workspace_pfe_git_samples_button_led_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0 succeeded with the following output:
+Change Dir: /home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/quentin/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_5bd53 && [1/2] Building C object CMakeFiles/cmTC_5bd53.dir/src.c.obj
+[2/2] Linking C executable cmTC_5bd53
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test check_fmacro_prefix_map__home_quentin_Documents_workspace_zephyr_ZEPHYR_BASE_C__nostartfiles__nostdlib__isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0 succeeded with the following output:
+Change Dir: /home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/quentin/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_cd5d6 && [1/2] Building C object CMakeFiles/cmTC_cd5d6.dir/src.c.obj
+[2/2] Linking C executable cmTC_cd5d6
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test check_fmacro_prefix_map__home_quentin_Documents_workspace_WEST_TOPDIR_C__nostartfiles__nostdlib__isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_quentin_ncs_toolchains_7795df4459_opt_zephyr_sdk_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0 succeeded with the following output:
+Change Dir: /home/quentin/Documents/workspace/pfe.git/samples/button_led/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/quentin/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_ddb94 && [1/2] Building C object CMakeFiles/cmTC_ddb94.dir/src.c.obj
+[2/2] Linking C executable cmTC_ddb94
+
+
+Source file was:
+int main(void) { return 0; }
