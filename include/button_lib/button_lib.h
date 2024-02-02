@@ -14,9 +14,8 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 
-void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins);
-
 int button_init(const struct gpio_dt_spec *button);
 int button_state(const struct gpio_dt_spec *button);
+void isr_btn_config(const struct gpio_dt_spec *button, gpio_callback_handler_t function, struct gpio_callback* button_cb_data, enum gpio_int_mode edge_mode);
 
 #endif /* BUTTON_H */

@@ -7,13 +7,6 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 
-static struct gpio_callback button_cb_data;
-
-void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
-{
-    printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
-}
-
 int button_init(const struct gpio_dt_spec *button) {
     int ret;
 
@@ -27,17 +20,6 @@ int button_init(const struct gpio_dt_spec *button) {
         printk("Error %d: failed to configure %s pin %d\n", ret, button->port->name, button->pin);
         return 0;
     }
-
-    ret = gpio_pin_interrupt_configure_dt(button, GPIO_INT_EDGE_TO_ACTIVE);
-    if (ret != 0) {
-        printk("Error %d: failed to configure interrupt on %s pin %d\n", ret, button->port->name, button->pin);
-        return 0;
-    }
-
-    gpio_init_callback(&button_cb_data, button_pressed, BIT(button->pin));
-    gpio_add_callback(button->port, &button_cb_data);
-    printk("Set up button at %s pin %d\n", button->port->name, button->pin);
-
     return 1;
 }
 
@@ -47,4 +29,11 @@ int button_state(const struct gpio_dt_spec *button) {
         return val;
     }
     return -1;
+}
+
+void isr_btn_config(const struct gpio_dt_spec *button, gpio_callback_handler_t function, struct gpio_callback* button_cb_data, enum gpio_int_mode edge_mode){
+    gpio_pin_interrupt_configure_dt(button, edge_mode);
+    gpio_init_callback(button_cb_data, function, BIT(button->pin));
+	gpio_add_callback(button->port, button_cb_data);
+	printk("Set up button at %s pin %d\n", button->port->name, button->pin);
 }
