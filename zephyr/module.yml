@@ -1,11 +1,12 @@
 # Copyright (c) 2021 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
+name : pfe
 
 build:
   # Path to the Kconfig file that will be sourced into Zephyr Kconfig tree under
   # Zephyr > Modules > example-application. Path is relative from root of this
   # repository.
-  kconfig: Kconfig
+  kconfig: Kconfig.pfe
   # Path to the folder that contains the CMakeLists.txt file to be included by
   # Zephyr build system. The `.` is the root of this repository.
   cmake: .
