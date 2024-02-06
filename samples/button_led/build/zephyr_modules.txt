@@ -1,4 +1,0 @@
-"pfe.git":"/home/quentin/Documents/workspace/pfe.git":"/home/quentin/Documents/workspace/pfe.git"
-"cmsis":"/home/quentin/Documents/workspace/modules/hal/cmsis":"${ZEPHYR_CMSIS_CMAKE_DIR}"
-"hal_nordic":"/home/quentin/Documents/workspace/modules/hal/nordic":"${ZEPHYR_HAL_NORDIC_CMAKE_DIR}"
-"stm32":"/home/quentin/Documents/workspace/modules/hal/stm32":"/home/quentin/Documents/workspace/modules/hal/stm32"
