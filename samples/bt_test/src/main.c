@@ -18,33 +18,55 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
+#define DEVICE_NAME     "Zephyr Device"
+#define ADV_INTERVAL    1000 // en millisecondes
 
-static const struct bt_data ad[] = {
-	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-	BT_DATA_BYTES(BT_DATA_UUID16_ALL,
-		      BT_UUID_16_ENCODE(BT_UUID_HRS_VAL),
-		      BT_UUID_16_ENCODE(BT_UUID_BAS_VAL),
-		      BT_UUID_16_ENCODE(BT_UUID_CTS_VAL)),
-};
+void advertising_thread(void *p1, void *p2, void *p3)
+{
+    struct bt_le_adv_param adv_param = BT_LE_ADV_PARAM_INIT(
+        BT_LE_ADV_OPT_CONNECTABLE | BT_LE_ADV_OPT_ONE_TIME,
+        BT_GAP_ADV_FAST_INT_MIN_1, BT_GAP_ADV_FAST_INT_MAX_1);
 
+    while (1) {
+        int err;
 
+        err = bt_le_adv_start(&adv_param, NULL, 0, NULL, 0);
+        if (err) {
+            printk("Advertising failed to start (err %d)\n", err);
+            return;
+        }
 
+        printk("Advertising started\n");
 
+        k_sleep(K_MSEC(ADV_INTERVAL));
 
+        err = bt_le_adv_stop();
+        if (err) {
+            printk("Advertising failed to stop (err %d)\n", err);
+            return;
+        }
 
+        printk("Advertising stopped\n");
 
-
-int main(){
-
-    bt_enable(NULL); //permet d'activer le bluetooth
-    if(bt_is_ready(NULL)){
-        bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), NULL, 0);
-
+        k_sleep(K_MSEC(ADV_INTERVAL));
     }
-    
+}
 
+void main(void)
+{
+    int err;
 
+    printk("Zephyr BLE Advertising Connectable Example\n");
 
-    while (1);
-    return 1;
+    err = bt_enable(NULL);
+    if (err) {
+        printk("Bluetooth init failed (err %d)\n", err);
+        return;
+    }
+
+    k_thread_spawn(advertising_thread, NULL, NULL, NULL, 0, NULL, K_PRIO_COOP(7), 0, K_NO_WAIT);
+
+    while (1) {
+        k_sleep(K_FOREVER);
+    }
 }
