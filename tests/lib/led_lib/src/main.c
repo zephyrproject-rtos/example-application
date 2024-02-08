@@ -28,7 +28,7 @@ int main() {
     led_init(&led0);
 
     while (1) {
-        led_blink(&led0,125);
+        led_set(&led0,OFF);
     }
 
     return 0;

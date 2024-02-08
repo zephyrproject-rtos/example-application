@@ -10,7 +10,6 @@
 
 
 int led_init(const struct gpio_dt_spec *led) {
-    int ret;
 	if (!gpio_is_ready_dt(led)) {
 		printk("\n Erreur init   leds !");
 		return 0;
@@ -107,5 +106,11 @@ int leds_blink_duration(const struct gpio_dt_spec *led, int time, int duree){
 	for(i=0;i<(duree/time);i++){
 		leds_blink(led,time);
     }
+	return 1;
+}
+
+int led_set(const struct gpio_dt_spec *led, bool val){
+	if (val) led_on(led);
+	else led_off(led);
 	return 1;
 }
