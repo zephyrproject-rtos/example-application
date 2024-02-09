@@ -44,6 +44,7 @@
         "kscan_driver_api",
         "led_driver_api",
         "mdio_driver_api",
+        "mipi_dbi_driver_api",
         "mipi_dsi_driver_api",
         "peci_driver_api",
         "ps2_driver_api",

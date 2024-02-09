@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/modules/lib/open-amp/open-amp/lib/remoteproc
+# Install script for directory: /home/openphung/Documents/workspace/modules/lib/open-amp/open-amp/lib/remoteproc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

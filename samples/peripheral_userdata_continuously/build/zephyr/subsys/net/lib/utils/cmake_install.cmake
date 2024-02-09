@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/subsys/net/lib/utils
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/subsys/net/lib/utils
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

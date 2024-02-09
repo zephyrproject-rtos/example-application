@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/lib/open-amp
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/lib/open-amp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

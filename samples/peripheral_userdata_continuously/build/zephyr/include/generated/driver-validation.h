@@ -74,6 +74,8 @@
 
 #define K_SYSCALL_DRIVER_MDIO(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, mdio, MDIO)
 
+#define K_SYSCALL_DRIVER_MIPI_DBI(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, mipi_dbi, MIPI_DBI)
+
 #define K_SYSCALL_DRIVER_MIPI_DSI(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, mipi_dsi, MIPI_DSI)
 
 #define K_SYSCALL_DRIVER_PECI(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, peci, PECI)

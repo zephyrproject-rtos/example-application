@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/subsys/bluetooth/services
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/subsys/bluetooth/services
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

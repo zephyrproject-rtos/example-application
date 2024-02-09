@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/lib
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,46 +39,46 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/crc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/crc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/libc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/libc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/posix/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/posix/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/hash/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/hash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/heap/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/heap/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/mem_blocks/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/mem_blocks/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/os/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/os/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/utils/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/utils/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/open-amp/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/open-amp/cmake_install.cmake")
 endif()
 

@@ -87,16 +87,6 @@ rule C_EXECUTABLE_LINKER__zephyr_final_
 
 
 #############################################
-# Rule for compiling ASM files.
-
-rule ASM_COMPILER__zephyr_
-  depfile = $DEP_FILE
-  deps = gcc
-  command = ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
-  description = Building ASM object $out
-
-
-#############################################
 # Rule for compiling C files.
 
 rule C_COMPILER__zephyr_
@@ -290,7 +280,7 @@ rule C_STATIC_LIBRARY_LINKER__lib__libc__common_
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__posix_
+rule C_COMPILER__lib__posix__options_
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -300,7 +290,36 @@ rule C_COMPILER__lib__posix_
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__posix_
+rule C_STATIC_LIBRARY_LINKER__lib__posix__options_
+  command = $PRE_LINK && ccache /home/openphung/ncs/toolchains/7795df4459/usr/local/bin/cmake -E rm -f $TARGET_FILE && ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  description = Linking C static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling ASM files.
+
+rule ASM_COMPILER__soc__arm__nordic_nrf_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building ASM object $out
+
+
+#############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__soc__arm__nordic_nrf_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C static library.
+
+rule C_STATIC_LIBRARY_LINKER__soc__arm__nordic_nrf_
   command = $PRE_LINK && ccache /home/openphung/ncs/toolchains/7795df4459/usr/local/bin/cmake -E rm -f $TARGET_FILE && ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -652,7 +671,7 @@ rule C_STATIC_LIBRARY_LINKER__kernel_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/openphung/ncs/toolchains/7795df4459/usr/local/bin/cmake --regenerate-during-build -S/home/openphung/zephyrproject/peripheral_userdata_continuously -B/home/openphung/zephyrproject/peripheral_userdata_continuously/build
+  command = /home/openphung/ncs/toolchains/7795df4459/usr/local/bin/cmake --regenerate-during-build -S/home/openphung/zephyrproject/peripheral_userdata_continuously -B/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build
   description = Re-running CMake...
   generator = 1
 

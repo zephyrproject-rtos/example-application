@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/modules/lib/open-amp/open-amp/lib
+# Install script for directory: /home/openphung/Documents/workspace/modules/lib/open-amp/open-amp/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/openphung/zephyrproject/modules/lib/open-amp/open-amp/lib/include/openamp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/openphung/Documents/workspace/modules/lib/open-amp/open-amp/lib/include/openamp")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/open-amp/open-amp/include/generated/openamp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/open-amp/open-amp/include/generated/openamp")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
 
 endif()
 

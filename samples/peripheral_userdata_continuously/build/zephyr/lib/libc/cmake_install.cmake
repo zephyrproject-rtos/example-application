@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/lib/libc
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/lib/libc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/libc/picolibc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/libc/picolibc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/zephyr/lib/libc/common/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/zephyr/lib/libc/common/cmake_install.cmake")
 endif()
 

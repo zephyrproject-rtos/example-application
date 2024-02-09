@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/modules/hal/libmetal/libmetal/lib
+# Install script for directory: /home/openphung/Documents/workspace/modules/hal/libmetal/libmetal/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,178 +38,178 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/alloc.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/alloc.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/alloc.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/alloc.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/assert.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/assert.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/assert.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/assert.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/atomic.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/atomic.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/atomic.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/atomic.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/cache.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/cache.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/cache.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/cache.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/condition.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/condition.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/condition.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/condition.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/config.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/config.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/config.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/config.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/cpu.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/cpu.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/cpu.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/cpu.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/device.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/device.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/device.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/device.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/errno.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/errno.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/errno.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/errno.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/dma.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/dma.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/dma.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/dma.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/io.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/io.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/io.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/io.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/irq.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/irq.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/irq.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/irq.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/irq_controller.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/irq_controller.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/irq_controller.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/irq_controller.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/list.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/list.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/list.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/list.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/log.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/log.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/log.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/log.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/mutex.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/mutex.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/mutex.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/mutex.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/shmem.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/shmem.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/shmem.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/shmem.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/sleep.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/sleep.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/sleep.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/sleep.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/softirq.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/softirq.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/softirq.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/softirq.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/spinlock.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/spinlock.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/spinlock.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/spinlock.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/sys.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/sys.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/sys.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/sys.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/time.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/time.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/time.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/time.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/utilities.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/utilities.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/utilities.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/utilities.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/version.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/version.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/version.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/version.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/armcc/errno.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/armcc/errno.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/armcc/errno.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/armcc/errno.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/gcc/atomic.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/gcc/atomic.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/gcc/atomic.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/gcc/atomic.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/gcc/compiler.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/gcc/compiler.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/gcc/compiler.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/gcc/compiler.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/iar/compiler.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/iar/compiler.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/iar/compiler.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/iar/compiler.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/iar/errno.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/iar/errno.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/compiler/iar/errno.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/compiler/iar/errno.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/processor/generic/cpu.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/processor/generic/cpu.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/processor/generic/cpu.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/processor/generic/cpu.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/processor/generic/atomic.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/processor/generic/atomic.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/processor/generic/atomic.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/processor/generic/atomic.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/alloc.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/alloc.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/alloc.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/alloc.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/assert.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/assert.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/assert.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/assert.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/cache.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/cache.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/cache.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/cache.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/condition.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/condition.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/condition.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/condition.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/io.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/io.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/io.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/io.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/irq.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/irq.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/irq.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/irq.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/log.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/log.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/log.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/log.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/mutex.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/mutex.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/mutex.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/mutex.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/sleep.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/sleep.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/sleep.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/sleep.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/sys.h" FILES "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/sys.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "metal/system/zephyr/sys.h" FILES "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/include/metal/system/zephyr/sys.h")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/processor/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/system/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/processor/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/system/cmake_install.cmake")
 
 endif()
 

@@ -1,4 +1,4 @@
-The target system is: Generic - 3.5.99 - arm
+The target system is: Generic - 3.6.0 - arm
 The host system is: Linux - 6.5.0-14-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
@@ -11,7 +11,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
 
-The C compiler identification is GNU, found in "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/CMakeFiles/3.20.5/CompilerIdC/CMakeCCompilerId.o"
+The C compiler identification is GNU, found in "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/CMakeFiles/3.20.5/CompilerIdC/CMakeCCompilerId.o"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /home/openphung/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
@@ -24,7 +24,7 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
 
-The CXX compiler identification is GNU, found in "/home/openphung/zephyrproject/peripheral_userdata_continuously/build/CMakeFiles/3.20.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+The CXX compiler identification is GNU, found in "/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/CMakeFiles/3.20.5/CompilerIdCXX/CMakeCXXCompilerId.o"
 
 Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
 arm-zephyr-eabi-gcc (Zephyr SDK 0.16.1) 12.2.0
@@ -33,20 +33,20 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 Determining if files stdatomic.h exist passed with the following output:
-Change Dir: /home/openphung/zephyrproject/peripheral_userdata_continuously/build/CMakeFiles/CMakeTmp
+Change Dir: /home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/home/openphung/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_2b523 && [1/2] Building C object CMakeFiles/cmTC_2b523.dir/HAVE_STDATOMIC_H.c.obj
-[2/2] Linking C executable cmTC_2b523
-arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_2b523.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
+Run Build Command(s):/home/openphung/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_01f12 && [1/2] Building C object CMakeFiles/cmTC_01f12.dir/HAVE_STDATOMIC_H.c.obj
+[2/2] Linking C executable cmTC_01f12
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_01f12.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
 
 
 
 Determining if files fcntl.h exist passed with the following output:
-Change Dir: /home/openphung/zephyrproject/peripheral_userdata_continuously/build/CMakeFiles/CMakeTmp
+Change Dir: /home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/home/openphung/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_e7bf6 && [1/2] Building C object CMakeFiles/cmTC_e7bf6.dir/HAVE_FCNTL_H.c.obj
-[2/2] Linking C executable cmTC_e7bf6
-arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_e7bf6.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
+Run Build Command(s):/home/openphung/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_394bf && [1/2] Building C object CMakeFiles/cmTC_394bf.dir/HAVE_FCNTL_H.c.obj
+[2/2] Linking C executable cmTC_394bf
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_394bf.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
 
 
 

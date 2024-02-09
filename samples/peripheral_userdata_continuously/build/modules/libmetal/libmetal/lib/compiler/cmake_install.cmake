@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/modules/hal/libmetal/libmetal/lib/compiler
+# Install script for directory: /home/openphung/Documents/workspace/modules/hal/libmetal/libmetal/lib/compiler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/armcc/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/gcc/cmake_install.cmake")
-  include("/home/openphung/zephyrproject/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/iar/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/armcc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/gcc/cmake_install.cmake")
+  include("/home/openphung/Documents/workspace/pfe.git/samples/peripheral_userdata_continuously/build/modules/libmetal/libmetal/lib/compiler/iar/cmake_install.cmake")
 
 endif()
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/drivers/bluetooth/hci
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/drivers/bluetooth/hci
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

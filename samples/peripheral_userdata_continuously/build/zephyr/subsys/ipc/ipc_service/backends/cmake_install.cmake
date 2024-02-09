@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/zephyr/subsys/ipc/ipc_service/backends
+# Install script for directory: /home/openphung/Documents/workspace/zephyr/subsys/ipc/ipc_service/backends
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

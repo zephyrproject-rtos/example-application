@@ -1,4 +1,4 @@
-# Install script for directory: /home/openphung/zephyrproject/modules/hal/libmetal/libmetal/lib/processor
+# Install script for directory: /home/openphung/Documents/workspace/modules/hal/libmetal/libmetal/lib/processor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
