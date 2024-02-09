@@ -1,72 +1,44 @@
 
 #include <zephyr/types.h>
 #include <stddef.h>
-#include <string.h>
-#include <errno.h>
 #include <zephyr/sys/printk.h>
-#include <zephyr/sys/byteorder.h>
-#include <zephyr/kernel.h>
-
-#include <zephyr/settings/settings.h>
+#include <zephyr/sys/util.h>
 
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/bluetooth/hci.h>
-#include <zephyr/bluetooth/conn.h>
-#include <zephyr/bluetooth/uuid.h>
-#include <zephyr/bluetooth/gatt.h>
-#include <zephyr/bluetooth/services/bas.h>
-#include <zephyr/bluetooth/services/hrs.h>
-#include <zephyr/bluetooth/services/ias.h>
 
-#define DEVICE_NAME     "Zephyr Device"
-#define ADV_INTERVAL    1000 // en millisecondes
+#define DEVICE_NAME CONFIG_BT_DEVICE_NAME
+#define DEVICE_NAME_LEN (sizeof(DEVICE_NAME) - 1)
 
-void advertising_thread(void *p1, void *p2, void *p3)
-{
-    struct bt_le_adv_param adv_param = BT_LE_ADV_PARAM_INIT(
-        BT_LE_ADV_OPT_CONNECTABLE | BT_LE_ADV_OPT_ONE_TIME,
-        BT_GAP_ADV_FAST_INT_MIN_1, BT_GAP_ADV_FAST_INT_MAX_1);
+/*
+ * Set Advertisement data. Based on the Eddystone specification:
+ * https://github.com/google/eddystone/blob/master/protocol-specification.md
+ * https://github.com/google/eddystone/tree/master/eddystone-url
+ */
+static const struct bt_data ad[] = {
+	BT_DATA_BYTES(BT_DATA_FLAGS, BT_LE_AD_NO_BREDR),
+	BT_DATA_BYTES(BT_DATA_UUID16_ALL, 0xaa, 0xfe),
+	BT_DATA_BYTES(BT_DATA_SVC_DATA16,
+		      0xaa, 0xfe, /* Eddystone UUID */
+		      0x10, /* Eddystone-URL frame type */
+		      0x00, /* Calibrated Tx power at 0m */
+		      0x00, /* URL Scheme Prefix http://www. */
+		      'z', 'e', 'p', 'h', 'y', 'r',
+		      'p', 'r', 'o', 'j', 'e', 'c', 't',
+		      0x08) /* .org */
+};
 
-    while (1) {
-        int err;
+static const struct bt_data sd[] = {
+	BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+};
 
-        err = bt_le_adv_start(&adv_param, NULL, 0, NULL, 0);
-        if (err) {
-            printk("Advertising failed to start (err %d)\n", err);
-            return;
-        }
-
-        printk("Advertising started\n");
-
-        k_sleep(K_MSEC(ADV_INTERVAL));
-
-        err = bt_le_adv_stop();
-        if (err) {
-            printk("Advertising failed to stop (err %d)\n", err);
-            return;
-        }
-
-        printk("Advertising stopped\n");
-
-        k_sleep(K_MSEC(ADV_INTERVAL));
-    }
+int ble_start_advertise(const struct bt_le_adv_param* param, const struct bt_data ad[], const struct bt_data sd[]) {
+    bt_enable(NULL);
+    bt_le_adv_start(param, ad, sizeof(&ad), sd, sizeof(&sd));
+    return 1;
 }
 
-void main(void)
-{
-    int err;
-
-    printk("Zephyr BLE Advertising Connectable Example\n");
-
-    err = bt_enable(NULL);
-    if (err) {
-        printk("Bluetooth init failed (err %d)\n", err);
-        return;
-    }
-
-    k_thread_spawn(advertising_thread, NULL, NULL, NULL, 0, NULL, K_PRIO_COOP(7), 0, K_NO_WAIT);
-
-    while (1) {
-        k_sleep(K_FOREVER);
-    }
+int main(void) {
+    ble_start_advertise(BT_LE_ADV_CONN_NAME, ad, sd);
+    return 0;
 }
