@@ -1,0 +1,13 @@
+# Target labels
+ tfm
+# Source files and their labels
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/CMakeFiles/tfm
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/CMakeFiles/tfm.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/CMakeFiles/tfm-complete.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-build.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-configure.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-download.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-install.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-mkdir.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-patch.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/peripheral_indicate_read_write/build/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-update.rule

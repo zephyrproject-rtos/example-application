@@ -1,0 +1,74 @@
+app:
+  address: 0x8000
+  end_address: 0x100000
+  region: flash_primary
+  size: 0xf8000
+otp:
+  address: 0xff8100
+  end_address: 0xff83fc
+  region: otp
+  size: 0x2fc
+rpmsg_nrf53_sram:
+  address: 0x20070000
+  end_address: 0x20080000
+  placement:
+    before:
+    - end
+  region: sram_primary
+  size: 0x10000
+sram_nonsecure:
+  address: 0x20008000
+  end_address: 0x20080000
+  orig_span: &id001
+  - sram_primary
+  - rpmsg_nrf53_sram
+  region: sram_primary
+  size: 0x78000
+  span: *id001
+sram_primary:
+  address: 0x20008000
+  end_address: 0x20070000
+  region: sram_primary
+  size: 0x68000
+sram_secure:
+  address: 0x20000000
+  end_address: 0x20008000
+  orig_span: &id002
+  - tfm_sram
+  region: sram_primary
+  size: 0x8000
+  span: *id002
+tfm:
+  address: 0x0
+  end_address: 0x8000
+  placement:
+    before:
+    - app
+  region: flash_primary
+  size: 0x8000
+tfm_nonsecure:
+  address: 0x8000
+  end_address: 0x100000
+  orig_span: &id003
+  - app
+  region: flash_primary
+  size: 0xf8000
+  span: *id003
+tfm_secure:
+  address: 0x0
+  end_address: 0x8000
+  orig_span: &id004
+  - tfm
+  region: flash_primary
+  size: 0x8000
+  span: *id004
+tfm_sram:
+  address: 0x20000000
+  end_address: 0x20008000
+  inside:
+  - sram_secure
+  placement:
+    after:
+    - start
+  region: sram_primary
+  size: 0x8000
