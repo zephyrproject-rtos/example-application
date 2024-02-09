@@ -289,35 +289,35 @@ static void start_scan(void)
 }
 
 #if defined(CONFIG_BT_GATT_CLIENT) //structures non nécessaires, s'active lorsque CONFIG_BT_GATT_CLIENT=y dans prj.conf, on utilise pas ici
-static void mtu_exchange_cb(struct bt_conn *conn, uint8_t err,
-			    struct bt_gatt_exchange_params *params)
-{
-	printk("MTU exchange %u %s (%u)\n", bt_conn_index(conn),
-	       err == 0U ? "successful" : "failed", bt_gatt_get_mtu(conn));
-}
+// static void mtu_exchange_cb(struct bt_conn *conn, uint8_t err,
+// 			    struct bt_gatt_exchange_params *params)
+// {
+// 	printk("MTU exchange %u %s (%u)\n", bt_conn_index(conn),
+// 	       err == 0U ? "successful" : "failed", bt_gatt_get_mtu(conn));
+// }
 
-static struct bt_gatt_exchange_params mtu_exchange_params[CONFIG_BT_MAX_CONN];
+// static struct bt_gatt_exchange_params mtu_exchange_params[CONFIG_BT_MAX_CONN];
 
-static int mtu_exchange(struct bt_conn *conn)
-{
-	uint8_t conn_index;
-	int err;
+// static int mtu_exchange(struct bt_conn *conn)
+// {
+// 	uint8_t conn_index;
+// 	int err;
 
-	conn_index = bt_conn_index(conn);
+// 	conn_index = bt_conn_index(conn);
 
-	printk("MTU (%u): %u\n", conn_index, bt_gatt_get_mtu(conn));
+// 	printk("MTU (%u): %u\n", conn_index, bt_gatt_get_mtu(conn));
 
-	mtu_exchange_params[conn_index].func = mtu_exchange_cb;
+// 	mtu_exchange_params[conn_index].func = mtu_exchange_cb;
 
-	err = bt_gatt_exchange_mtu(conn, &mtu_exchange_params[conn_index]);
-	if (err) {
-		printk("MTU exchange failed (err %d)", err);
-	} else {
-		printk("Exchange pending...");
-	}
+// 	err = bt_gatt_exchange_mtu(conn, &mtu_exchange_params[conn_index]);
+// 	if (err) {
+// 		printk("MTU exchange failed (err %d)", err);
+// 	} else {
+// 		printk("Exchange pending...");
+// 	}
 
-	return err;
-}
+// 	return err;
+// }
 #endif /* CONFIG_BT_GATT_CLIENT */
 
 static void connected(struct bt_conn *conn, uint8_t reason)
