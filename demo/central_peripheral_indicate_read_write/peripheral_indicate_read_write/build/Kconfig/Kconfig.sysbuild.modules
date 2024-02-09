@@ -1,0 +1,6 @@
+menu "nrf (/home/jordan/ncs/v2.5.1/nrf)"
+osource "/home/jordan/ncs/v2.5.1/nrf/sysbuild/Kconfig.sysbuild"
+config ZEPHYR_NRF_MODULE
+	bool
+	default y
+endmenu

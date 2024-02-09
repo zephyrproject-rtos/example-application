@@ -1,0 +1,3 @@
+[submodule "tests/lib/button_lib/build/tfm/secure_fw/partitions/crypto/mbedcrypto"]
+	path = tests/lib/button_lib/build/tfm/secure_fw/partitions/crypto/mbedcrypto
+	url = https://github.com/ARMmbed/mbed-crypto

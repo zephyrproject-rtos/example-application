@@ -7,3 +7,9 @@ project(button_lib)
 
 FILE(GLOB app_sources src/*.c)
 target_sources(app PRIVATE ${app_sources})
+
+
+
+set(ZEPHYR_EXTRA_MODULES "/home/jordan/Documents/PFE_2/pfe/modules")
+set(BOARD_ROOT "/home/jordan/Documents/PFE_2/pfe")
+
