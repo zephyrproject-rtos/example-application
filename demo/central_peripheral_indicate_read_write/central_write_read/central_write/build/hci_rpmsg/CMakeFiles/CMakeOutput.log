@@ -1,0 +1,52 @@
+The target system is: Generic - 3.4.99 - arm
+The host system is: Linux - 6.5.0-14-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/jordan/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_write/build/hci_rpmsg/CMakeFiles/3.20.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/jordan/ncs/toolchains/7795df4459/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is GNU, found in "/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_write/build/hci_rpmsg/CMakeFiles/3.20.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+arm-zephyr-eabi-gcc (Zephyr SDK 0.16.1) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Determining if files stdatomic.h exist passed with the following output:
+Change Dir: /home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_write/build/hci_rpmsg/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/jordan/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_0f5c1 && [1/2] Building C object CMakeFiles/cmTC_0f5c1.dir/HAVE_STDATOMIC_H.c.obj
+[2/2] Linking C executable cmTC_0f5c1
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_0f5c1.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
+
+
+
+Determining if files fcntl.h exist passed with the following output:
+Change Dir: /home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_write/build/hci_rpmsg/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/jordan/ncs/toolchains/7795df4459/usr/local/bin/ninja cmTC_93cd6 && [1/2] Building C object CMakeFiles/cmTC_93cd6.dir/HAVE_FCNTL_H.c.obj
+[2/2] Linking C executable cmTC_93cd6
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_93cd6.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
+
+
+

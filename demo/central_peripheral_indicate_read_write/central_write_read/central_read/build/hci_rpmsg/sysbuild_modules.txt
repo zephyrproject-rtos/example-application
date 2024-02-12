@@ -1,0 +1,1 @@
+"nrf":"/home/jordan/ncs/v2.5.1/nrf":"/home/jordan/ncs/v2.5.1/nrf/sysbuild"

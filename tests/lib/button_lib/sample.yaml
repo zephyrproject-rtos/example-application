@@ -12,6 +12,7 @@ tests:
     tags: bluetooth
     integration_platforms:
       - qemu_cortex_m3
+      - qemu_x86
   sample.bluetooth.peripheral_ht.frdm_kw41z_shield:
     harness: bluetooth
     platform_allow:

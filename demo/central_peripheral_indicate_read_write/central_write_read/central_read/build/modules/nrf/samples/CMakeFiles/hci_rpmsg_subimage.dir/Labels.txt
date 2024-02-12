@@ -1,0 +1,13 @@
+# Target labels
+ hci_rpmsg_subimage
+# Source files and their labels
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage-complete.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-build.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-configure.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-download.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-install.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-mkdir.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-patch.rule
+/home/jordan/Documents/PFE/appli/APPLICATION_WORKING/central_peripheral_indicate_read_write/central_write_read/central_read/build/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-update.rule
