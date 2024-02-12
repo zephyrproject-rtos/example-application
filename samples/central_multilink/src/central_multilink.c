@@ -20,6 +20,9 @@
 #include <zephyr/bluetooth/gatt.h>
 #include <zephyr/sys/byteorder.h>
 
+#include "button_lib/button_lib.h"
+#include "led_lib/led_lib.h"
+
 #define SCAN_INTERVAL 0x0640 /* 1000 ms */
 #define SCAN_WINDOW   0x0030 /* 30 ms */
 #define INIT_INTERVAL 0x0010 /* 10 ms */
@@ -31,36 +34,116 @@
 
 static void start_scan(void); // /!\ start_scan se nomme scan_start dans central_user_data
 
-//struct pour multilink
+/*--------------struct pour multilink---------------*/
 static struct bt_conn *conn_connecting;
 static uint8_t volatile conn_count;
 static bool volatile is_disconnecting;
+/*-------------------------------------------------*/
 
-//struct pour gatt
+
+/*-----------------struct pour gatt-----------------*/
 static struct bt_uuid_16 discover_uuid = BT_UUID_INIT_16(0);
 static struct bt_gatt_discover_params discover_params;
 static struct bt_gatt_subscribe_params subscribe_params;
+/*--------------------------------------------------*/
 
+
+/*-----------struct pour central write--------------*/
+//Write params
+static struct bt_gatt_write_params write_params;
+//Structure bt_conn pour récupérer les informations de connexion
+static struct bt_conn *info_conn;
+//Variable pour stocker les valeurs de la characteristic BT_UUID_GATT_DO du service BT_UUID_UDS
+static uint8_t attr_value[] = { 0 };
+//Variable pour write réussi
+uint8_t write_success = 0;
+/*--------------------------------------------------*/
+
+
+/*-------------Déclarations hardware--------------*/
+//LED
+#define LED0_NODE DT_ALIAS(led0)
+static const struct gpio_dt_spec led1 = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+//Déclaration du boutons 
+#define SW0_NODE	DT_ALIAS(sw0)
+static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {0});
+static struct gpio_callback isr_btn1;
+//Déclaration sémaphore
+K_SEM_DEFINE(button_1, 0, 1);
+/*-----------------------------------------------*/
 
 
 
 /* Fonctions de central_user_data.c ajoutées manuellement*/
-static uint8_t notify_func(struct bt_conn *conn,
+
+/*---Define the interrupts function for the bouton-------------------------------------------------------------*/
+void button_pressed1(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	printk("Button 1 pressed at\n");
+	k_sem_give(&button_1);
+	attr_value[0] = 2;
+}
+/*-------------------------------------------------------------------------------------------------------------*/
+
+
+/* --------------- Fonction qui verifie si la configuration du CCC change et l'indique ------------*/
+static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
+				 uint16_t value)
+{
+	if (value == BT_GATT_CCC_INDICATE) {
+        // Le serveur a activé les indications
+        printk("Indications activées par le serveur\n");
+    } else if (value == BT_GATT_CCC_NOTIFY) {
+        // Le serveur a activé les notifications
+        printk("Notifications activées par le serveur\n");
+    } else {
+        // Le serveur a désactivé les indications et les notifications
+        printk("Indications et notifications désactivées par le serveur\n");
+    }
+}
+
+/* --------------- Declaration du servicequ'on utilise pour l'envoi des données ---------------*/
+BT_GATT_SERVICE_DEFINE(userdata_svc,
+	//Déclaration du premier service
+	//L'argument est l'UUID du service à utiliser. La liste des UUID est dans uuid.h
+	BT_GATT_PRIMARY_SERVICE(BT_UUID_UDS),
+
+	//Déclaration de la caractéristique, permissions, callback etc...
+	BT_GATT_CHARACTERISTIC(BT_UUID_GATT_DO, BT_GATT_CHRC_INDICATE | BT_GATT_CHRC_READ | BT_GATT_CHRC_WRITE, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE , NULL, NULL, attr_value),
+
+	//Client Characteristic Configuration Declaration Macro.													   
+	BT_GATT_CCC(ccc_cfg_changed, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
+);
+
+/*------------ Fonction de callback qui s'éxecute après un write --------------*/
+void write_result_callback(struct bt_conn *conn, uint8_t err,
+				     struct bt_gatt_write_params *params)
+{
+	printk("Write value : %d\n", ((uint8_t*)params->data)[0]);
+	write_success = 1;
+};
+/*-----------------------------------------------------------------------------*/
+
+
+
+/*--------------Fonction de callback qui s'éxecute lorsqu'une valeur est indicate -------------
+------------------et qui fait l'affichage de la valeur reçue, et la stocke ------------------*/
+static uint8_t val_received(struct bt_conn *conn,
 			   struct bt_gatt_subscribe_params *params,
 			   const void *data, uint16_t length)
 {
-	static uint8_t val_recue;
-
+	int i;
 	if (!data) {
 		printk("[UNSUBSCRIBED]\n");
 		params->value_handle = 0U;
 		return BT_GATT_ITER_STOP;
 	}
 
-	/*affichage de la valeur reçue*/
-	val_recue = ((uint8_t*)data)[0];
-	printf("Temperature %d.\n", val_recue);
-
+	printk("Donnée reçue :");
+	for (i=0; i<length; i++){
+		attr_value[i] = ((uint8_t*)data)[i];
+		printk("%d ", attr_value[i]);
+	}
+	printk("\n");
 	return BT_GATT_ITER_CONTINUE;
 }
 
@@ -107,11 +190,10 @@ static bool eir_found(struct bt_data *data, void *user_data)
 
 			/*On récupère chaque 16 bits reçus un par un, on les copie dans u16*/
 			memcpy(&u16, &data->data[i], sizeof(u16));
-
 			/*On recupère l'UUID formé avec ces 16 bits*/
 			uuid = BT_UUID_DECLARE_16(sys_le16_to_cpu(u16));
 
-			printk("début comparaison...\n");
+			//printk("début comparaison...\n");
 			/*On compare si cet UUID le même que celui qu'on veut*/
 			if (bt_uuid_cmp(uuid, BT_UUID_UDS)) {
 				/*Si ce n'est pas le même on passe à l'itération suivante*/
@@ -119,9 +201,6 @@ static bool eir_found(struct bt_data *data, void *user_data)
 				printk("comparaison UUID non valide\n");
 				continue;
 			}
-
-
-
 			//printk("comparaison fini, attempt on scan stop...\n");
 
 			/*Si c'est le même, on arrête le bt_scan*/
@@ -140,7 +219,6 @@ static bool eir_found(struct bt_data *data, void *user_data)
 				/*Si erreur de connexion on recommence à scanner*/
 				start_scan();
 			}
-
 			return false;
 		}
 	default :
@@ -188,6 +266,7 @@ static uint8_t discover_func(struct bt_conn *conn,
 		discover_params.start_handle = attr->handle + 2;
 		discover_params.type = BT_GATT_DISCOVER_DESCRIPTOR;
 		subscribe_params.value_handle = bt_gatt_attr_value_handle(attr);
+		printk("attribute :%d\n", bt_gatt_attr_value_handle(attr));
 
 		err = bt_gatt_discover(conn, &discover_params);
 		if (err) {
@@ -196,7 +275,8 @@ static uint8_t discover_func(struct bt_conn *conn,
 	} 
 	
 	else {
-		subscribe_params.notify = notify_func;
+		/*Attribution du callback si valeur reçue par indicate*/
+		subscribe_params.notify = val_received;
 		subscribe_params.value = BT_GATT_CCC_INDICATE;
 		subscribe_params.ccc_handle = attr->handle;
 
@@ -207,8 +287,14 @@ static uint8_t discover_func(struct bt_conn *conn,
 			printk("[SUBSCRIBED]\n");
 		}
 
+		if (conn_count < CONFIG_BT_MAX_CONN) {
+	 	start_scan();
+	 }
+
 		return BT_GATT_ITER_STOP;
 	}
+
+
 
 	return BT_GATT_ITER_STOP;
 }
@@ -320,6 +406,12 @@ static void start_scan(void)
 // }
 #endif /* CONFIG_BT_GATT_CLIENT */
 
+
+
+
+
+
+/*-----------------------Callback connected-------------------------*/
 static void connected(struct bt_conn *conn, uint8_t reason)
 {
 	char addr[BT_ADDR_LE_STR_LEN];
@@ -339,6 +431,8 @@ static void connected(struct bt_conn *conn, uint8_t reason)
 
 	printk("Connected (%u): %s\n", conn_count, addr);
 
+	/*Récupération de la connexion*/
+	info_conn = conn;
 
 	//printk("début du discover...\n");
 	//ajout du discover
@@ -355,18 +449,17 @@ static void connected(struct bt_conn *conn, uint8_t reason)
 			printk("Discover failed(err %d)\n", err);
 			return;
 		}
+
 	}
 	//printk("fin du discover...\n");
 
 
 	conn_connecting = NULL;
-
 	conn_count++;
-	if (conn_count < CONFIG_BT_MAX_CONN) {
-		start_scan();
-	}
 
-	
+	// if (conn_count < CONFIG_BT_MAX_CONN) {
+	// 	start_scan();
+	// }
 
 #if defined(CONFIG_BT_SMP)
 	int err = bt_conn_set_security(conn, BT_SECURITY_L2);
@@ -380,7 +473,12 @@ static void connected(struct bt_conn *conn, uint8_t reason)
 	//mtu_exchange(conn); //pas besoin de mtu_exchange, activé lorsque CONFIG_BT_GATT_CLIENT=y dans prj.conf
 #endif
 }
+/*------------------------------------------------------------------*/
 
+
+
+
+/*----------------------Callback disconnected---------------*/
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
 	char addr[BT_ADDR_LE_STR_LEN];
@@ -397,6 +495,12 @@ static void disconnected(struct bt_conn *conn, uint8_t reason)
 	}
 	conn_count--;
 }
+/*----------------------------------------------------------*/
+
+
+
+
+
 
 static bool le_param_req(struct bt_conn *conn, struct bt_le_conn_param *param)
 {
@@ -466,6 +570,10 @@ static void le_data_len_updated(struct bt_conn *conn,
 }
 #endif /* CONFIG_BT_USER_DATA_LEN_UPDATE */
 
+
+
+
+/*--------Déclarations callbacks---------*/
 static struct bt_conn_cb conn_callbacks = {
 	.connected = connected,
 	.disconnected = disconnected,
@@ -484,7 +592,12 @@ static struct bt_conn_cb conn_callbacks = {
 	.le_data_len_updated = le_data_len_updated,
 #endif /* CONFIG_BT_USER_DATA_LEN_UPDATE */
 };
+/*----------------------------------------*/
 
+
+
+
+/*--------------Fonction pour disconnect---------------*/
 static void disconnect(struct bt_conn *conn, void *data)
 {
 	char addr[BT_ADDR_LE_STR_LEN];
@@ -499,13 +612,38 @@ static void disconnect(struct bt_conn *conn, void *data)
 	}
 	printk("success.\n");
 }
+/*------------------------------------------------*/
+
+
+
+
+
 
 int init_central(uint8_t iterations)
 {
 	int err;
 	
-	printk("Central_multilink begin"); //debug message
+	printk("Central_multilink begin\n"); //debug message
 
+	/*------------------Initialisation hardware------------------*/
+	//Init LED
+	err = led_init(&led1);
+	if (!err){
+		printk("LED init failed (err %d)\n", err);
+		return 0;
+	}
+	//Init btn1
+	err = button_init(&button1); 
+	if (!err){
+		printk("Button init failed (err %d)\n", err);
+		return 0;
+	}
+	//Init isr_btn1                                
+    isr_btn_config(&button1, button_pressed1, &isr_btn1, GPIO_INT_EDGE_RISING); 
+	/*-----------------------------------------------------------*/
+
+
+	/*-----------------Initialisation du bluetooth---------------*/
 	err = bt_enable(NULL);
 	if (err) {
 		printk("Bluetooth init failed (err %d)\n", err);
@@ -513,18 +651,74 @@ int init_central(uint8_t iterations)
 	}
 
 	printk("Bluetooth initialized\n");
+	/*----------------------------------------------------------*/
 
+
+
+	/*------------ Attribution des callback aux évenements -----*/
 	bt_conn_cb_register(&conn_callbacks);
+	/*----------------------------------------------------------*/
 
+
+
+
+	/*------ Démarrage du scan pour chercher les peripherals ----*/
 	start_scan();
+	/*----------------------------------------------------------*/
+	
+
 
 	while (true) {
 		while (conn_count < CONFIG_BT_MAX_CONN) {
-			k_sleep(K_MSEC(10));
+			//k_sleep(K_MSEC(10));
+			while(attr_value[0] != 1){
+				k_sleep(K_MSEC(1));
+			}
+
+			//oN ATTEND QUE L'APPUI SUR LE BOUTON NOUS LIBÈRE
+			k_sem_take(&button_1, K_FOREVER);
+			//k_sem_count_get
+
+			// Vérifier si la connexion est valide
+			if (info_conn) {
+				bt_conn_ref(info_conn); //Incrémenter la référence de la connexion pour s'assurer qu'on est connecté
+
+				/*-----------Mise à jour des paramètres d'écriture------------*/
+				attr_value[0] += 1;
+				/*Fonction de callback pour l'écriture*/
+				write_params.func = write_result_callback;
+				/*Handle de l'attribute que l'on souhaite écrire*/
+				write_params.handle = subscribe_params.value_handle;
+				/*Offset auquel on souhaite écrire la valeur (position, par exemple si la taille est de 5 octets et qu'on souhaite écrire le 3ème on met 2)*/
+				write_params.offset = 0;
+				/*Valeur à écrire*/
+				write_params.data = attr_value;
+				/*Taille de la valeur à écrire*/
+				write_params.length = sizeof(attr_value);
+
+				/*Fonction pour écrire un attribut du périphérique*/
+				if ((bt_gatt_write(info_conn, &write_params) == 0)) {
+					printk("Write succesfull\n");
+				} else {
+					printk("Write failed\n");
+				}
+				
+				bt_conn_unref(info_conn); //Décrémenter la référence de la connexion
+			}
+
+			while(!write_success){
+				k_sleep(K_MSEC(1));
+			}
+			write_success = 0;
+			
+			led_on(&led1);
+
 		}
 
-		k_sleep(K_SECONDS(60));
 
+
+
+		//k_sleep(K_SECONDS(60));
 		if (!iterations) {
 			break;
 		}
@@ -539,6 +733,8 @@ int init_central(uint8_t iterations)
 			k_sleep(K_MSEC(10));
 		}
 		printk("All disconnected.\n");
+
+
 	}
 
 	return 0;
