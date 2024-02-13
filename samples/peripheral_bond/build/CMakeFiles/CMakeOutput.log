@@ -1,0 +1,52 @@
+The target system is: Generic - 3.5.99 - arm
+The host system is: Linux - 6.2.0-26-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/jpedroli/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/jpedroli/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is GNU, found in "/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+arm-zephyr-eabi-gcc (Zephyr SDK 0.16.4) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Determining if files stdatomic.h exist passed with the following output:
+Change Dir: /home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_63d78 && [1/2] Building C object CMakeFiles/cmTC_63d78.dir/HAVE_STDATOMIC_H.c.obj
+[2/2] Linking C executable cmTC_63d78
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_63d78.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
+
+
+
+Determining if files fcntl.h exist passed with the following output:
+Change Dir: /home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_e6264 && [1/2] Building C object CMakeFiles/cmTC_e6264.dir/HAVE_FCNTL_H.c.obj
+[2/2] Linking C executable cmTC_e6264
+arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_e6264.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
+
+
+
