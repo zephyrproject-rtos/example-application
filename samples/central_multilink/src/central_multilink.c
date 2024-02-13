@@ -38,6 +38,8 @@ static void start_scan(void); // /!\ start_scan se nomme scan_start dans central
 static struct bt_conn *conn_connecting;
 static uint8_t volatile conn_count;
 static bool volatile is_disconnecting;
+
+struct bt_conn* connected_devices[CONFIG_BT_MAX_CONN]; //tableau de connections
 /*-------------------------------------------------*/
 
 
@@ -85,6 +87,8 @@ void button_pressed1(const struct device *dev, struct gpio_callback *cb, uint32_
 /*-------------------------------------------------------------------------------------------------------------*/
 
 
+
+
 /* --------------- Fonction qui verifie si la configuration du CCC change et l'indique ------------*/
 static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
 				 uint16_t value)
@@ -100,6 +104,10 @@ static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
         printk("Indications et notifications désactivées par le serveur\n");
     }
 }
+/*-----------------------------------------------------------------------------------------------*/
+
+
+
 
 /* --------------- Declaration du servicequ'on utilise pour l'envoi des données ---------------*/
 BT_GATT_SERVICE_DEFINE(userdata_svc,
@@ -113,6 +121,10 @@ BT_GATT_SERVICE_DEFINE(userdata_svc,
 	//Client Characteristic Configuration Declaration Macro.													   
 	BT_GATT_CCC(ccc_cfg_changed, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
 );
+/*--------------------------------------------------------------------------------------------*/
+
+
+
 
 /*------------ Fonction de callback qui s'éxecute après un write --------------*/
 void write_result_callback(struct bt_conn *conn, uint8_t err,
@@ -146,13 +158,12 @@ static uint8_t val_received(struct bt_conn *conn,
 	printk("\n");
 	return BT_GATT_ITER_CONTINUE;
 }
-
+/*--------------------------------------------------------------------------------------------*/
 
 
 static bool eir_found(struct bt_data *data, void *user_data)
 {
-
-	//struct paramètre bt_conn déplacé de device_found à eir_found
+	//struct paramètres bt_conn déplacé de device_found à eir_found
 	struct bt_conn_le_create_param create_param = {
 		.options = BT_CONN_LE_OPT_NONE,
 		.interval = INIT_INTERVAL,
@@ -230,7 +241,7 @@ static bool eir_found(struct bt_data *data, void *user_data)
 
 
 
-
+/*-------------Callback pour déballer le service est lire son contenu-------------------*/
 static uint8_t discover_func(struct bt_conn *conn,
 			     const struct bt_gatt_attr *attr,
 			     struct bt_gatt_discover_params *params)
@@ -298,7 +309,7 @@ static uint8_t discover_func(struct bt_conn *conn,
 
 	return BT_GATT_ITER_STOP;
 }
-
+/*------------------------------------------------------------------------------*/
 
 
 
@@ -437,6 +448,8 @@ static void connected(struct bt_conn *conn, uint8_t reason)
 	//printk("début du discover...\n");
 	//ajout du discover
 	if (conn == conn_connecting) {
+		connected_devices[conn_count]= conn; //ajout de l'objet conn dans le tabeau des connections
+
 		memcpy(&discover_uuid, BT_UUID_UDS, sizeof(discover_uuid));
 		discover_params.uuid = &discover_uuid.uuid;
 		discover_params.func = discover_func;
