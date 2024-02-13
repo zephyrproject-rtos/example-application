@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/boards
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/boards
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/boards/boards/arm/nrf5340dk_nrf5340_cpuapp/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/boards/arm/nrf5340dk_nrf5340/cmake_install.cmake")
 endif()
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/subsys/ipc/ipc_service
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/subsys/ipc/ipc_service
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/ipc/ipc_service/backends/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/ipc/ipc_service/backends/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/ipc/ipc_service/lib/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/ipc/ipc_service/lib/cmake_install.cmake")
 endif()
 

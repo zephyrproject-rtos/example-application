@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/lib/libc/common
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/lib/libc/common
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

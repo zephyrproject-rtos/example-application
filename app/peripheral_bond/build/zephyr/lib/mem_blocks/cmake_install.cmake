@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/lib/mem_blocks
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/lib/mem_blocks
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

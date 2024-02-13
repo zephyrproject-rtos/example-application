@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/lib/open-amp/open-amp/lib
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/lib/open-amp/open-amp/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jpedroli/zephyrproject/modules/lib/open-amp/open-amp/lib/include/openamp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jpedroli/Documents/workspace/modules/lib/open-amp/open-amp/lib/include/openamp")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jpedroli/Documents/peripheral_bond/build/modules/open-amp/open-amp/include/generated/openamp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/open-amp/open-amp/include/generated/openamp")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
 
 endif()
 

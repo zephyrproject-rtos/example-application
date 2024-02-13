@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/arch
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/arch
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/arch/common/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/arch/common/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/arch/arch/arm/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/arch/arch/arm/cmake_install.cmake")
 endif()
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/subsys/modbus
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/subsys/modbus
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

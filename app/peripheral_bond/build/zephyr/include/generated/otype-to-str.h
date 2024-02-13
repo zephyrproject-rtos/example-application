@@ -75,6 +75,7 @@ case K_OBJ_DRIVER_IPM: ret = "ipm driver"; break;
 case K_OBJ_DRIVER_KSCAN: ret = "kscan driver"; break;
 case K_OBJ_DRIVER_LED: ret = "led driver"; break;
 case K_OBJ_DRIVER_MDIO: ret = "mdio driver"; break;
+case K_OBJ_DRIVER_MIPI_DBI: ret = "mipi_dbi driver"; break;
 case K_OBJ_DRIVER_MIPI_DSI: ret = "mipi_dsi driver"; break;
 case K_OBJ_DRIVER_PECI: ret = "peci driver"; break;
 case K_OBJ_DRIVER_PS2: ret = "ps2 driver"; break;

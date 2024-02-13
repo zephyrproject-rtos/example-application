@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/lib/picolibc
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/lib/picolibc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

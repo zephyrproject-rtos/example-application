@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/drivers/mbox
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/drivers/mbox
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

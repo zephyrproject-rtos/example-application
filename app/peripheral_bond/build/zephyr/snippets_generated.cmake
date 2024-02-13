@@ -10,10 +10,10 @@
 # Global information about all snippets.
 
 # The name of every snippet that was discovered.
-set(SNIPPET_NAMES "cdc-acm-console" "xen_dom0")
+set(SNIPPET_NAMES "cdc-acm-console" "nordic-ppr" "xen_dom0")
 # The paths to all the snippet.yml files. One snippet
 # can have multiple snippet.yml files.
-set(SNIPPET_PATHS "/home/jpedroli/zephyrproject/zephyr/snippets/cdc-acm-console/snippet.yml" "/home/jpedroli/zephyrproject/zephyr/snippets/xen_dom0/snippet.yml")
+set(SNIPPET_PATHS "/home/jpedroli/Documents/workspace/zephyr/snippets/cdc-acm-console/snippet.yml" "/home/jpedroli/Documents/workspace/zephyr/snippets/nordic-ppr/snippet.yml" "/home/jpedroli/Documents/workspace/zephyr/snippets/xen_dom0/snippet.yml")
 
 # Create variable scope for snippets build variables
 zephyr_create_scope(snippets)

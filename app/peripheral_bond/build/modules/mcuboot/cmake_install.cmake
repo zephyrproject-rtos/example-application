@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/bootloader/mcuboot/boot/bootutil/zephyr
+# Install script for directory: /home/jpedroli/Documents/workspace/bootloader/mcuboot/boot/bootutil/zephyr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

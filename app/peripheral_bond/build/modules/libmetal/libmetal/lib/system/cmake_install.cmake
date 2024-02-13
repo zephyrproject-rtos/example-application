@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/hal/libmetal/libmetal/lib/system
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/hal/libmetal/libmetal/lib/system
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/libmetal/libmetal/lib/system/zephyr/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/libmetal/libmetal/lib/system/zephyr/cmake_install.cmake")
 
 endif()
 

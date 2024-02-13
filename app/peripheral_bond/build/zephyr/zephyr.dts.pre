@@ -1,7 +1,7 @@
-# 0 "/home/jpedroli/zephyrproject/zephyr/misc/empty_file.c"
+# 0 "/home/jpedroli/Documents/workspace/zephyr/misc/empty_file.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 1
+# 1 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 1
 
 
 
@@ -9,34 +9,34 @@
 
 
 /dts-v1/;
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 1 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 1 3 4
 
 
 
 
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/common/mem.h" 1 3 4
-# 8 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 1 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/common/mem.h" 1 3 4
+# 8 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 1 3 4
 
 
 
 
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/armv8-m.dtsi" 1 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/armv8-m.dtsi" 1 3 4
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/common/skeleton.dtsi" 1 3 4
-# 9 "/home/jpedroli/zephyrproject/zephyr/dts/common/skeleton.dtsi" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "/home/jpedroli/Documents/workspace/zephyr/dts/common/skeleton.dtsi" 3 4
 / {
  #address-cells = <1>;
  #size-cells = <1>;
  chosen { };
  aliases { };
 };
-# 4 "/home/jpedroli/zephyrproject/zephyr/dts/arm/armv8-m.dtsi" 2 3 4
+# 4 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/armv8-m.dtsi" 2 3 4
 
 / {
  soc {
@@ -60,61 +60,63 @@
   };
  };
 };
-# 8 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 1 3 4
+# 8 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 1 3 4
 
 
 
 
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/adc.h" 1 3 4
-# 8 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 1 3 4
-# 10 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/dt-util.h" 1 3 4
-# 19 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/dt-util.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_macro.h" 1 3 4
-# 34 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_macro.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 1 3 4
-# 18 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_loops.h" 1 3 4
-# 1083 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_loops.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_listify.h" 1 3 4
-# 1084 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_loops.h" 2 3 4
-# 19 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
-# 162 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal_is_eq.h" 1 3 4
-# 163 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
-# 193 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_inc.h" 1 3 4
-# 194 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/adc/adc.h" 1 3 4
+# 8 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 1 3 4
+# 10 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/dt-util.h" 1 3 4
+# 19 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/dt-util.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_macro.h" 1 3 4
+# 34 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_macro.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 1 3 4
+# 18 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_loops.h" 1 3 4
+# 1083 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_loops.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_listify.h" 1 3 4
+# 1084 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_loops.h" 2 3 4
+# 19 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
+# 162 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal_is_eq.h" 1 3 4
+# 163 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
+# 193 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal_util_inc.h" 1 3 4
+# 194 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_dec.h" 1 3 4
-# 197 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal_util_dec.h" 1 3 4
+# 197 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_x2.h" 1 3 4
-# 200 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
-# 35 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/sys/util_macro.h" 2 3 4
-# 20 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/dt-util.h" 2 3 4
-# 11 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 2 3 4
-# 9 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
-# 10 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
-# 11 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/nrf-pinctrl.h" 1 3 4
-# 12 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
-# 13 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal_util_x2.h" 1 3 4
+# 200 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_internal.h" 2 3 4
+# 35 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/sys/util_macro.h" 2 3 4
+# 20 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/dt-util.h" 2 3 4
+# 11 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/adc/nrf-adc.h" 2 3 4
+# 9 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
+# 10 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
+# 11 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h" 1 3 4
+# 12 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/pinctrl/nrf-pinctrl.h" 1 3 4
+# 13 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
+# 14 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/common/freq.h" 1 3 4
-# 15 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/override.dtsi" 1 3 4
-# 16 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 2 3 4
-# 24 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf_common.dtsi" 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/common/freq.h" 1 3 4
+# 16 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/override.dtsi" 1 3 4
+# 17 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 2 3 4
+# 25 "/home/jpedroli/Documents/workspace/zephyr/dts/common/nordic/nrf_common.dtsi" 3 4
 / {
  pinctrl: pin-controller {
 
@@ -137,15 +139,7 @@
   #pwm-cells = <3>;
  };
 };
-
-&systick {
-
-
-
-
- status = "disabled";
-};
-# 9 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
+# 9 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
 
 / {
  cpus {
@@ -181,6 +175,7 @@
   ficr: ficr@ff0000 {
    compatible = "nordic,nrf-ficr";
    reg = <0xff0000 0x1000>;
+   #nordic,ficr-cells = <1>;
    status = "okay";
   };
 
@@ -202,7 +197,7 @@
 
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp_peripherals.dtsi" 1 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp_peripherals.dtsi" 1 3 4
 
 
 
@@ -750,7 +745,7 @@ ieee802154: ieee802154 {
  compatible = "nordic,nrf-ieee802154";
  status = "disabled";
 };
-# 66 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
+# 67 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
   };
 
 
@@ -795,7 +790,7 @@ ieee802154: ieee802154 {
 
 
  ipc {
-# 1 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp_ipc.dtsi" 1 3 4
+# 1 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp_ipc.dtsi" 1 3 4
 
 
 
@@ -810,14 +805,19 @@ ipc0: ipc0 {
  role = "host";
  status = "okay";
 };
-# 111 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
+# 112 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp.dtsi" 2 3 4
  };
 };
 
 &nvic {
  arm,num-irq-priority-bits = <3>;
 };
-# 9 "/home/jpedroli/zephyrproject/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 2 3 4
+
+&systick {
+
+ status = "disabled";
+};
+# 9 "/home/jpedroli/Documents/workspace/zephyr/dts/arm/nordic/nrf5340_cpuapp_qkaa.dtsi" 2 3 4
 
 &flash0 {
  reg = <0x00000000 ((1024) * 1024)>;
@@ -833,14 +833,14 @@ ipc0: ipc0 {
         "nordic,nrf53", "simple-bus";
  };
 };
-# 9 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 2
-# 1 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 1
+# 9 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 2
+# 1 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 1
 
 
 
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common-pinctrl.dtsi" 1
+# 1 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common-pinctrl.dtsi" 1
 
 
 
@@ -965,9 +965,8 @@ ipc0: ipc0 {
  };
 
 };
-# 7 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 2
-# 1 "/home/jpedroli/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h" 1 3 4
-# 8 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 2
+# 7 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 2
+
 
 / {
 
@@ -1247,8 +1246,8 @@ zephyr_udc0: &usbd {
 };
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi" 1
-# 24 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi"
+# 1 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi" 1
+# 24 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi"
 &slot0_partition {
  reg = <0x00010000 0x40000>;
 };
@@ -1264,7 +1263,7 @@ zephyr_udc0: &usbd {
 &slot1_ns_partition {
  reg = <0x000c0000 0x30000>;
 };
-# 47 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi"
+# 47 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi"
 &sram0_image {
  reg = <0x20000000 ((448) * 1024)>;
 };
@@ -1278,8 +1277,8 @@ zephyr_udc0: &usbd {
 };
 
 
-# 1 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_shared_sram_planning_conf.dtsi" 1
-# 14 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_shared_sram_planning_conf.dtsi"
+# 1 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_shared_sram_planning_conf.dtsi" 1
+# 14 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_shared_sram_planning_conf.dtsi"
 / {
  chosen {
 
@@ -1297,9 +1296,9 @@ zephyr_udc0: &usbd {
   };
  };
 };
-# 61 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi" 2
-# 288 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 2
-# 10 "/home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 2
+# 61 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_partition_conf.dtsi" 2
+# 288 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340_cpuapp_common.dtsi" 2
+# 10 "/home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340/nrf5340dk_nrf5340_cpuapp.dts" 2
 
 / {
  model = "Nordic NRF5340 DK NRF5340 Application";
@@ -1314,4 +1313,4 @@ zephyr_udc0: &usbd {
  };
 };
 # 0 "<command-line>" 2
-# 1 "/home/jpedroli/zephyrproject/zephyr/misc/empty_file.c"
+# 1 "/home/jpedroli/Documents/workspace/zephyr/misc/empty_file.c"

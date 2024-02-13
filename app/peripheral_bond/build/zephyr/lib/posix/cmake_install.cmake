@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/lib/posix
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/lib/posix
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,15 @@ endif()
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/home/jpedroli/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/lib/posix/options/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/lib/posix/shell/cmake_install.cmake")
 endif()
 

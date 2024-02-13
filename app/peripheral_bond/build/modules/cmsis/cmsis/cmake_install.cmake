@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/hal/cmsis
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/hal/cmsis
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/cmsis/cmsis/CMSIS/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/cmsis/cmsis/CMSIS/cmake_install.cmake")
 endif()
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/subsys/bluetooth
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/subsys/bluetooth
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,26 +39,26 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/bluetooth/common/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/bluetooth/common/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/bluetooth/host/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/bluetooth/host/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/bluetooth/services/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/bluetooth/services/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/bluetooth/crypto/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/bluetooth/crypto/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/zephyr/subsys/bluetooth/lib/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/zephyr/subsys/bluetooth/lib/cmake_install.cmake")
 endif()
 

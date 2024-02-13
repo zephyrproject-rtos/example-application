@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/lib/open-amp
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/lib/open-amp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

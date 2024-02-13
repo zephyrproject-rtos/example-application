@@ -5,7 +5,7 @@ MEMORY
     FLASH (rx) : ORIGIN = (0x0 + 0x0), LENGTH = (1024 * 1024 - 0x0 - 0x0)
     RAM (wx) : ORIGIN = 0x20000000, LENGTH = (448 * 1K)
    
-    IDT_LIST (wx) : ORIGIN = 0xFFFFF7FF, LENGTH = 2K
+    IDT_LIST (wx) : ORIGIN = 0xFFFF7FFF, LENGTH = 32K
     }
 ENTRY("__start")
 SECTIONS
@@ -168,6 +168,7 @@ ztest :
  *(.rodata)
  *(".rodata.*")
  *(.gnu.linkonce.r.*)
+INCLUDE zephyr/isr_tables_swi.ld
  . = ALIGN(4);
  } > FLASH
  __rodata_region_end = .;

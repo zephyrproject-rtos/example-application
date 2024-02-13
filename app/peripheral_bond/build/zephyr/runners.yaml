@@ -12,7 +12,7 @@ debug-runner: jlink
 
 # Common runner configuration values.
 config:
-  board_dir: /home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340
+  board_dir: /home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340
   # Build outputs:
   elf_file: zephyr.elf
   hex_file: zephyr.hex

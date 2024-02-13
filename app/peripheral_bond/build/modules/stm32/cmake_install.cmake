@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/hal/stm32
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/hal/stm32
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

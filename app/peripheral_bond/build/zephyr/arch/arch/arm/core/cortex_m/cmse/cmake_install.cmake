@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/arch/arm/core/cortex_m/cmse
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/arch/arm/core/cortex_m/cmse
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

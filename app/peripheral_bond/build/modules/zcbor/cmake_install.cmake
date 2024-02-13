@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/modules/zcbor
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/modules/zcbor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/lib/open-amp/open-amp/lib/remoteproc
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/lib/open-amp/open-amp/lib/remoteproc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

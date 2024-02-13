@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/boards/arm/nrf5340dk_nrf5340
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/boards/arm/nrf5340dk_nrf5340
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

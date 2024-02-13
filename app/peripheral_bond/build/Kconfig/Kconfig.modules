@@ -1,232 +1,55 @@
-menu "acpica (/home/jpedroli/zephyrproject/modules/lib/acpica)"
-osource "$(ZEPHYR_ACPICA_KCONFIG)"
-config ZEPHYR_ACPICA_MODULE
+menu "pfe (/home/jpedroli/Documents/workspace/pfe)"
+osource "/home/jpedroli/Documents/workspace/pfe/Kconfig.pfe"
+config ZEPHYR_PFE_MODULE
 	bool
 	default y
 endmenu
-menu "cmsis (/home/jpedroli/zephyrproject/modules/hal/cmsis)"
+menu "cmsis (/home/jpedroli/Documents/workspace/modules/hal/cmsis)"
 osource "$(ZEPHYR_CMSIS_KCONFIG)"
 config ZEPHYR_CMSIS_MODULE
 	bool
 	default y
 endmenu
-menu "cmsis-dsp (/home/jpedroli/zephyrproject/modules/lib/cmsis-dsp)"
-osource "$(ZEPHYR_CMSIS_DSP_KCONFIG)"
-config ZEPHYR_CMSIS_DSP_MODULE
-	bool
-	default y
-endmenu
-menu "cmsis-nn (/home/jpedroli/zephyrproject/modules/lib/cmsis-nn)"
-osource "$(ZEPHYR_CMSIS_NN_KCONFIG)"
-config ZEPHYR_CMSIS_NN_MODULE
-	bool
-	default y
-endmenu
-menu "fatfs (/home/jpedroli/zephyrproject/modules/fs/fatfs)"
-osource "$(ZEPHYR_FATFS_KCONFIG)"
-config ZEPHYR_FATFS_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_ALTERA_MODULE
-   bool
-   default y
-menu "hal_ambiq (/home/jpedroli/zephyrproject/modules/hal/ambiq)"
-osource "$(ZEPHYR_HAL_AMBIQ_KCONFIG)"
-config ZEPHYR_HAL_AMBIQ_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_ATMEL_MODULE
-   bool
-   default y
-menu "hal_espressif (/home/jpedroli/zephyrproject/modules/hal/espressif)"
-osource "/home/jpedroli/zephyrproject/modules/hal/espressif/zephyr/Kconfig"
-config ZEPHYR_HAL_ESPRESSIF_MODULE
-	bool
-	default y
-endmenu
-menu "hal_ethos_u (/home/jpedroli/zephyrproject/modules/hal/ethos_u)"
-osource "$(ZEPHYR_HAL_ETHOS_U_KCONFIG)"
-config ZEPHYR_HAL_ETHOS_U_MODULE
-	bool
-	default y
-endmenu
-menu "hal_gigadevice (/home/jpedroli/zephyrproject/modules/hal/gigadevice)"
-osource "$(ZEPHYR_HAL_GIGADEVICE_KCONFIG)"
-config ZEPHYR_HAL_GIGADEVICE_MODULE
-	bool
-	default y
-endmenu
-menu "hal_infineon (/home/jpedroli/zephyrproject/modules/hal/infineon)"
-osource "$(ZEPHYR_HAL_INFINEON_KCONFIG)"
-config ZEPHYR_HAL_INFINEON_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_HAL_INTEL_MODULE
-   bool
-   default y
-config ZEPHYR_MICROCHIP_MODULE
-   bool
-   default y
-menu "hal_nordic (/home/jpedroli/zephyrproject/modules/hal/nordic)"
+menu "hal_nordic (/home/jpedroli/Documents/workspace/modules/hal/nordic)"
 osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
 config ZEPHYR_HAL_NORDIC_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_NUVOTON_MODULE
-   bool
-   default y
-menu "hal_nxp (/home/jpedroli/zephyrproject/modules/hal/nxp)"
-osource "$(ZEPHYR_HAL_NXP_KCONFIG)"
-config ZEPHYR_HAL_NXP_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_OPENISA_MODULE
-   bool
-   default y
-config ZEPHYR_QUICKLOGIC_MODULE
-   bool
-   default y
-config ZEPHYR_HAL_RENESAS_MODULE
-   bool
-   default y
-menu "hal_rpi_pico (/home/jpedroli/zephyrproject/modules/hal/rpi_pico)"
-osource "$(ZEPHYR_HAL_RPI_PICO_KCONFIG)"
-config ZEPHYR_HAL_RPI_PICO_MODULE
-	bool
-	default y
-endmenu
-menu "silabs (/home/jpedroli/zephyrproject/modules/hal/silabs)"
-osource "/home/jpedroli/zephyrproject/modules/hal/silabs/zephyr/Kconfig"
-config ZEPHYR_SILABS_MODULE
-	bool
-	default y
-endmenu
-menu "hal_st (/home/jpedroli/zephyrproject/modules/hal/st)"
-osource "$(ZEPHYR_HAL_ST_KCONFIG)"
-config ZEPHYR_HAL_ST_MODULE
 	bool
 	default y
 endmenu
 config ZEPHYR_STM32_MODULE
    bool
    default y
-menu "hal_telink (/home/jpedroli/zephyrproject/modules/hal/telink)"
-osource "/home/jpedroli/zephyrproject/modules/hal/telink/Kconfig"
-config ZEPHYR_HAL_TELINK_MODULE
-	bool
-	default y
-endmenu
-config ZEPHYR_TI_MODULE
-   bool
-   default y
-config ZEPHYR_HAL_WURTHELEKTRONIK_MODULE
-   bool
-   default y
-config ZEPHYR_XTENSA_MODULE
-   bool
-   default y
-menu "hostap (/home/jpedroli/zephyrproject/modules/lib/hostap)"
-osource "$(ZEPHYR_HOSTAP_KCONFIG)"
-config ZEPHYR_HOSTAP_MODULE
-	bool
-	default y
-endmenu
 config ZEPHYR_LIBMETAL_MODULE
    bool
    default y
-menu "liblc3 (/home/jpedroli/zephyrproject/modules/lib/liblc3)"
+menu "liblc3 (/home/jpedroli/Documents/workspace/modules/lib/liblc3)"
 osource "$(ZEPHYR_LIBLC3_KCONFIG)"
 config ZEPHYR_LIBLC3_MODULE
-	bool
-	default y
-endmenu
-menu "littlefs (/home/jpedroli/zephyrproject/modules/fs/littlefs)"
-osource "$(ZEPHYR_LITTLEFS_KCONFIG)"
-config ZEPHYR_LITTLEFS_MODULE
-	bool
-	default y
-endmenu
-menu "loramac-node (/home/jpedroli/zephyrproject/modules/lib/loramac-node)"
-osource "$(ZEPHYR_LORAMAC_NODE_KCONFIG)"
-config ZEPHYR_LORAMAC_NODE_MODULE
-	bool
-	default y
-endmenu
-menu "lvgl (/home/jpedroli/zephyrproject/modules/lib/gui/lvgl)"
-osource "/home/jpedroli/zephyrproject/modules/lib/gui/lvgl/Kconfig"
-config ZEPHYR_LVGL_MODULE
-	bool
-	default y
-endmenu
-menu "mbedtls (/home/jpedroli/zephyrproject/modules/crypto/mbedtls)"
-osource "$(ZEPHYR_MBEDTLS_KCONFIG)"
-config ZEPHYR_MBEDTLS_MODULE
 	bool
 	default y
 endmenu
 config ZEPHYR_MCUBOOT_MODULE
    bool
    default y
-config ZEPHYR_MIPI_SYS_T_MODULE
-   bool
-   default y
-config ZEPHYR_NRF_HW_MODELS_MODULE
-   bool
-   default y
 config ZEPHYR_OPEN_AMP_MODULE
    bool
    default y
-menu "openthread (/home/jpedroli/zephyrproject/modules/lib/openthread)"
-osource "$(ZEPHYR_OPENTHREAD_KCONFIG)"
-config ZEPHYR_OPENTHREAD_MODULE
-	bool
-	default y
-endmenu
-menu "percepio (/home/jpedroli/zephyrproject/modules/debug/percepio)"
-osource "/home/jpedroli/zephyrproject/modules/debug/percepio/zephyr/Kconfig"
-config ZEPHYR_PERCEPIO_MODULE
-	bool
-	default y
-endmenu
-menu "picolibc (/home/jpedroli/zephyrproject/modules/lib/picolibc)"
-osource "/home/jpedroli/zephyrproject/modules/lib/picolibc/zephyr/Kconfig"
+menu "picolibc (/home/jpedroli/Documents/workspace/modules/lib/picolibc)"
+osource "/home/jpedroli/Documents/workspace/modules/lib/picolibc/zephyr/Kconfig"
 config ZEPHYR_PICOLIBC_MODULE
-	bool
-	default y
-endmenu
-menu "segger (/home/jpedroli/zephyrproject/modules/debug/segger)"
-osource "$(ZEPHYR_SEGGER_KCONFIG)"
-config ZEPHYR_SEGGER_MODULE
 	bool
 	default y
 endmenu
 config ZEPHYR_TINYCRYPT_MODULE
    bool
    default y
-menu "trusted-firmware-m (/home/jpedroli/zephyrproject/modules/tee/tf-m/trusted-firmware-m)"
-osource "$(ZEPHYR_TRUSTED_FIRMWARE_M_KCONFIG)"
-config ZEPHYR_TRUSTED_FIRMWARE_M_MODULE
-	bool
-	default y
-endmenu
-menu "trusted-firmware-a (/home/jpedroli/zephyrproject/modules/tee/tf-a/trusted-firmware-a)"
-osource "$(ZEPHYR_TRUSTED_FIRMWARE_A_KCONFIG)"
-config ZEPHYR_TRUSTED_FIRMWARE_A_MODULE
-	bool
-	default y
-endmenu
-menu "uoscore-uedhoc (/home/jpedroli/zephyrproject/modules/lib/uoscore-uedhoc)"
+menu "uoscore-uedhoc (/home/jpedroli/Documents/workspace/modules/lib/uoscore-uedhoc)"
 osource "$(ZEPHYR_UOSCORE_UEDHOC_KCONFIG)"
 config ZEPHYR_UOSCORE_UEDHOC_MODULE
 	bool
 	default y
 endmenu
-menu "zcbor (/home/jpedroli/zephyrproject/modules/lib/zcbor)"
+menu "zcbor (/home/jpedroli/Documents/workspace/modules/lib/zcbor)"
 osource "$(ZEPHYR_ZCBOR_KCONFIG)"
 config ZEPHYR_ZCBOR_MODULE
 	bool

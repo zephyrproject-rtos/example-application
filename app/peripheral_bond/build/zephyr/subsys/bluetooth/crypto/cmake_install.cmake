@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/zephyr/subsys/bluetooth/crypto
+# Install script for directory: /home/jpedroli/Documents/workspace/zephyr/subsys/bluetooth/crypto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

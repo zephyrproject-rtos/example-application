@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/lib/open-amp/open-amp
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/lib/open-amp/open-amp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jpedroli/Documents/peripheral_bond/build/modules/open-amp/open-amp/lib/cmake_install.cmake")
+  include("/home/jpedroli/Documents/workspace/pfe/app/peripheral_bond/build/modules/open-amp/open-amp/lib/cmake_install.cmake")
 
 endif()
 

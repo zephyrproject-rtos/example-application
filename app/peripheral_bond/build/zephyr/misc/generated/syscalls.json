@@ -1665,6 +1665,14 @@
     ],
     [
         [
+            "const struct device *can_get_transceiver",
+            "const struct device *dev"
+        ],
+        "can.h",
+        false
+    ],
+    [
+        [
             "int can_start",
             "const struct device *dev"
         ],
@@ -1683,6 +1691,14 @@
         [
             "int can_set_mode",
             "const struct device *dev, can_mode_t mode"
+        ],
+        "can.h",
+        false
+    ],
+    [
+        [
+            "can_mode_t can_get_mode",
+            "const struct device *dev"
         ],
         "can.h",
         false

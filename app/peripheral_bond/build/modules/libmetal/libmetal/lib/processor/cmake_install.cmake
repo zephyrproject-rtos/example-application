@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpedroli/zephyrproject/modules/hal/libmetal/libmetal/lib/processor
+# Install script for directory: /home/jpedroli/Documents/workspace/modules/hal/libmetal/libmetal/lib/processor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
