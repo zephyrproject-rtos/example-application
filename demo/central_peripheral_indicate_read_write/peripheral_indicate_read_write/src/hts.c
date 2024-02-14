@@ -96,7 +96,7 @@ static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
 }
 
 
-/* --------------- Declaration du servicequ'on utilise pour l'envoi des données ---------------*/
+/* --------------- Declaration du service qu'on utilise pour l'envoi des données ---------------*/
 BT_GATT_SERVICE_DEFINE(userdata_svc,
 	//Déclaration du premier service
 	//L'argument est l'UUID du service à utiliser. La liste des UUID est dans uuid.h

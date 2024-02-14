@@ -1,6 +1,8 @@
 #ifndef BLE_LIB_H
 #define BLE_LIB_H
 
+#include "format.h"
+
 #include <zephyr/types.h>
 #include <stddef.h>
 #include <string.h>
@@ -20,6 +22,11 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
+struct data_send{
+	int format;
+	void* data;
+};
+
 int ble_advertise_start_conn(   const struct bt_data* ad,
                                 size_t ad_size, 
                                 const struct bt_data* sd,
@@ -29,6 +36,49 @@ int ble_advertise_start_nconn(  const struct bt_data* ad,
                                 size_t ad_size, 
                                 const struct bt_data* sd,
                                 size_t sd_size);
+
+int ble_indicate(               uint8_t* data, 
+                                const struct bt_gatt_service_static svc, 
+                                int offset);
+
+
+/*******************************************INTERNAL*****************************************************/
+
+/* ----- Fonction de callback de la characteristic BT_UUID_GATT_DO qui s'exécute lors d'un read d'une centrale ----- */
+ssize_t read_fonction_callback(struct bt_conn *conn,
+					    const struct bt_gatt_attr *attr,
+					    void *buf, uint16_t len,
+					    uint16_t offset);
+
+
+/* ----- Fonction de callback de la characteristic BT_UUID_GATT_DO qui s'exécute lors d'un write d'une centrale ----- */
+ssize_t write_fonction_callback(struct bt_conn *conn,
+					     const struct bt_gatt_attr *attr,
+					     const void *buf, uint16_t len,
+					     uint16_t offset, uint8_t flags);
+
+
+/* --------------- Fonction qui verifie si la configuration du CCC change et l'indique ------------*/
+void ccc_cfg_changed(const struct bt_gatt_attr *attr,
+				 uint16_t value);
+
+
+
+
+
+/* ------- Callback de l'indicate, s'exécute lorsque l'indicate est commencé -------------*/
+void indicate_cb(struct bt_conn *conn,
+			struct bt_gatt_indicate_params *params, uint8_t err);
+
+
+/* -------------Callback de l'indicate, s'exécute lorsque l'indicate est fini -----------*/
+void indicate_destroy(struct bt_gatt_indicate_params *params);
+
+/********************************************************************************************************/
+
+int ble_indicate_bis(void*  data, int taille, const struct bt_gatt_service_static svc, int offset);
+
+
 
 
 #endif
