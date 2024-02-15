@@ -3,6 +3,7 @@
 
 identifier: custom_plank
 name: Custom-Plank
+vendor: vendor
 type: mcu
 arch: arm
 ram: 256
