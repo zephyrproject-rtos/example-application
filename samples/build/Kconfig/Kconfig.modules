@@ -1,0 +1,57 @@
+menu "pfe (/home/quentin/Documents/workspace/pfe.git)"
+osource "/home/quentin/Documents/workspace/pfe.git/Kconfig.pfe"
+config ZEPHYR_PFE_MODULE
+	bool
+	default y
+endmenu
+menu "cmsis (/home/quentin/Documents/workspace/modules/hal/cmsis)"
+osource "$(ZEPHYR_CMSIS_KCONFIG)"
+config ZEPHYR_CMSIS_MODULE
+	bool
+	default y
+endmenu
+menu "hal_nordic (/home/quentin/Documents/workspace/modules/hal/nordic)"
+osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
+config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_STM32_MODULE
+   bool
+   default y
+config ZEPHYR_LIBMETAL_MODULE
+   bool
+   default y
+menu "liblc3 (/home/quentin/Documents/workspace/modules/lib/liblc3)"
+osource "$(ZEPHYR_LIBLC3_KCONFIG)"
+config ZEPHYR_LIBLC3_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_MCUBOOT_MODULE
+   bool
+   default y
+config ZEPHYR_OPEN_AMP_MODULE
+   bool
+   default y
+menu "picolibc (/home/quentin/Documents/workspace/modules/lib/picolibc)"
+osource "/home/quentin/Documents/workspace/modules/lib/picolibc/zephyr/Kconfig"
+config ZEPHYR_PICOLIBC_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_TINYCRYPT_MODULE
+   bool
+   default y
+menu "uoscore-uedhoc (/home/quentin/Documents/workspace/modules/lib/uoscore-uedhoc)"
+osource "$(ZEPHYR_UOSCORE_UEDHOC_KCONFIG)"
+config ZEPHYR_UOSCORE_UEDHOC_MODULE
+	bool
+	default y
+endmenu
+menu "zcbor (/home/quentin/Documents/workspace/modules/lib/zcbor)"
+osource "$(ZEPHYR_ZCBOR_KCONFIG)"
+config ZEPHYR_ZCBOR_MODULE
+	bool
+	default y
+endmenu

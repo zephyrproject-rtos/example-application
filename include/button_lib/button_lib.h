@@ -41,7 +41,7 @@ int button_init(const struct gpio_dt_spec *button);
  * @return 
  * the button's state : 1 if the button is pressed and 0 if the button is released
 */
-int button_state(const struct gpio_dt_spec *button);
+bool button_state(const struct gpio_dt_spec *button);
 
 /**
  * @brief 

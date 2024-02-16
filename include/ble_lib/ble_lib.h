@@ -22,10 +22,13 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
-struct data_send{
-	int format;
-	void* data;
+
+struct Ble_Data {
+    size_t size;
+    void* data;
 };
+
+int ble_enable();
 
 int ble_advertise_start_conn(   const struct bt_data* ad,
                                 size_t ad_size, 
@@ -36,11 +39,6 @@ int ble_advertise_start_nconn(  const struct bt_data* ad,
                                 size_t ad_size, 
                                 const struct bt_data* sd,
                                 size_t sd_size);
-
-int ble_indicate(               uint8_t* data, 
-                                const struct bt_gatt_service_static svc, 
-                                int offset);
-
 
 /*******************************************INTERNAL*****************************************************/
 
@@ -76,7 +74,17 @@ void indicate_destroy(struct bt_gatt_indicate_params *params);
 
 /********************************************************************************************************/
 
-int ble_indicate_bis(void*  data, int taille, const struct bt_gatt_service_static svc, int offset);
+int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc, int offset);
+
+ssize_t write_fonction_callback(struct bt_conn *conn,
+					     const struct bt_gatt_attr *attr,
+					     const void *buf, uint16_t len,
+					     uint16_t offset, uint8_t flags);
+
+ssize_t read_fonction_callback(struct bt_conn *conn,
+					    const struct bt_gatt_attr *attr,
+					    void *buf, uint16_t len,
+					    uint16_t offset);
 
 
 
