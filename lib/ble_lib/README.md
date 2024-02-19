@@ -25,6 +25,11 @@ The aim of this librairie is to simplify the BLE API provided by Zephyr, for our
 ### Internals
 - `write_fonction_callback` is used as a callback when a data is write to the device. This callback is generic and should be used with the `Ble_Data` struct provided by the library.
 - `read_fonction_callback` is used as a callback when a data is read by the device. This callback is generic and should be used with the `Ble_Data` struct provided by the library.
+- `ccc_cfg_changed` is used as a callback when indicate. It might be transparent for the user and not used.
+- `indicate_cb` is used to know if the indication is well send or not. You should see a message in your terminal.
+- `indicate_destroy` is used put the global variable `indicating` to 0, to free the indicate process.
+
+TO DO AUTH CANCELs
 
 
 
