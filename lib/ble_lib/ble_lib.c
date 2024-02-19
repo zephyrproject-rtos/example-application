@@ -27,6 +27,7 @@
 static uint8_t envoi;
 static uint8_t indicating;
 
+
 static void auth_cancel(struct bt_conn *conn)
 {
 	char addr[BT_ADDR_LE_STR_LEN];
@@ -43,28 +44,7 @@ static struct bt_conn_auth_cb auth_cb_display = {
 	.cancel = auth_cancel,
 };
 
-/*---------- Fonctions de callback pour les évenements bluetooth ---------*/
-static void connected(struct bt_conn *conn, uint8_t err)
-{
-	if (err) {
-		printk("Connection failed (err 0x%02x)\n", err);
-	} else {
-		printk("Connected\n");
-	}
-}
 
-static void disconnected(struct bt_conn *conn, uint8_t reason)
-{
-	printk("Disconnected (reason 0x%02x)\n", reason);
-}
-/*-------------------------------------------------------------------------------*/
-
-/*----------On définit une structure de callback pour les event connected ----------
--------------- et disconnected, avec les fonctions de callback associées ---------*/
-BT_CONN_CB_DEFINE(conn_callbacks) = {
-	.connected = connected,
-	.disconnected = disconnected,
-};
 
 //Indicate params
 static struct bt_gatt_indicate_params ind_params;
@@ -162,6 +142,7 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 		ind_params.destroy = indicate_destroy;
 		ind_params.data = data->data;
 		ind_params.len = data->size;
+		printk("INDICATE SIZE = %d\n",data->size);
 
 		// On envoie la nouvelle valeur avec un indicate
 		if (bt_gatt_indicate(NULL, &ind_params) == 0)
