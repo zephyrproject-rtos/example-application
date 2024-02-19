@@ -1,8 +1,6 @@
 #ifndef BLE_LIB_H
 #define BLE_LIB_H
 
-#include "format.h"
-
 #include <zephyr/types.h>
 #include <stddef.h>
 #include <string.h>
