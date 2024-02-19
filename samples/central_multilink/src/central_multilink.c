@@ -80,7 +80,13 @@ K_SEM_DEFINE(button_1, 0, 1);
 
 /*---Define the interrupts function for the bouton-------------------------------------------------------------*/
 void button_pressed1(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	char addr[BT_ADDR_LE_STR_LEN];
+	
 	printk("Button 1 pressed at\n");
+	
+	bt_addr_le_to_str(bt_conn_get_dst(connected_devices[1]), addr, sizeof(addr));
+	printk("adresse du connected_devices[1] : %s\n", addr);
+	
 	k_sem_give(&button_1);
 	attr_value[0] = 2;
 }
@@ -149,6 +155,8 @@ static uint8_t val_received(struct bt_conn *conn,
 		params->value_handle = 0U;
 		return BT_GATT_ITER_STOP;
 	}
+
+	info_conn = conn; //mis à jour d'info_conn pour répondre à la dernière connection qui a envoyé une valeur à central
 
 	printk("Donnée reçue :");
 	for (i=0; i<length; i++){
