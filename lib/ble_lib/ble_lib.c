@@ -180,6 +180,7 @@ ssize_t read_fonction_callback(struct bt_conn *conn,
 {
 	struct Ble_Data *char_info = (struct Ble_Data *)attr->user_data;
 	size_t to_copy = MIN(len, char_info->size - offset);
+	printk("READ\n");
     if (to_copy > 0) {
         memcpy(buf, char_info->data + offset, to_copy);
         return to_copy;
@@ -187,3 +188,117 @@ ssize_t read_fonction_callback(struct bt_conn *conn,
         return 0;
     }
 };
+
+
+/*RW JORDAN*/
+
+const void* read_value;//Pour passer du callback a write
+
+/*------------ Fonction de callback qui s'éxecute après un write --------------*/
+void write_result_callback(struct bt_conn *conn, uint8_t err,
+				     struct bt_gatt_write_params *params)
+{
+	printk("Write value : %d\n", *((uint8_t*)params->data));
+};
+
+
+int ble_write(struct bt_conn *conn, struct Ble_Data* value, int attr_handle){
+    // Vérifier si la connexion est valide
+    if (conn) {
+        //Declaration of write params
+        static struct bt_gatt_write_params write_params;
+        /*Incrémenter la référence de la connexion pour s'assurer qu'on est connecté*/
+        bt_conn_ref(conn);
+
+        /*-----------Mise à jour des paramètres d'écriture------------*/
+        /*Fonction de callback pour l'écriture*/
+        write_params.func = write_result_callback;
+        /*Handle de l'attribute que l'on souhaite écrire*/
+        write_params.handle = attr_handle;
+        /*Offset auquel on souhaite écrire la valeur (position, par exemple si la taille est de 5 octets et qu'on souhaite écrire le 3ème on met 2)*/
+        write_params.offset = 0;
+        /*Valeur à écrire*/
+        write_params.data = value->data;
+        /*Taille de la valeur à écrire*/
+        write_params.length = value->size;
+
+        /*Fonction pour écrire un attribut du périphérique*/
+        if ((bt_gatt_write(conn, &write_params) == 0)) {
+            printk("Write succesfull\n");
+            // Décrémenter la référence de la connexion
+            bt_conn_unref(conn); 
+            return 0;
+        } 
+        else {
+            printk("Write failed\n");
+            // Décrémenter la référence de la connexion
+            bt_conn_unref(conn); 
+            return -1;
+        }        
+    }
+    else {
+        return -1;
+    }
+}
+
+
+/*------------ Fonction de callback qui s'éxecute après un read --------------*/
+uint8_t read_result_callback(struct bt_conn *conn, uint8_t err,
+				    struct bt_gatt_read_params *params,
+				    const void *data, uint16_t length)
+{
+    printk("Read callback\n");
+	if (err){
+		return 0;
+	}
+	read_value = data;
+	printk("Read result : %d\n", *((uint8_t*)read_value));
+
+	return BT_GATT_ITER_STOP;
+};
+
+
+int ble_read(struct bt_conn *conn, struct Ble_Data* value, int attr_handle)
+{
+    if (conn) {
+        // Incrémenter la référence de la connexion pour s'assurer qu'on est connecté
+        bt_conn_ref(conn);
+
+        // Création des paramètres de lecture
+        static struct bt_gatt_read_params read_params;
+
+        struct bt_uuid pt_uuid;
+        /*Definition du type d'UUID*/
+        pt_uuid.type = BT_UUID_TYPE_16;
+        /* Fonction de callback qui s'éxecute après la lecture*/
+        read_params.func = read_result_callback;
+        /*Nomre de valeur qu'on va lire*/
+        read_params.handle_count = 1;
+        /*Handle qu'on veut lire*/
+        read_params.single.handle = attr_handle;
+        /*Offset*/
+        read_params.single.offset= 0;
+        /*Pointeur vers le type d'UUID qu'on a défini*/
+        read_params.by_uuid.uuid = &pt_uuid;			
+
+        /*Fonction pour lire une données du périphérique*/	
+        if ((bt_gatt_read(conn, &read_params) == 0)){
+            printk("Read succesfull\n");
+            bt_conn_unref(conn); 
+            printk("Read value :%s\n\n", ((char*)read_value));
+            for (size_t i = 0; i < value->size; ++i) {
+                ((unsigned char*)value->data)[i] = ((const unsigned char*)read_value)[i];
+            }
+            return 0;
+        }
+        else{
+            printk("Read failed\n");
+            bt_conn_unref(conn); 
+            return -1;
+        }
+    }
+    else {
+        return -1;
+    }
+}
+

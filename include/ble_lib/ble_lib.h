@@ -85,6 +85,18 @@ ssize_t read_fonction_callback(struct bt_conn *conn,
 					    void *buf, uint16_t len,
 					    uint16_t offset);
 
+/*RW JORDAN*/
+void write_result_callback(struct bt_conn *conn, 
+                            uint8_t err,
+				            struct bt_gatt_write_params *params);
+
+int ble_write(struct bt_conn *conn, struct Ble_Data* value, int attr_handle);
+
+uint8_t read_result_callback(struct bt_conn *conn, uint8_t err,
+				            struct bt_gatt_read_params *params,
+				            const void *data, uint16_t length);
+
+int ble_read(struct bt_conn *conn, struct Ble_Data* value, int attr_handle);
 
 
 
