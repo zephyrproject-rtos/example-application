@@ -14,6 +14,11 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 
+#define HIGH    1
+#define LOW     0
+#define ON      1
+#define OFF     0
+
 int led_init(const struct gpio_dt_spec *led);
 
 int led_on(const struct gpio_dt_spec *led);
@@ -35,6 +40,8 @@ int leds_circular(const struct gpio_dt_spec *led, int time);
 int leds_blink(const struct gpio_dt_spec *led, int time);
 
 int leds_blink_duration(const struct gpio_dt_spec *led, int time, int duree);
+
+int led_set(const struct gpio_dt_spec *led, bool val);
 
 
 #endif /* BUTTON_H */

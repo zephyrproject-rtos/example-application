@@ -24,12 +24,9 @@ int button_init(const struct gpio_dt_spec *button) {
     return 1;
 }
 
-int button_state(const struct gpio_dt_spec *button) {
-    int val = gpio_pin_get_dt(button);//Read the button's state
-    if (val >= 0) {
-        return val;
-    }
-    return -1;
+bool button_state(const struct gpio_dt_spec *button) {
+    bool val = gpio_pin_get_dt(button);//Read the button's state
+    return val;
 }
 
 void isr_btn_config(const struct gpio_dt_spec *button, gpio_callback_handler_t function, 

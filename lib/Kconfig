@@ -3,8 +3,8 @@
 
 menu "Libraries"
 
-rsource "custom_lib/Kconfig"
 rsource "led_lib/Kconfig"
 rsource "button_lib/Kconfig"
+rsource "ble_lib/Kconfig"
 
 endmenu
