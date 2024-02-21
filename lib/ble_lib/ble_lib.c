@@ -19,9 +19,6 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
-#define BLE_DISABLE     0
-#define BLE_ENABLE      1
-
 /****************************************************************************/
 /*								VARIABLES									*/
 /****************************************************************************/
