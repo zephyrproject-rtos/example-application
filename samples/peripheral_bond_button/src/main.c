@@ -18,6 +18,8 @@
 #include <button_lib/button_lib.h>
 #include <led_lib/led_lib.h>
 
+#include "bond_periph.h"
+
 #define SW0_NODE	DT_ALIAS(sw0)
 static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {0});
 #define LED0_NODE DT_ALIAS(led0)
@@ -80,7 +82,6 @@ BT_GATT_SERVICE_DEFINE(primary_service,
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 struct bt_le_adv_param adv_param;
-int bond_count;
 
 const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR))
@@ -89,100 +90,7 @@ const struct bt_data ad[] = {
 const struct bt_data sd[] = {
 	BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_CUSTOM_SERVICE_VAL)
 };
-
-static void add_bonded_addr_to_filter_list(const struct bt_bond_info *info, void *data)
-{
-	char addr_str[BT_ADDR_LE_STR_LEN];
-
-	bt_le_filter_accept_list_add(&info->addr);
-	bt_addr_le_to_str(&info->addr, addr_str, sizeof(addr_str));
-	printk("Added %s to advertising accept filter list\n", addr_str);
-	bond_count++;
-}
-
-void ble_bond_param(void (*func)(const struct bt_bond_info *info, void *user_data), void *user_data){
-	bt_foreach_bond(BT_ID_DEFAULT, func, user_data);
-}
-
-int ble_bond_start(){
-	int err;
-	err = bt_le_adv_stop();
-	if (err) {
-		return err;
-	}
-
-	adv_param.options &= ~(BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ);
-	err = bt_le_adv_start(&adv_param, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-
-	if (err) {
-		return err;
-	}
-	return 0;
-}
-
-int ble_bond_stop(){
-	int err;
-	err = bt_le_adv_stop();
-	if (err) {
-		return err;
-	}
-	adv_param.options |= (BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ);
-	err = bt_le_adv_start(&adv_param, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-
-	if (err) {
-		printk("Advertising failed to start (err %d)\n", err);
-		return err;
-	}
-	return 0;
-}
-
-int ble_bond_duration(uint8_t duration){
-	int err;
-	err = ble_bond_start();
-	if(err != 0){
-		return err;
-	}
-	bond_count = 0;
-	while (bond_count == 0 && duration > 0){
-		k_sleep(K_SECONDS(1));
-		duration--;
-	}
-	err = ble_bond_stop();
-	if(err != 0){
-		return err;
-	}
-	return 0;
-}
-
-int ble_bond_1_conn(){
-	int err;
-	err = ble_bond_start();
-	if(err != 0){
-		return err;
-	}
-	bond_count = 0;
-	while (bond_count == 0){
-		k_sleep(K_SECONDS(1));
-	}
-	err = ble_bond_stop();
-	if(err != 0){
-		return err;
-	}
-	return 0;
-}
-
-
-void pairing_complete(struct bt_conn *conn, bool bonded)
-{
-	printk("Pairing completed. Rebooting...\n");
-	sys_reboot(SYS_REBOOT_WARM);
-}
-
-static struct bt_conn_auth_info_cb bt_conn_auth_info = {
-	.pairing_complete = pairing_complete
-};
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 static void connected(struct bt_conn *conn, uint8_t err)
 {
@@ -214,7 +122,7 @@ static void bt_ready(void)
 		settings_load();
 	}
 
-	ble_bond_param(add_bonded_addr_to_filter_list, NULL);
+	ble_bond_init(NULL, NULL);
 
 	adv_param = *BT_LE_ADV_CONN_NAME;
 	adv_param.options |= BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ;
@@ -244,7 +152,7 @@ int main(void)
 	}
 
 	bt_ready();
-	bt_conn_auth_info_cb_register(&bt_conn_auth_info);
+	
 
 	printk("\tClick on button to bond or wait 5s\n");
 	int i=0;
@@ -254,43 +162,15 @@ int main(void)
 	}
 	if(button_state(&button0)){
 		printk("\tDetectable\n");
-		err = ble_bond_1_conn();
+		err = ble_bond_1_conn(ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
 		if(err != 0){
 			printk("Error bonding : %d\n", err);
 			return err;
 		}
 	}
 
-	printk("\tNon detectable\n");
-	k_sleep(K_SECONDS(10));
-
 	printk("Sending data..\n");
-
-	// k_sleep(K_SECONDS(1));
-	// float i=0.5;
-	// for (int loop = 0; loop < 20; loop++)
-	// {
-	// 	k_sleep(K_MSEC(10));
-		
-	// 	/*Envoi de la mesure en indicate*/
-	// 	// while(!indicating);
-	// 	printk("Data : 1\n");
-	// 	valeur_indicate(&i, 0);
-	// 	// k_sleep(K_SECONDS(1));
-	// 	while(indicating){
-	// 		k_sleep(K_MSEC(10));
-	// 	}
-	// 	i++;
-	// 	printk("Data : 2\n");
-	// 	valeur_indicate(&i, 1);
-	// 	while(indicating){
-	// 		k_sleep(K_MSEC(10));
-	// 	}
 	
 	return 0;
 }
 
-
-// Liste fonction à définir :
-// Fonction avec arguments un boutton : active et désactive appairage bouton 
-// Fonction qui active et désactive seulement quand un appareil est trouvé
