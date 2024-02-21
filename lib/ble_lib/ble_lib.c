@@ -102,7 +102,11 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 		{
 			return 0;
 		}
-		ind_params.attr = &svc.attrs[offset];
+		ind_params.attr = &svc.attrs[1+(4*offset)-4];
+        //1+4*offset, c'est car le premier attr est pour le service,
+        //et ensuite on incrémente de 4 en 4, car characteristic prend 2 attr,
+        // CPF prend 1 attr, et CCC prend 1 attr. On fait -4 pour que
+        //l'utilisateur commence a déclarer ses caractéristiques a 1 et pas 0
 		ind_params.func = indicate_cb;
 		ind_params.destroy = indicate_destroy;
 		ind_params.data = data->data;
