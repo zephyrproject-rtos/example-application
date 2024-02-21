@@ -1,6 +1,7 @@
 #include "bond_periph.h"
 
-int bond_count;
+static struct bt_le_adv_param adv_param;
+static int bond_count;
 
 void pairing_complete(struct bt_conn *conn, bool bonded)
 {
