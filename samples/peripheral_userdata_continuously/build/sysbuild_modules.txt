@@ -1,0 +1,1 @@
+"mcuboot":"/home/openphung/Documents/workspace/bootloader/mcuboot":"/home/openphung/Documents/workspace/bootloader/mcuboot/boot/zephyr/sysbuild"
