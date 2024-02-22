@@ -20,8 +20,39 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
+#define CONFIG_BT_MAX_CONN 62
+#define NB_CHAR 50
+
+#define SCAN_INTERVAL 0x0640 /* 1000 ms */
+#define SCAN_WINDOW   0x0030 /* 30 ms */
+#define INIT_INTERVAL 0x0010 /* 10 ms */
+#define INIT_WINDOW   0x0010 /* 10 ms */
+#define CONN_INTERVAL 0x0320 /* 1000 ms */
+#define CONN_LATENCY  0
+#define CONN_TIMEOUT  	MIN(MAX((CONN_INTERVAL * 125 * \
+			       		MAX(CONFIG_BT_MAX_CONN, 6) / 1000), 10), 3200)
 
 
+/****************************************************************************/
+/*								VARIABLES									*/
+/****************************************************************************/
+extern int first_attr;
+extern bool ble_is_busy;
+extern bool ble_is_advertising;
+extern uint8_t envoi;
+extern const void* read_value;//Pour passer du callback a write
+extern struct bt_gatt_indicate_params ind_params;
+extern struct bt_conn_auth_cb auth_cb_display;
+// Multilink
+extern struct bt_conn *conn_connecting;// A remplacer dans discover -> default_connv !
+extern  uint8_t volatile conn_count;
+extern bool volatile is_disconnecting;
+extern struct bt_conn* connected_devices[CONFIG_BT_MAX_CONN]; //tableau de connections
+extern struct bt_conn *info_conn;
+// Discover
+extern struct bt_uuid_16 discover_uuid;
+extern struct bt_gatt_discover_params discover_params;
+extern struct bt_gatt_subscribe_params subscribe_params;
 
 
 
@@ -128,6 +159,34 @@ int ble_read(struct bt_conn *conn,
 			 struct Ble_Data* value, 
 			 int attr_handle);
 
+/*MULTILINK*/
+
+/**
+ * @brief 
+ * This function is used to scan for nearby devices and connect to it by default.
+ * 
+ * @param 
+ * -> {bt_le_scan_cb_t} cb, callback function activated when a device is found.
+ * by default NULL : 
+ * If NULL, then connect to device with strong enough RSSI.  
+ * 
+ * @return
+ * an error index. 0 if no error.
+*/
+int ble_scan_start(bt_le_scan_cb_t cb);
+
+/**
+ * @brief 
+ * This function prints every connected devisces' MAC adress in the terminal
+ * 
+ * @param 
+ * None. 
+ * 
+ * @return
+ * -
+*/
+void ble_showconn();
+
 /****************************************************************************/
 /*						FONCTIONS CACHEES API								*/
 /****************************************************************************/
@@ -224,6 +283,30 @@ uint8_t read_result_callback(struct bt_conn *conn, uint8_t err,
 				            struct bt_gatt_read_params *params,
 				            const void *data, uint16_t length);
 
+void ble_discover_gatt_service(uint16_t service_UUID);
+
+static uint8_t discover_func(struct bt_conn *conn,
+                 const struct bt_gatt_attr *attr,
+                 struct bt_gatt_discover_params *params);
+
+static bool eir_found(struct bt_data *data, void *user_data);
+
+static void device_found(const bt_addr_le_t *addr, 
+						 int8_t rssi, 
+						 uint8_t type,
+			 			 struct net_buf_simple *ad);
+
+static void multilink_connected(struct bt_conn *conn, uint8_t reason);
+
+static void multilink_disconnected(struct bt_conn *conn, uint8_t reason);
+
+static uint8_t discover_func(struct bt_conn *conn,
+			     const struct bt_gatt_attr *attr,
+			     struct bt_gatt_discover_params *params);
+
+static uint8_t val_received(struct bt_conn *conn,
+			   struct bt_gatt_subscribe_params *params,
+			   const void *data, uint16_t length);
 
 
 

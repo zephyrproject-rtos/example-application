@@ -22,17 +22,29 @@
 /****************************************************************************/
 /*								VARIABLES									*/
 /****************************************************************************/
-
+int first_attr;
 bool ble_is_busy;
 bool ble_is_advertising;
-static uint8_t envoi;
+uint8_t envoi;
 const void* read_value;//Pour passer du callback a write
-static struct bt_gatt_indicate_params ind_params;
-static struct bt_conn_auth_cb auth_cb_display;
+struct bt_gatt_indicate_params ind_params;
+struct bt_conn_auth_cb auth_cb_display;
+// Multilink
+struct bt_conn *conn_connecting;// A remplacer dans discover -> default_connv !
+uint8_t volatile conn_count;
+bool volatile is_disconnecting;
+struct bt_conn* connected_devices[CONFIG_BT_MAX_CONN]; //tableau de connections
+struct bt_conn *info_conn;
+// Discover
+struct bt_uuid_16 discover_uuid = BT_UUID_INIT_16(0);
+struct bt_gatt_discover_params discover_params;
+struct bt_gatt_subscribe_params subscribe_params_array[NB_CHAR];
+int char_index = 0;
 
 /****************************************************************************/
 /*						FONCTIONS UTILISATEUR								*/
 /****************************************************************************/
+
 
 int ble_enable(){
     int err;
@@ -98,10 +110,6 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 {
 	if (envoi) //Si le cb ccf_changed est configuré
 	{
-		if (ble_is_busy)//On teste si le bus BLE est libre
-		{
-			return 0;
-		}
 		ind_params.attr = &svc.attrs[1+(4*offset)-4];
         //1+4*offset, c'est car le premier attr est pour le service,
         //et ensuite on incrémente de 4 en 4, car characteristic prend 2 attr,
@@ -116,18 +124,15 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 		// On envoie la nouvelle valeur avec un indicate
 		if (bt_gatt_indicate(NULL, &ind_params) == 0)
 		{
-			ble_is_busy = true; //On bloque le bus BLE
 		}
 	}
 }
 
 int ble_read(struct bt_conn *conn, struct Ble_Data* value, int attr_handle)
 {
-    if (ble_is_busy) return 0;
     if (conn) {
         // Incrémenter la référence de la connexion pour s'assurer qu'on est connecté
         bt_conn_ref(conn);
-        ble_is_busy = true;
         // Création des paramètres de lecture
         static struct bt_gatt_read_params read_params;
 
@@ -158,25 +163,21 @@ int ble_read(struct bt_conn *conn, struct Ble_Data* value, int attr_handle)
         else{
             printk("Read failed\n");
             bt_conn_unref(conn); 
-            ble_is_busy = false;
             return -1;
         }
     }
     else {
-        ble_is_busy = false;
         return 0;
     }
 }
 
 int ble_write(struct bt_conn *conn, struct Ble_Data* value, int attr_handle){
     // Vérifier si la connexion est valide
-    if (ble_is_busy) return 0;
     if (conn) {
         //Declaration of write params
         static struct bt_gatt_write_params write_params;
         /*Incrémenter la référence de la connexion pour s'assurer qu'on est connecté*/
         bt_conn_ref(conn);
-        ble_is_busy = true;
 
         /*-----------Mise à jour des paramètres d'écriture------------*/
         /*Fonction de callback pour l'écriture*/
@@ -201,13 +202,74 @@ int ble_write(struct bt_conn *conn, struct Ble_Data* value, int attr_handle){
             printk("Write failed\n");
             // Décrémenter la référence de la connexion
             bt_conn_unref(conn); 
-            ble_is_busy = false;
             return -1;
         }        
     }
     else {
-        ble_is_busy = false;
         return 0;
+    }
+}
+
+int ble_scan_start(bt_le_scan_cb_t cb){
+
+    /*Scan parameter*/
+	struct bt_le_scan_param scan_param = { 
+		.type       = BT_LE_SCAN_TYPE_ACTIVE,
+		.options    = BT_LE_SCAN_OPT_NONE,
+		.interval   = BT_GAP_SCAN_FAST_INTERVAL,
+		.window     = BT_GAP_SCAN_FAST_WINDOW,
+	};
+	int err;
+
+    /*Default callback*/
+    if(cb==NULL)
+    {
+	err = bt_le_scan_start(&scan_param, device_found);
+	if (err) {
+		printk("Scanning failed to start (err %d)\n", err);
+		return err;
+	}
+    printk("Scanning with DEFAULT connection callback\n");
+    }
+
+    /*Custom callback*/
+    else{
+	err = bt_le_scan_start(&scan_param, cb);
+	if (err) {
+		printk("Scanning failed to start (err %d)\n", err);
+		return err;
+	}
+    printk("Scanning with CUSTOM connection callback\n");
+    }
+
+	return err;
+}
+
+void ble_showconn(){
+    int i;
+    char addr[BT_ADDR_LE_STR_LEN];
+
+    for(i=0;i<conn_count;i++) {
+        bt_addr_le_to_str(bt_conn_get_dst(connected_devices[i]), addr, sizeof(addr));
+        printk("Device %d : %s\n",i,addr);
+    }
+
+}
+
+void ble_discover_gatt_service(uint16_t service_UUID)
+{
+    int err;
+    memcpy(&discover_uuid, BT_UUID_DECLARE_16(service_UUID), sizeof(discover_uuid));
+    discover_params.uuid = &discover_uuid.uuid;
+    discover_params.func = discover_func;
+    discover_params.start_handle = BT_ATT_FIRST_ATTRIBUTE_HANDLE;
+    discover_params.end_handle = BT_ATT_LAST_ATTRIBUTE_HANDLE;
+    discover_params.type = BT_GATT_DISCOVER_PRIMARY;
+
+    err = bt_gatt_discover(conn_connecting, &discover_params);
+    if (err) {
+        printk("Discover failed(err %d)\n", err);
+        return;
     }
 }
 
@@ -219,7 +281,6 @@ void write_result_callback(struct bt_conn *conn, uint8_t err,
 				     struct bt_gatt_write_params *params)
 {
 	printk("Write value : %d\n", *((uint8_t*)params->data));
-    ble_is_busy = false;// On libere le bus car le write est fini
 };
 
 uint8_t read_result_callback(struct bt_conn *conn, uint8_t err,
@@ -232,11 +293,10 @@ uint8_t read_result_callback(struct bt_conn *conn, uint8_t err,
 	}
 	read_value = data;
 	printk("Read result : %d\n", *((uint8_t*)read_value));
-    ble_is_busy = false;
 	return BT_GATT_ITER_STOP;
 };
 
-static void auth_cancel(struct bt_conn *conn)
+void auth_cancel(struct bt_conn *conn)
 {
 	char addr[BT_ADDR_LE_STR_LEN];
 
@@ -245,7 +305,7 @@ static void auth_cancel(struct bt_conn *conn)
 	printk("Pairing cancelled: %s\n", addr);
 }
 
-static struct bt_conn_auth_cb auth_cb_display = {
+struct bt_conn_auth_cb auth_cb_display = {
 	/*Si cancel de l'appairage, alors on exécute la fonction auth_cancel*/
 	.cancel = auth_cancel,
 };
@@ -276,7 +336,6 @@ void indicate_destroy(struct bt_gatt_indicate_params *params)
 {
 	//Une fois l'indicate fini on remet indicating=0 afin de pouvoir refaire un indicate.
 	printk("Indication complete\n");
-	ble_is_busy = false;
 }
 
 ssize_t write_fonction_callback(struct bt_conn *conn,
@@ -284,17 +343,15 @@ ssize_t write_fonction_callback(struct bt_conn *conn,
 					     const void *buf, uint16_t len,
 					     uint16_t offset, uint8_t flags)						 
 {
-    if (ble_is_busy) return 0;
-    ble_is_busy = true;//On bloque le bus
 	struct Ble_Data *char_info = (struct Ble_Data *)attr->user_data;
 	size_t to_copy = MIN(len, char_info->size - offset);
+	printk("Callback bf to copy\n");
     if (to_copy > 0) {
         memcpy(char_info->data + offset, buf, to_copy);//On copie la
         //data de la structure dans le buffer d'envoi
-        ble_is_busy = false;
+		printk("Callback aft to copy\n");
         return to_copy;
     } else {
-        ble_is_busy = false;//On libere le bus a la fin
         return 0;
     }
 }
@@ -304,17 +361,207 @@ ssize_t read_fonction_callback(struct bt_conn *conn,
 					    void *buf, uint16_t len,
 					    uint16_t offset)
 {
-    if (ble_is_busy) return 0;
 	struct Ble_Data *char_info = (struct Ble_Data *)attr->user_data;
 	size_t to_copy = MIN(len, char_info->size - offset);
 	printk("READ\n");
     if (to_copy > 0) {
         memcpy(buf, char_info->data + offset, to_copy);// On copie
         //le contenu du buffer de reception dans la data de la structure
-        ble_is_busy = false;
         return to_copy;
     } else {
-        ble_is_busy = false;
         return 0;
     }
+};
+
+static uint8_t discover_func(struct bt_conn *conn,
+                 const struct bt_gatt_attr *attr,
+                 struct bt_gatt_discover_params *params)
+{
+    if (!attr) {
+        printk("Discover complete\n");
+        (void)memset(params, 0, sizeof(*params));
+		if(conn_count<CONFIG_BT_MAX_CONN) ble_scan_start(NULL);
+        return BT_GATT_ITER_STOP;
+    }
+
+    int err;
+
+    if (discover_params.type != BT_GATT_DISCOVER_CHARACTERISTIC){
+        struct bt_gatt_subscribe_params *subscribe_params_test = &subscribe_params_array[char_index];
+        subscribe_params_test->value_handle = (attr->handle) + 2;
+        subscribe_params_test->notify = val_received;
+        subscribe_params_test->value = BT_GATT_CCC_INDICATE;
+        subscribe_params_test->ccc_handle = (attr->handle) + 3;
+
+        err = bt_gatt_subscribe(conn, subscribe_params_test);
+        if (err && err != -EALREADY) {
+            printk("Subscribe failed (err %d)\n", err);
+        } 
+        else {
+            printk("[SUBSCRIBED]\n");
+        }
+
+        discover_params.uuid = NULL;
+        discover_params.start_handle = (attr->handle) + 4;
+        discover_params.type = BT_GATT_DISCOVER_CHARACTERISTIC;
+        discover_params.func = discover_func;
+        discover_params.end_handle = BT_ATT_LAST_ATTRIBUTE_HANDLE;
+
+        err = bt_gatt_discover(conn, &discover_params);
+        if (err) {
+            printk("Discover failed(err %d)\n", err);
+            return;
+        }
+    }
+    else{
+        struct bt_gatt_subscribe_params *subscribe_params_test = &subscribe_params_array[char_index];
+        subscribe_params_test->value_handle = (attr->handle) + 1;
+        subscribe_params_test->notify = val_received;
+        subscribe_params_test->value = BT_GATT_CCC_INDICATE;
+        subscribe_params_test->ccc_handle = (attr->handle) + 2;
+
+        err = bt_gatt_subscribe(conn, subscribe_params_test);
+        if (err && err != -EALREADY) {
+            printk("Subscribe failed (err %d)\n", err);
+        } 
+        else {
+            printk("[SUBSCRIBED]\n");
+        }
+
+        discover_params.uuid = NULL;
+        discover_params.start_handle = (attr->handle) + 1;
+        discover_params.type = BT_GATT_DISCOVER_CHARACTERISTIC;
+        discover_params.func = discover_func;
+        discover_params.end_handle = BT_ATT_LAST_ATTRIBUTE_HANDLE;
+
+        err = bt_gatt_discover(conn, &discover_params);
+        if (err) {
+            printk("Discover failed(err %d)\n", err);
+            return;
+        }
+        
+    }
+    char_index++;
+    return BT_GATT_ITER_STOP;
+}
+
+static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
+			 struct net_buf_simple *ad)
+{
+	struct bt_conn_le_create_param create_param = {
+		.options = BT_CONN_LE_OPT_NONE,
+		.interval = INIT_INTERVAL,
+		.window = INIT_WINDOW,
+		.interval_coded = 0,
+		.window_coded = 0,
+		.timeout = 0,
+	};
+	struct bt_le_conn_param conn_param = {
+		.interval_min = CONN_INTERVAL,
+		.interval_max = CONN_INTERVAL,
+		.latency = CONN_LATENCY,
+		.timeout = CONN_TIMEOUT,
+	};
+	char addr_str[BT_ADDR_LE_STR_LEN];
+
+	if (conn_connecting) {
+		return;
+	}
+	printk("dans device found\n");
+	if (rssi > -34){ //ajout filtre puissance signal
+
+	/*Display scanned devices informations*/
+	bt_addr_le_to_str(addr, addr_str, sizeof(addr_str));
+	printk("Device found: %s (RSSI %d)\n", addr_str, rssi);
+
+	/* We're only interested in connectable events */
+	if (type == BT_HCI_ADV_IND || type == BT_HCI_ADV_DIRECT_IND) 
+		{
+			int err = bt_le_scan_stop();
+			if (err) {
+				printk("Stop LE scan failed (err %d)\n", err);
+			}
+
+			/*On essaye de se connecter à ce device puisqu'il envoie une donnée avec l'UUID qu'on cherche*/
+			err = bt_conn_le_create(addr, &create_param, &conn_param, &conn_connecting);
+			if (err) {
+				printk("Create connection failed (err %d)\n", err);
+				ble_scan_start(NULL); //Retry scan with default parameters if failed
+			}
+		return;
+	}
+
+	}
+}
+
+static void multilink_connected(struct bt_conn *conn, uint8_t reason)
+{
+	char addr[BT_ADDR_LE_STR_LEN];
+	int err; //ajout variable de test erreur
+
+	bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+	if (reason) {
+		printk("Failed to connect to %s (%u)\n", addr, reason);
+
+		bt_conn_unref(conn_connecting);
+		conn_connecting = NULL;
+
+		ble_scan_start(NULL);
+		return;
+	}
+
+	printk("Connected (%u): %s\n", conn_count, addr);
+
+	/*Récupération de la connexion*/
+	info_conn = conn;
+
+	if (conn == conn_connecting) {
+		connected_devices[conn_count]= conn; //ajout de l'objet conn dans le tabeau des connections
+
+	}
+
+	conn_connecting = NULL;
+	conn_count++;
+}
+
+static void multilink_disconnected(struct bt_conn *conn, uint8_t reason)
+{
+	char addr[BT_ADDR_LE_STR_LEN];
+
+	bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+	printk("Disconnected: %s (reason 0x%02x)\n", addr, reason);
+
+	bt_conn_unref(conn);
+
+	if ((conn_count == 1U) && is_disconnecting) {
+		is_disconnecting = false;
+		ble_scan_start(NULL);
+	}
+	conn_count--;
+}
+
+static uint8_t val_received(struct bt_conn *conn,
+               struct bt_gatt_subscribe_params *params,
+               const void *data, uint16_t length)
+{
+    if (!data) {
+        printk("[UNSUBSCRIBED]\n");
+        params->value_handle = 0U;
+        return BT_GATT_ITER_STOP;
+    }
+
+    printk("Donnée reçue : attr %d\n", params->value_handle);
+    return BT_GATT_ITER_CONTINUE;
+}
+
+
+
+
+
+
+BT_CONN_CB_DEFINE(conn_callbacks) = {
+	.connected = multilink_connected,
+	.disconnected = multilink_disconnected,
 };
