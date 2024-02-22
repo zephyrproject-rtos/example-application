@@ -1,0 +1,1 @@
+"mcuboot":"/home/jordan/Documents/PFE_2/bootloader/mcuboot":"/home/jordan/Documents/PFE_2/bootloader/mcuboot/boot/zephyr/sysbuild"

@@ -1,0 +1,216 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:228 (message)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      The target system is: Generic - 3.6.0 - arm
+      The host system is: Linux - 6.5.0-14-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/libc.a(lib_a-exit.o): in function `exit':
+      exit.c:(.text.exit+0x34): undefined reference to `_exit'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/libc.a(lib_a-exit.o): in function `exit':
+      exit.c:(.text.exit+0x34): undefined reference to `_exit'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1131 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/kernel.cmake:134 (enable_language)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/zephyr_default.cmake:138 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/jordan/Documents/PFE_2/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:4 (find_package)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      arm-zephyr-eabi-gcc (Zephyr SDK 0.16.4) 12.2.0
+      Copyright (C) 2022 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/extensions.cmake:2128 (check_c_compiler_flag)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/extensions.cmake:1100 (check_compiler_flag)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/extensions.cmake:2167 (zephyr_check_compiler_flag)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/extensions.cmake:2143 (target_cc_option_fallback)"
+      - "/home/jordan/Documents/PFE_2/zephyr/cmake/modules/extensions.cmake:123 (target_cc_option)"
+      - "/home/jordan/Documents/PFE_2/zephyr/CMakeLists.txt:458 (zephyr_cc_option)"
+    directories:
+      source: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-bWKnyR"
+      binary: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-bWKnyR"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/jordan/Documents/PFE_2/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_jordan_Documents_PFE_2_pfe_samples_central_write_demo_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_jordan_zephyr_sdk_0_16_4_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_jordan_zephyr_sdk_0_16_4_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-bWKnyR'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_f894f
+        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Dcheck_fmacro_prefix_map__home_jordan_Documents_PFE_2_pfe_samples_central_write_demo_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_jordan_zephyr_sdk_0_16_4_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem___home_jordan_zephyr_sdk_0_16_4_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include" -isystem "/home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fmacro-prefix-map=/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_f894f.dir/src.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-bWKnyR/src.c
+        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -nostartfiles -nostdlib -isystem "/home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include" -isystem "/home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_f894f.dir/src.c.obj -o cmTC_f894f   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFiles.cmake:132 (try_compile)"
+      - "/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake/depends.cmake:33 (check_include_files)"
+      - "/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/CMakeLists.txt:24 (include)"
+    checks:
+      - "Looking for include file stdatomic.h"
+    directories:
+      source: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-dbchTM"
+      binary: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-dbchTM"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/jordan/Documents/PFE_2/zephyr/cmake/modules;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake/modules;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake/platforms"
+    buildResult:
+      variable: "HAVE_STDATOMIC_H"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-dbchTM'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_04b2d
+        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -c -o CMakeFiles/cmTC_04b2d.dir/HAVE_STDATOMIC_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-dbchTM/HAVE_STDATOMIC_H.c
+        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -c  CMakeFiles/cmTC_04b2d.dir/HAVE_STDATOMIC_H.c.obj -o cmTC_04b2d   && :
+        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_04b2d.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckIncludeFiles.cmake:132 (try_compile)"
+      - "/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake/depends.cmake:19 (check_include_files)"
+      - "/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/CMakeLists.txt:25 (include)"
+    checks:
+      - "Looking for include file fcntl.h"
+    directories:
+      source: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-46m3wc"
+      binary: "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-46m3wc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: " -Wall -Wextra"
+      CMAKE_MODULE_PATH: "/home/jordan/Documents/PFE_2/zephyr/cmake/modules;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake/modules;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake/platforms"
+    buildResult:
+      variable: "HAVE_FCNTL_H"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-46m3wc'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_e62bd
+        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -Wall -Wextra -c -o CMakeFiles/cmTC_e62bd.dir/HAVE_FCNTL_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/CMakeFiles/CMakeScratch/TryCompile-46m3wc/HAVE_FCNTL_H.c
+        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Wall -Wextra -c  CMakeFiles/cmTC_e62bd.dir/HAVE_FCNTL_H.c.obj -o cmTC_e62bd   && :
+        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_e62bd.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
+        
+      exitCode: 0
+...
