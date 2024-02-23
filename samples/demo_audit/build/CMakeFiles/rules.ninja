@@ -709,7 +709,7 @@ rule C_STATIC_LIBRARY_LINKER__kernel_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake --regenerate-during-build -S/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo -B/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build
+  command = /usr/bin/cmake --regenerate-during-build -S/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo -B/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build
   description = Re-running CMake...
   generator = 1
 

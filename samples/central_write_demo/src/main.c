@@ -171,6 +171,9 @@ static uint8_t discover_func(struct bt_conn *conn,
 		subscribe_params.value = BT_GATT_CCC_INDICATE;
 		subscribe_params.ccc_handle = attr->handle;
 
+		printk("VALUE HANDLE : %u", subscribe_params.value_handle);
+		printk("CCC HANDLE : %u", subscribe_params.ccc_handle);
+
 		err = bt_gatt_subscribe(conn, &subscribe_params);
 		if (err && err != -EALREADY) {
 			printk("Subscribe failed (err %d)\n", err);
@@ -318,6 +321,7 @@ static int scan_start(void)
 
 	return bt_le_scan_start(&scan_param, device_found);
 }
+
 
 
 /*------------ Fonction qui s'exécute quand l'event "bt disconnected" est reçu-------- */

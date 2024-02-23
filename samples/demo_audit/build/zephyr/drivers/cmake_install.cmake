@@ -39,71 +39,71 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/disk/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/disk/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/misc/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/misc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/pcie/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/pcie/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/usb/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/usb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/usb_c/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/usb_c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/bluetooth/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/bluetooth/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/clock_control/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/console/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/console/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/gpio/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/gpio/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/mbox/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/mbox/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/pinctrl/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/pinctrl/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/serial/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/serial/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/drivers/timer/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/drivers/timer/cmake_install.cmake")
 endif()
 

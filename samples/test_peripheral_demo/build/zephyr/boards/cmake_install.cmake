@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/zephyr/boards/arm/nrf5340dk_nrf5340/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/zephyr/boards/boards/arm/nrf5340dk_nrf5340_cpuapp/cmake_install.cmake")
 endif()
 

@@ -48,14 +48,14 @@ extern struct bt_conn *conn_connecting;// A remplacer dans discover -> default_c
 extern  uint8_t volatile conn_count;
 extern bool volatile is_disconnecting;
 extern struct bt_conn* connected_devices[CONFIG_BT_MAX_CONN]; //tableau de connections
+extern int first_attr_array[CONFIG_BT_MAX_CONN]; //tableau de valeur du premier attribut de chaque connexion
 extern struct bt_conn *info_conn;
 // Discover
 extern struct bt_uuid_16 discover_uuid;
 extern struct bt_gatt_discover_params discover_params;
 extern struct bt_gatt_subscribe_params subscribe_params;
-
-
-
+// Indicate
+extern struct Ble_Indicate indicate;
 
 /****************************************************************************/
 /*								STRUCTURES									*/
@@ -64,13 +64,27 @@ extern struct bt_gatt_subscribe_params subscribe_params;
 /**
  * @brief Structure used to pass void* through
  * differents read and write function
- * @param This structure contains the size of the object
- * we want to send (with a sizeof),
- * and a pointer to the object's adress, to be generic
+ * @param size The size of the object we want to send, with
+ * a sizeof
+ * @param data A pointer to the object's adress, to be generic
 */
 struct Ble_Data {
     size_t size;
     void* data;
+};
+/**
+ * @brief Structure used to get the value indicate by the peripheral.
+ * You might use a cast to acess the data
+ * @param data A pointer to the object's adress, to be generic
+ * @param char_index An int which refer to the characteristic
+ * @param conn_index An int which refer to the connection which
+ * indicate, in order to know which peripheral is indicating
+*/
+struct Ble_Indicate{
+	size_t size;
+	void* data;
+	int char_index;
+	int conn_index;
 };
 
 /****************************************************************************/
@@ -79,10 +93,10 @@ struct Ble_Data {
 
 /**
  * @brief This function is used to init the BLE
- * @param nothing
+ * @param void
  * @return 1 if everything is okay, a zephyr error code else
 */
-int ble_enable();
+int ble_enable(void);
 
 /**
  * @brief This function is used to disable the BLE
@@ -301,7 +315,7 @@ static uint8_t discover_func(struct bt_conn *conn,
 			     const struct bt_gatt_attr *attr,
 			     struct bt_gatt_discover_params *params);
 
-static uint8_t val_received(struct bt_conn *conn,
+static uint8_t indicate_received(struct bt_conn *conn,
 			   struct bt_gatt_subscribe_params *params,
 			   const void *data, uint16_t length);
 

@@ -42,14 +42,14 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/modules/open-amp/open-amp/include/generated/openamp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/modules/open-amp/open-amp/include/generated/openamp")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/modules/open-amp/open-amp/lib/virtio/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/modules/open-amp/open-amp/lib/rpmsg/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/modules/open-amp/open-amp/lib/remoteproc/cmake_install.cmake")
 
 endif()
 

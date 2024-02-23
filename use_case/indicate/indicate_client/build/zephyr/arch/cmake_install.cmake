@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/arch/common/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/zephyr/arch/common/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/arch/arch/arm/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/use_case/indicate/indicate_client/build/zephyr/arch/arch/arm/cmake_install.cmake")
 endif()
 

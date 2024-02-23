@@ -39,46 +39,46 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/crc/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/crc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/libc/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/libc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/posix/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/posix/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/hash/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/hash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/heap/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/heap/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/mem_blocks/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/mem_blocks/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/os/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/os/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/utils/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/utils/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/lib/open-amp/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/lib/open-amp/cmake_install.cmake")
 endif()
 

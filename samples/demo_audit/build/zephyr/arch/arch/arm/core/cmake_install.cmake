@@ -39,16 +39,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/arch/arch/arm/core/cortex_m/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/arch/arch/arm/core/cortex_m/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/arch/arch/arm/core/cortex_m/cmse/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/arch/arch/arm/core/cortex_m/cmse/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/central_write_demo/build/zephyr/arch/arch/arm/core/mpu/cmake_install.cmake")
+  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/zephyr/arch/arch/arm/core/mpu/cmake_install.cmake")
 endif()
 
