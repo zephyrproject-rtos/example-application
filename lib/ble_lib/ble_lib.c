@@ -48,6 +48,12 @@ struct k_mutex ble_bus;
 /* Mutex servant a empecher les actions BLE si la connexion n'est pas effectuée*/
 struct k_mutex is_connected;
 
+struct Ble_Indicate indicate={
+    .char_index=-1,
+    .conn_index=-1,
+    .data=NULL,
+};
+
 /****************************************************************************/
 /*						FONCTIONS UTILISATEUR								*/
 /****************************************************************************/
@@ -118,7 +124,7 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 	if (envoi) //Si le cb ccf_changed est configuré
 	{
 
-		ind_params.attr = &svc.attrs[1+(4*offset)-4];
+		ind_params.attr = &svc.attrs[1+(4*offset)];
         //1+4*offset, c'est car le premier attr est pour le service,
         //et ensuite on incrémente de 4 en 4, car characteristic prend 2 attr,
         // CPF prend 1 attr, et CCC prend 1 attr. On fait -4 pour que
@@ -278,7 +284,7 @@ void ble_discover_gatt_service(uint16_t service_UUID)
 }
 
 /****************************************************************************/
-/*						FONCTIONS CACHHES API								*/
+/*						FONCTIONS PRIVEES API								*/
 /****************************************************************************/
 
 void write_result_callback(struct bt_conn *conn, uint8_t err,
@@ -351,11 +357,9 @@ ssize_t write_fonction_callback(struct bt_conn *conn,
 {
 	struct Ble_Data *char_info = (struct Ble_Data *)attr->user_data;
 	size_t to_copy = MIN(len, char_info->size - offset);
-	printk("Callback bf to copy\n");
     if (to_copy > 0) {
         memcpy(char_info->data + offset, buf, to_copy);//On copie la
         //data de la structure dans le buffer d'envoi
-		printk("Callback aft to copy\n");
         return to_copy;
     } else {
         return 0;
@@ -396,7 +400,7 @@ static uint8_t discover_func(struct bt_conn *conn,
         first_attr_array[bt_conn_index(conn)] = (attr->handle) + 2;
         struct bt_gatt_subscribe_params *subscribe_params_test = &subscribe_params_array[char_index];
         subscribe_params_test->value_handle = (attr->handle) + 2;
-        subscribe_params_test->notify = val_received;
+        subscribe_params_test->notify = indicate_received;
         subscribe_params_test->value = BT_GATT_CCC_INDICATE;
         subscribe_params_test->ccc_handle = (attr->handle) + 3;
 
@@ -423,7 +427,7 @@ static uint8_t discover_func(struct bt_conn *conn,
     else{
         struct bt_gatt_subscribe_params *subscribe_params_test = &subscribe_params_array[char_index];
         subscribe_params_test->value_handle = (attr->handle) + 1;
-        subscribe_params_test->notify = val_received;
+        subscribe_params_test->notify = indicate_received;
         subscribe_params_test->value = BT_GATT_CCC_INDICATE;
         subscribe_params_test->ccc_handle = (attr->handle) + 2;
 
@@ -552,7 +556,7 @@ static void multilink_disconnected(struct bt_conn *conn, uint8_t reason)
 	conn_count--;
 }
 
-static uint8_t val_received(struct bt_conn *conn,
+static uint8_t indicate_received(struct bt_conn *conn,
                struct bt_gatt_subscribe_params *params,
                const void *data, uint16_t length)
 {
@@ -561,15 +565,12 @@ static uint8_t val_received(struct bt_conn *conn,
         params->value_handle = 0U;
         return BT_GATT_ITER_STOP;
     }
-
+    indicate.data=data;
+    indicate.conn_index=bt_conn_index(conn);
+    indicate.char_index=(params->value_handle);//AJOUTER FIRST ATTR
     printk("Donnée reçue : attr %d\n", params->value_handle);
     return BT_GATT_ITER_CONTINUE;
 }
-
-
-
-
-
 
 BT_CONN_CB_DEFINE(conn_callbacks) = {
 	.connected = multilink_connected,
