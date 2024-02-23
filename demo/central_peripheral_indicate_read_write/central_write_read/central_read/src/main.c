@@ -20,6 +20,35 @@
 #include <zephyr/bluetooth/uuid.h>
 #include <zephyr/bluetooth/gatt.h>
 
+#include "button_lib/button_lib.h"
+#include "led_lib/led_lib.h"
+#include "ble_lib/ble_lib.h"
+
+//Déclaration du boutons 
+#define SW0_NODE	DT_ALIAS(sw0)
+static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {0});
+static struct gpio_callback isr_btn0;
+#define SW1_NODE	DT_ALIAS(sw1)
+static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {1});
+static struct gpio_callback isr_btn1;
+#define SW2_NODE	DT_ALIAS(sw2)
+static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {2});
+static struct gpio_callback isr_btn2;
+#define SW3_NODE	DT_ALIAS(sw3)
+static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios, {3});
+static struct gpio_callback isr_btn3;
+
+//LED
+#define LED0_NODE DT_ALIAS(led0)
+static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+#define LED1_NODE DT_ALIAS(led1)
+static const struct gpio_dt_spec led1 = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+#define LED2_NODE DT_ALIAS(led2)
+static const struct gpio_dt_spec led2 = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+#define LED3_NODE DT_ALIAS(led3)
+static const struct gpio_dt_spec led3 = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+
+
 static int scan_start(void);
 
 static struct bt_conn *default_conn;
@@ -37,8 +66,25 @@ static uint8_t envoi;
 //Variable pour stocker les valeurs de la characteristic BT_UUID_GATT_DO du service BT_UUID_UDS
 static uint8_t attr_value[] = { 0 };
 
+void button_pressed0(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	printk("Button 0 pressed at\n");
+	led_on(&led0);
+}
+void button_pressed1(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	printk("Button 1 pressed at\n");
+	led_on(&led1);
+}
+void button_pressed2(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	printk("Button 2 pressed at\n");
+	led_on(&led2);
+}
+void button_pressed3(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	printk("Button 3 pressed at\n");
+	led_on(&led3);
+}
 
 /* --------------- Fonction qui verifie si la configuration du CCC change et l'indique ------------*/
+/*
 static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
 				 uint16_t value)
 {
@@ -54,6 +100,7 @@ static void ccc_cfg_changed(const struct bt_gatt_attr *attr,
         printk("Indications et notifications désactivées par le serveur\n");
     }
 }
+*/
 
 
 /* --------------- Declaration du servicequ'on utilise pour l'envoi des données ---------------*/
@@ -344,6 +391,11 @@ int main(void)
 {
 	/* Variable code d'erreur*/
 	int err;
+
+	isr_btn_config(&button0, button_pressed0, &isr_btn0,GPIO_INT_EDGE_RISING);  
+	isr_btn_config(&button1, button_pressed1, &isr_btn1,GPIO_INT_EDGE_RISING); 
+	isr_btn_config(&button2, button_pressed2, &isr_btn2,GPIO_INT_EDGE_RISING); 
+	isr_btn_config(&button3, button_pressed3, &isr_btn3,GPIO_INT_EDGE_RISING); 
 
 	/*-----------------Initialisation du bluetooth---------------*/
 	err = bt_enable(NULL);

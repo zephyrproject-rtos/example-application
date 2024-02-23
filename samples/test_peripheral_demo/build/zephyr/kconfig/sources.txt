@@ -4,14 +4,16 @@
 /home/jordan/Documents/PFE_2/pfe/drivers/sensor/Kconfig
 /home/jordan/Documents/PFE_2/pfe/drivers/sensor/examplesensor/Kconfig
 /home/jordan/Documents/PFE_2/pfe/lib/Kconfig
+/home/jordan/Documents/PFE_2/pfe/lib/ble_lib/Kconfig
 /home/jordan/Documents/PFE_2/pfe/lib/button_lib/Kconfig
-/home/jordan/Documents/PFE_2/pfe/lib/custom_lib/Kconfig
 /home/jordan/Documents/PFE_2/pfe/lib/led_lib/Kconfig
 /home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/Kconfig
 /home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/Kconfig/Kconfig.dts
 /home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/Kconfig/Kconfig.modules
 /home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/Kconfig/Kconfig.shield
 /home/jordan/Documents/PFE_2/pfe/samples/test_peripheral_demo/build/Kconfig/Kconfig.shield.defconfig
+/home/jordan/Documents/PFE_2/pfe/services/Kconfig
+/home/jordan/Documents/PFE_2/pfe/services/Kconfig.led
 /home/jordan/Documents/PFE_2/zephyr/Kconfig.zephyr
 /home/jordan/Documents/PFE_2/zephyr/arch/Kconfig
 /home/jordan/Documents/PFE_2/zephyr/arch/arm/Kconfig

@@ -152,11 +152,8 @@ int main(void)
 	}
 
 	k_sem_take(&button_1, K_FOREVER);
-	valeur_indicate(info_conn);
 	
-	while(attr_value[0] != 3){
-		k_sleep(K_MSEC(1));
-	}
+	valeur_indicate(info_conn);
 
 	led_on(&led1);
 
