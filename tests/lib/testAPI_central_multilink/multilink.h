@@ -67,9 +67,11 @@ int ble_scan_start(bt_le_scan_cb_t cb);
 */
 int ble_enable();
 
+
+
 /**
  * @brief 
- * This function prints every connected devisces' MAC adress in the terminal
+ * This function prints every connected devices' MAC adress in the terminal
  * 
  * @param 
  * None. 
