@@ -116,10 +116,10 @@ BT_GATT_SERVICE_DEFINE(userdata_svc,
 	BT_GATT_CCC(ccc_cfg_changed, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
 	BT_GATT_CPF(NULL),
 
-	// //Déclaration de la caractéristique, permissions, callback etc...
-	// BT_GATT_CHARACTERISTIC(BT_UUID_GATT_DO, BT_GATT_CHRC_INDICATE | BT_GATT_CHRC_READ | BT_GATT_CHRC_WRITE, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE , read_fonction_callback, write_fonction_callback, attr_value),													   
-	// BT_GATT_CCC(ccc_cfg_changed, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
-	// BT_GATT_CPF(NULL),
+	//Déclaration de la caractéristique, permissions, callback etc...
+	BT_GATT_CHARACTERISTIC(BT_UUID_GATT_DO, BT_GATT_CHRC_INDICATE | BT_GATT_CHRC_READ | BT_GATT_CHRC_WRITE, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE , read_fonction_callback, write_fonction_callback, attr_value),													   
+	BT_GATT_CCC(ccc_cfg_changed, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
+	BT_GATT_CPF(NULL),
 
 	// //Déclaration de la caractéristique, permissions, callback etc...
 	// BT_GATT_CHARACTERISTIC(BT_UUID_GATT_DO, BT_GATT_CHRC_INDICATE | BT_GATT_CHRC_READ | BT_GATT_CHRC_WRITE, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE , read_fonction_callback, write_fonction_callback, attr_value),													   
@@ -190,30 +190,6 @@ void valeur_indicate(struct bt_conn *conn)
 			}
 			k_msleep(1000);
 
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[0], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[1], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[2], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[3], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[4], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[5], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[6], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[7], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[8], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[9], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[10], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[11], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[12], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[13], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[14], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[15], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[16], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[17], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[18], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[19], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[20], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[21], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[22], BT_GATT_CCC_INDICATE));
-			printk("Susbcribe attr 1 : %d\n", bt_gatt_is_subscribed(conn, &userdata_svc.attrs[23], BT_GATT_CCC_INDICATE));
-			printk("\n");
+		
 	}
 }

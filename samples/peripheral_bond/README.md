@@ -2,7 +2,7 @@
 ## About the project
 
 The aim of this application is to test bonding.  
-For that, program begins during 20 seconds where only already bonded device can see peripheral. After there is **ble_bond_duration(uint8_t duration)**. It take maximum duration of bonding. If one device is bonded before, it goes out of this function and send data.
+For that, program begins during 20 seconds where only already bonded device can see peripheral. After there is **ble_bond_duration()**. It take maximum duration of bonding. If one device is bonded before, it goes out of this function and send data.
 
 ## Built with
 

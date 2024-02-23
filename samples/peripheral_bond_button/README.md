@@ -2,35 +2,31 @@
 ## About the project
 
 The aim of this application is to test bonding.  
-For that, if you push button, you will open connection for unkown device. We use **ble_bond_1_conn()**. Until, there is no connection, it says open.
+For that, if you push button, you will open connection for unkown device. We use **ble_bond_1_conn()**. Until, there is no connection, it's open.
 
 ## Built with
 
 [![](https://zephyrproject.org/wp-content/uploads/sites/38/2020/09/ZephyrLogo.png)](https://www.zephyrproject.org/)
 
 ## Function's list
-- **ble_bond_param(void (\*func)(const struct bt_bond_info \*info, void \*user_data), void \*user_data)**
+- **ble_bond_init(void (\*func)(const struct bt_bond_info \*info, void \*user_data), void\* user_data)**
     * Aim : Redirects pairing request to function  
 For the moment, user can change function but may be, it's too complicated.
     * No input
     * No output
-- **ble_bond_start()**
+- **ble_bond_start(const struct bt_data\* ad, int ad_size, const struct bt_data\* sd, int sd_size)**
     * Aim : Starts bonding
     * No input
     * Output : 0 if no error or error code
-- **pairing_complete()**
-    * Aim : Restarts device after bonding
-    * No input
-    * No output
-- **ble_bond_stop()**
+- **ble_bond_stop(const struct bt_data\* ad, int ad_size, const struct bt_data\* sd, int sd_size)**
     * Aim : Stops bonding
     * No input
     * Output : 0 if no error or error code
-- **ble_bond_duration(uint8_t duration)**
+- **ble_bond_duration(uint8_t duration, const struct bt_data\* ad, int ad_size, const struct bt_data\* sd, int sd_size)**
     * Aim : Activates bonding during argument time or until there isn't connection.
     * Input : Maximum seconds of bonding
     * Output : 0 if no error or error code
-- **ble_bond_1_conn()**
+- **ble_bond_1_conn(const struct bt_data\* ad, int ad_size, const struct bt_data\* sd, int sd_size)**
     * Aim : Activates bonding until there isn't connection.
     * No input
     * Output : 0 if no error or error code
@@ -69,3 +65,5 @@ CONFIG_BT_PRIVACY=y
 | Brunet            | Jordan            | jordan.brunet12@gmail.com
 | Pedroli           | Johan             | johan.pedroli@gmail.com
 | Phung             | Billy             | billy.phung45@gmail.com
+
+4C:EB:BD:1A:B5:13

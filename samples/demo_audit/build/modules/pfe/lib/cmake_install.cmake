@@ -47,8 +47,3 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/button_lib/cmake_install.cmake")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/cmake_install.cmake")
-endif()
-

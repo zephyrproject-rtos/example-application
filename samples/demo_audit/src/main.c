@@ -3,6 +3,7 @@
 #include <led_lib/led_lib.h>
 #include "service.h"
 #include "gpios_init.h"
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stddef.h>
 #include <errno.h>
@@ -151,10 +152,20 @@ void discover_gatt_service(uint16_t service_UUID)
 
 
 
+=======
+
+static const struct bt_data ad[] = {
+	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+	BT_DATA_BYTES(BT_DATA_UUID16_ALL,BT_UUID_16_ENCODE(BT_UUID_UDS_VAL)),
+};
+
+struct bt_conn* connect;
+>>>>>>> main
 
 static void connected(struct bt_conn *conn, uint8_t err)
 {
 	if (err) {
+<<<<<<< HEAD
 	} 
 	else{
 		printk("connetced\n;");
@@ -264,6 +275,18 @@ static int scan_start(void)
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
 	printk("Disconnected\n");
+=======
+		
+	} else {
+		printk("CONNECTED\n");
+		bt_le_adv_stop();
+		connect=conn;
+	}
+}
+
+static void disconnected(struct bt_conn *conn, uint8_t reason)
+{
+>>>>>>> main
 }
 
 BT_CONN_CB_DEFINE(conn_callbacks) = {
@@ -271,6 +294,7 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 	.disconnected = disconnected,
 };
 
+<<<<<<< HEAD
 
 
 
@@ -281,6 +305,9 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 int main(void){
 	int err;
 	printk("NULL :%d\n", NULL==default_conn );
+=======
+int main(void){
+>>>>>>> main
 	button_init(&button0);
     isr_btn_config(&button0, button0_isr, &button0_cb, GPIO_INT_EDGE_BOTH);
 	button_init(&button1);
@@ -296,6 +323,7 @@ int main(void){
 	led_init(&led3);
 
 	ble_enable();
+<<<<<<< HEAD
 	/*------ Démarrage du scan pour chercher les peripheral ----*/
 	err = scan_start();
 	if (err) {
@@ -305,12 +333,20 @@ int main(void){
 	printk("Scanning successfully started\n");
 	/*----------------------------------------------------------*/
 	k_msleep(3000);
+=======
+	ble_advertise_start_conn(ad, ARRAY_SIZE(ad), NULL, 0);
+	//k_msleep(3000);
+>>>>>>> main
 	while(1){
 		led_set(&led0,button_led0);
 		led_set(&led1,button_led1);
 		led_set(&led2,button_led2);
 		led_set(&led3,button_led3);
+<<<<<<< HEAD
 		k_msleep(1);
+=======
+		k_msleep(1000); 
+>>>>>>> main
 	}
 	
 
@@ -320,24 +356,56 @@ int main(void){
 void button0_isr(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
+<<<<<<< HEAD
 	ble_write(connect, &etat_boutton_struct, first_attr);
 
+=======
+	button_led0=false;
+	if(button_state(&button0)){
+		button_led0=true;
+	}
+	ble_write(connect, &button_led0_struct, 1);
+>>>>>>> main
 }
 
 void button1_isr(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
+<<<<<<< HEAD
 	ble_write(connect, &etat_boutton_struct, first_attr+4);
+=======
+	button_led1=false;
+	if(button_state(&button1)){
+		button_led1=true;
+	}
+	ble_write(connect, &button_led1_struct, 5);
+>>>>>>> main
 }
 
 void button2_isr(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
+<<<<<<< HEAD
 	ble_write(connect, &etat_boutton_struct, first_attr+8);
+=======
+	button_led2=false;
+	if(button_state(&button2)){
+		button_led2=true;
+	}
+	ble_write(connect, &button_led2_struct, 9);
+>>>>>>> main
 }
 
 void button3_isr(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
+<<<<<<< HEAD
 	ble_write(connect, &etat_boutton_struct, first_attr+12);
+=======
+	button_led3=false;
+	if(button_state(&button3)){
+		button_led3=true;
+	}
+	ble_write(connect, &button_led3_struct, 14);
+>>>>>>> main
 }

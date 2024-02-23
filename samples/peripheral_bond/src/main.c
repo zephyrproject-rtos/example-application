@@ -15,6 +15,8 @@
 #include <zephyr/bluetooth/uuid.h>
 #include <zephyr/bluetooth/gatt.h>
 
+#include "bond_periph.h"
+
 /* Custom Service Variables */
 #define BT_UUID_CUSTOM_SERVICE_VAL \
 	BT_UUID_128_ENCODE(0x12345678, 0x1234, 0x5678, 0x1234, 0x56789abcdef0)
@@ -29,8 +31,8 @@ static const struct bt_uuid_128 write_characteristic_uuid = BT_UUID_INIT_128(
 	BT_UUID_128_ENCODE(0x12345678, 0x1234, 0x5678, 0x1234, 0x56789abcdef2));
 
 static int signed_value;
-static struct bt_le_adv_param adv_param;
-static int bond_count;
+
+struct bt_le_adv_param adv_param;
 
 static ssize_t read_signed(struct bt_conn *conn, const struct bt_gatt_attr *attr,
 			   void *buf, uint16_t len, uint16_t offset)
@@ -69,11 +71,11 @@ BT_GATT_SERVICE_DEFINE(primary_service,
 			       NULL, write_signed, NULL),
 );
 
-static const struct bt_data ad[] = {
+const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR))
 };
 
-static const struct bt_data sd[] = {
+const struct bt_data sd[] = {
 	BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_CUSTOM_SERVICE_VAL)
 };
 
@@ -96,68 +98,6 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 	.disconnected = disconnected
 };
 
-static void add_bonded_addr_to_filter_list(const struct bt_bond_info *info, void *data)
-{
-	char addr_str[BT_ADDR_LE_STR_LEN];
-
-	bt_le_filter_accept_list_add(&info->addr);
-	bt_addr_le_to_str(&info->addr, addr_str, sizeof(addr_str));
-	printk("Added %s to advertising accept filter list\n", addr_str);
-	bond_count++;
-}
-
-void ble_bond_param(void (*func)(const struct bt_bond_info *info, void *user_data), void *user_data){
-	bt_foreach_bond(BT_ID_DEFAULT, func, user_data);
-}
-
-int ble_bond_start(){
-	int err;
-	err = bt_le_adv_stop();
-	if (err) {
-		return err;
-	}
-
-	adv_param.options &= ~(BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ);
-	err = bt_le_adv_start(&adv_param, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-
-	if (err) {
-		return err;
-	}
-	return 0;
-}
-
-int ble_bond_stop(){
-	int err;
-	err = bt_le_adv_stop();
-	if (err) {
-		return err;
-	}
-	adv_param.options |= (BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ);
-	err = bt_le_adv_start(&adv_param, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-
-	if (err) {
-		printk("Advertising failed to start (err %d)\n", err);
-		return err;
-	}
-	return 0;
-}
-int ble_bond_duration(uint8_t duration){
-	int err;
-	err = ble_bond_start();
-	if(err != 0){
-		return err;
-	}
-	bond_count = 0;
-	while (bond_count == 0 && duration > 0){
-		k_sleep(K_SECONDS(1));
-		duration--;
-	}
-	err = ble_bond_stop();
-	if(err != 0){
-		return err;
-	}
-	return 0;
-}
 
 
 static void bt_ready(void)
@@ -170,7 +110,7 @@ static void bt_ready(void)
 		settings_load();
 	}
 
-	ble_bond_param(add_bonded_addr_to_filter_list, NULL);
+	ble_bond_init(NULL, NULL);
 
 	adv_param = *BT_LE_ADV_CONN_NAME;
 	adv_param.options |= BT_LE_ADV_OPT_FILTER_CONN | BT_LE_ADV_OPT_FILTER_SCAN_REQ;
@@ -185,16 +125,6 @@ static void bt_ready(void)
 
 }
 
-void pairing_complete(struct bt_conn *conn, bool bonded)
-{
-	printk("Pairing completed. Rebooting...\n");
-	sys_reboot(SYS_REBOOT_WARM);
-}
-
-static struct bt_conn_auth_info_cb bt_conn_auth_info = {
-	.pairing_complete = pairing_complete
-};
-
 int main(void)
 {
 	int err;
@@ -206,13 +136,12 @@ int main(void)
 	}
 
 	bt_ready();
-	bt_conn_auth_info_cb_register(&bt_conn_auth_info);
 
 	printk("\tNot scannable for unkown device\n");
-	k_sleep(K_SECONDS(10));
+	k_sleep(K_SECONDS(1));
 
 	printk("\tDetectable\n");
-	err = ble_bond_duration(20);
+	err = ble_bond_duration(50, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
 	if(err != 0){
 		printk("Error bonding : %d\n", err);
 		return err;

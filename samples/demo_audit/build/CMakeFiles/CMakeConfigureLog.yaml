@@ -12,7 +12,7 @@ events:
       - "CMakeLists.txt:4 (find_package)"
     message: |
       The target system is: Generic - 3.6.0 - arm
-      The host system is: Linux - 6.5.0-14-generic - x86_64
+      The host system is: Linux - 6.5.0-18-generic - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -139,8 +139,8 @@ events:
     checks:
       - "Looking for include file stdatomic.h"
     directories:
-      source: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-IEPoiK"
-      binary: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-IEPoiK"
+      source: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-9ZTcXZ"
+      binary: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-9ZTcXZ"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_MODULE_PATH: "/home/jordan/Documents/PFE_2/zephyr/cmake/modules;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake/modules;/home/jordan/Documents/PFE_2/modules/hal/libmetal/libmetal/cmake/platforms"
@@ -148,12 +148,12 @@ events:
       variable: "HAVE_STDATOMIC_H"
       cached: true
       stdout: |
-        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-IEPoiK'
+        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-9ZTcXZ'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_de284
-        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -c -o CMakeFiles/cmTC_de284.dir/HAVE_STDATOMIC_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-IEPoiK/HAVE_STDATOMIC_H.c
-        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -c  CMakeFiles/cmTC_de284.dir/HAVE_STDATOMIC_H.c.obj -o cmTC_de284   && :
-        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_de284.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
+        Run Build Command(s): /usr/bin/ninja -v cmTC_843f4
+        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -c -o CMakeFiles/cmTC_843f4.dir/HAVE_STDATOMIC_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-9ZTcXZ/HAVE_STDATOMIC_H.c
+        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -c  CMakeFiles/cmTC_843f4.dir/HAVE_STDATOMIC_H.c.obj -o cmTC_843f4   && :
+        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_843f4.dir/HAVE_STDATOMIC_H.c.obj: linker input file unused because linking not done
         
       exitCode: 0
   -
@@ -165,8 +165,8 @@ events:
     checks:
       - "Looking for include file fcntl.h"
     directories:
-      source: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-1haVVw"
-      binary: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-1haVVw"
+      source: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-6bqkiI"
+      binary: "/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-6bqkiI"
     cmakeVariables:
       CMAKE_C_FLAGS: " -Wall -Wextra"
       CMAKE_MODULE_PATH: "/home/jordan/Documents/PFE_2/zephyr/cmake/modules;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake/modules;/home/jordan/Documents/PFE_2/modules/lib/open-amp/open-amp/cmake/platforms"
@@ -174,12 +174,12 @@ events:
       variable: "HAVE_FCNTL_H"
       cached: true
       stdout: |
-        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-1haVVw'
+        Change Dir: '/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-6bqkiI'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_94c7f
-        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -Wall -Wextra -c -o CMakeFiles/cmTC_94c7f.dir/HAVE_FCNTL_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-1haVVw/HAVE_FCNTL_H.c
-        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Wall -Wextra -c  CMakeFiles/cmTC_94c7f.dir/HAVE_FCNTL_H.c.obj -o cmTC_94c7f   && :
-        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_94c7f.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
+        Run Build Command(s): /usr/bin/ninja -v cmTC_e58ac
+        [1/2] /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   -Wall -Wextra -c -o CMakeFiles/cmTC_e58ac.dir/HAVE_FCNTL_H.c.obj -c /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/CMakeFiles/CMakeScratch/TryCompile-6bqkiI/HAVE_FCNTL_H.c
+        [2/2] : && /home/jordan/zephyr-sdk-0.16.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Wall -Wextra -c  CMakeFiles/cmTC_e58ac.dir/HAVE_FCNTL_H.c.obj -o cmTC_e58ac   && :
+        arm-zephyr-eabi-gcc: warning: CMakeFiles/cmTC_e58ac.dir/HAVE_FCNTL_H.c.obj: linker input file unused because linking not done
         
       exitCode: 0
 ...

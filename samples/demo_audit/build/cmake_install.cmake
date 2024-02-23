@@ -1,4 +1,4 @@
-# Install script for directory: /home/jordan/Documents/PFE_2/pfe/samples/demo_audit
+# Install script for directory: /home/jordan/Documents/PFE_2/pfe/samples/central_write_demo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

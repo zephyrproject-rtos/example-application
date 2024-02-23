@@ -587,13 +587,6 @@
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/button_lib/CMakeFiles/install.dir
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/button_lib/CMakeFiles/install/local.dir
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/button_lib/CMakeFiles/install/strip.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/..__pfe__lib__ble_lib.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/edit_cache.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/rebuild_cache.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/list_install_components.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/install.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/install/local.dir
-/home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/lib/ble_lib/CMakeFiles/install/strip.dir
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/drivers/CMakeFiles/edit_cache.dir
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/drivers/CMakeFiles/rebuild_cache.dir
 /home/jordan/Documents/PFE_2/pfe/samples/demo_audit/build/modules/pfe/drivers/CMakeFiles/list_install_components.dir
