@@ -164,12 +164,11 @@ int ble_read(struct bt_conn *conn,
 /**
  * @brief 
  * This function is used to scan for nearby devices and connect to it by default.
- * 
  * @param 
  * -> {bt_le_scan_cb_t} cb, callback function activated when a device is found.
  * by default NULL : 
- * If NULL, then connect to device with strong enough RSSI.  
- * 
+ * If NULL, then connect to device with strong enough RSSI (above -34db).  
+ * else, you might put a function which has a connection criteria
  * @return
  * an error index. 0 if no error.
 */
@@ -178,10 +177,8 @@ int ble_scan_start(bt_le_scan_cb_t cb);
 /**
  * @brief 
  * This function prints every connected devisces' MAC adress in the terminal
- * 
  * @param 
  * None. 
- * 
  * @return
  * -
 */
