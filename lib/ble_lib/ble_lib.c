@@ -41,9 +41,17 @@ struct bt_gatt_discover_params discover_params;
 struct bt_gatt_subscribe_params subscribe_params_array[NB_CHAR];
 int char_index = 0;
 
+bt_le_scan_cb_t* save_cb_scan;
+/* Mutex servant a gérer les permissions de lecture/ecriture*/
+struct k_mutex ble_bus;
+/* Mutex servant a empecher les actions BLE si la connexion n'est pas effectuée*/
+struct k_mutex is_connected;
+
 /****************************************************************************/
 /*						FONCTIONS UTILISATEUR								*/
 /****************************************************************************/
+
+
 
 
 int ble_enable(){
@@ -85,7 +93,6 @@ int ble_advertise_start_conn(const struct bt_data* ad,
 		return err;
 	}
     else{
-        ble_is_advertising=true;
         return 1;
     }
 }
@@ -101,7 +108,6 @@ int ble_advertise_start_nconn(const struct bt_data* ad,
 		return err;
 	}
     else{
-        ble_is_advertising=true;
         return 1;
     }
 }
@@ -110,6 +116,7 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 {
 	if (envoi) //Si le cb ccf_changed est configuré
 	{
+
 		ind_params.attr = &svc.attrs[1+(4*offset)-4];
         //1+4*offset, c'est car le premier attr est pour le service,
         //et ensuite on incrémente de 4 en 4, car characteristic prend 2 attr,
@@ -119,7 +126,6 @@ int ble_indicate(struct Ble_Data* data, const struct bt_gatt_service_static svc,
 		ind_params.destroy = indicate_destroy;
 		ind_params.data = data->data;
 		ind_params.len = data->size;
-		printk("INDICATE SIZE = %d\n",data->size);
 
 		// On envoie la nouvelle valeur avec un indicate
 		if (bt_gatt_indicate(NULL, &ind_params) == 0)
@@ -210,8 +216,7 @@ int ble_write(struct bt_conn *conn, struct Ble_Data* value, int attr_handle){
     }
 }
 
-int ble_scan_start(bt_le_scan_cb_t cb){
-
+int ble_scan_start(bt_le_scan_cb_t* cb){
     /*Scan parameter*/
 	struct bt_le_scan_param scan_param = { 
 		.type       = BT_LE_SCAN_TYPE_ACTIVE,
@@ -220,9 +225,9 @@ int ble_scan_start(bt_le_scan_cb_t cb){
 		.window     = BT_GAP_SCAN_FAST_WINDOW,
 	};
 	int err;
-
+    save_cb_scan=cb;
     /*Default callback*/
-    if(cb==NULL)
+    if(save_cb_scan==NULL)
     {
 	err = bt_le_scan_start(&scan_param, device_found);
 	if (err) {
@@ -248,7 +253,6 @@ int ble_scan_start(bt_le_scan_cb_t cb){
 void ble_showconn(){
     int i;
     char addr[BT_ADDR_LE_STR_LEN];
-
     for(i=0;i<conn_count;i++) {
         bt_addr_le_to_str(bt_conn_get_dst(connected_devices[i]), addr, sizeof(addr));
         printk("Device %d : %s\n",i,addr);
@@ -380,7 +384,7 @@ static uint8_t discover_func(struct bt_conn *conn,
     if (!attr) {
         printk("Discover complete\n");
         (void)memset(params, 0, sizeof(*params));
-		if(conn_count<CONFIG_BT_MAX_CONN) ble_scan_start(NULL);
+		if(conn_count<CONFIG_BT_MAX_CONN) ble_scan_start(save_cb_scan);
         return BT_GATT_ITER_STOP;
     }
 
@@ -467,7 +471,7 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 	if (conn_connecting) {
 		return;
 	}
-	printk("dans device found\n");
+	//printk("dans device found\n");
 	if (rssi > -34){ //ajout filtre puissance signal
 
 	/*Display scanned devices informations*/
@@ -486,7 +490,7 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 			err = bt_conn_le_create(addr, &create_param, &conn_param, &conn_connecting);
 			if (err) {
 				printk("Create connection failed (err %d)\n", err);
-				ble_scan_start(NULL); //Retry scan with default parameters if failed
+				ble_scan_start(save_cb_scan); //Retry scan with default parameters if failed
 			}
 		return;
 	}
@@ -507,7 +511,7 @@ static void multilink_connected(struct bt_conn *conn, uint8_t reason)
 		bt_conn_unref(conn_connecting);
 		conn_connecting = NULL;
 
-		ble_scan_start(NULL);
+		ble_scan_start(save_cb_scan);
 		return;
 	}
 
@@ -537,8 +541,11 @@ static void multilink_disconnected(struct bt_conn *conn, uint8_t reason)
 
 	if ((conn_count == 1U) && is_disconnecting) {
 		is_disconnecting = false;
-		ble_scan_start(NULL);
+		ble_scan_start(save_cb_scan);
 	}
+    for(int i=bt_conn_index(conn)+1; i<conn_count; i++){
+        connected_devices[i]=connected_devices[i+1];
+    }
 	conn_count--;
 }
 
