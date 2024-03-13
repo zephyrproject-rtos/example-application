@@ -57,6 +57,7 @@ west update
 To build the application, run the following command:
 
 ```shell
+cd example-application
 west build -b $BOARD app
 ```
 
