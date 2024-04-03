@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <custom_lib/custom_lib.h>
+#include <app/custom_lib/custom_lib.h>
 
 int custom_lib_get_value(int return_value_if_nonzero)
 {
