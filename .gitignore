@@ -11,3 +11,6 @@
 /twister-out*
 
 __pycache__/
+
+# docs
+/doc/_build*
