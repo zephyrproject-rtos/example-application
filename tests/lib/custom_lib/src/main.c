@@ -15,7 +15,7 @@
 
 #include <zephyr/ztest.h>
 
-#include <custom_lib/custom_lib.h>
+#include <app/custom_lib/custom_lib.h>
 
 ZTEST(custom_lib, test_get_value)
 {
