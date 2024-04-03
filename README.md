@@ -1,4 +1,11 @@
 # Zephyr Example Application
+ 
+<a href="https://zephyrproject-rtos.github.io/example-application/doxygen">
+  <img alt="API Documentation" src="https://img.shields.io/badge/API-documentation-3D578C?logo=c&logoColor=white">
+</a>
+<a href="https://zephyrproject-rtos.github.io/example-application/sphinx">
+  <img alt="Documentation" src="https://img.shields.io/badge/documentation-3D578C?logo=sphinx&logoColor=white">
+</a>
 
 This repository contains a Zephyr example application. The main purpose of this
 repository is to serve as a reference on how to structure Zephyr-based
