@@ -2,4 +2,4 @@
 # SPDX-License-Identifier: Apache-2.0
 
 zephyr_library()
-zephyr_library_sources(examplesensor.c)
+zephyr_library_sources(example_sensor.c)
