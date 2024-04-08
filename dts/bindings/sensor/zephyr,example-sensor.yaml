@@ -7,12 +7,12 @@ description: |
 
   Example definition in devicetree:
 
-    examplesensor {
-        compatible = "zephyr,examplesensor";
+    example-sensor {
+        compatible = "zephyr,example-sensor";
         input-gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
     };
 
-compatible: "zephyr,examplesensor"
+compatible: "zephyr,example-sensor"
 
 include: base.yaml
 
