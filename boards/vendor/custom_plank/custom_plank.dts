@@ -21,6 +21,12 @@
 		compatible = "zephyr,example-sensor";
 		input-gpios = <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 	};
+
+	blink_led: blink-led {
+		compatible = "blink-gpio-led";
+		led-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+		blink-period-ms = <1000>;
+	};
 };
 
 &uicr {
