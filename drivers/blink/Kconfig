@@ -18,4 +18,6 @@ module = BLINK
 module-str = blink
 source "subsys/logging/Kconfig.template.log_config"
 
+rsource "Kconfig.gpio_led"
+
 endif # BLINK
