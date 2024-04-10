@@ -1,6 +1,6 @@
 # Zephyr Example Application
  
-<a href="https://zephyrproject-rtos.github.io/example-application/sphinx">
+<a href="https://zephyrproject-rtos.github.io/example-application">
   <img alt="Documentation" src="https://img.shields.io/badge/documentation-3D578C?logo=sphinx&logoColor=white">
 </a>
 <a href="https://zephyrproject-rtos.github.io/example-application/doxygen">
