@@ -6,16 +6,15 @@
 Welcome to Example Application's documentation!
 ===============================================
 
+This is a simple Sphinx documentation setup for ``example-application``.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents
 
    drivers/index
    lib/index
-
-This is a simple Sphinx documentation setup for ``example-application``. You can
-reference Zephyr documentation items, like
-:external+zephyr:ref:`getting_started` or :external+zephyr:c:func:`k_sleep`.
+   zephyr
 
 Indices and tables
 ==================
