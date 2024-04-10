@@ -31,7 +31,7 @@ jobs:
 
           mkdir deploy
           mv _build_doxygen/html deploy/doxygen
-          mv _build_sphinx/html deploy/sphinx
+          mv _build_sphinx/html/* deploy
 
       - name: Setup pages
         if: github.event_name != 'pull_request'
