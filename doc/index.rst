@@ -8,7 +8,10 @@ Welcome to Example Application's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
+
+   drivers/index
+   lib/index
 
 This is a simple Sphinx documentation setup for ``example-application``. You can
 reference Zephyr documentation items, like
