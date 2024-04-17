@@ -19,7 +19,7 @@ applications. Some of the features demonstrated in this example are:
 - Custom [devicetree bindings][bindings]
 - Out-of-tree [drivers][drivers]
 - Out-of-tree libraries
-- Example CI configuration (using Github Actions)
+- Example CI configuration (using GitHub Actions)
 - Custom [west extension][west_ext]
 - Doxygen and Sphinx documentation boilerplate
 
@@ -105,7 +105,7 @@ documentation first change to the ``doc`` folder:
 cd doc
 ```
 
-Before continueing, check if you have Doxygen installed. It is recommended to
+Before continuing, check if you have Doxygen installed. It is recommended to
 use the same Doxygen version used in [CI](.github/workflows/docs.yml). To
 install Sphinx, make sure you have a Python installation in place and run:
 
