@@ -46,7 +46,7 @@ static int example_sensor_channel_get(const struct device *dev,
 	return 0;
 }
 
-static const struct sensor_driver_api example_sensor_api = {
+static DEVICE_API(sensor, example_sensor_api) = {
 	.sample_fetch = &example_sensor_sample_fetch,
 	.channel_get = &example_sensor_channel_get,
 };
