@@ -1,0 +1,19 @@
+# Copyright (c) 2021, Legrand North America, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config CUSTOM
+	bool "Support for custom library"
+	help
+	  This option enables the 'custom' library
+
+config CUSTOM_GET_VALUE_DEFAULT
+	int "custom_get_value() default return value"
+	depends on CUSTOM
+	default 0
+	help
+	  This option primarily exists as an example of a library Kconfig
+	  setting.
+
+	  This option specifies the value for custom_get_value() to return
+	  when the input parameter is zero. (Otherwise the function returns the
+	  input parameter value.)

@@ -1,0 +1,28 @@
+# Copyright (c) 2024 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  A generic binding for a GPIO-controlled blinking LED. Note that this binding
+  has no vendor prefix, as it does not target a specific device or vendor.
+
+  Example definition in devicetree:
+
+    blink-gpio-led {
+        compatible = "blink-gpio-led";
+        led-gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+        blink-period-ms = <1000>;
+    };
+
+compatible: "blink-gpio-led"
+
+include: base.yaml
+
+properties:
+  led-gpios:
+    type: phandle-array
+    required: true
+    description: GPIO-controlled LED.
+
+  blink-period-ms:
+    type: int
+    description: Initial blinking period in milliseconds.

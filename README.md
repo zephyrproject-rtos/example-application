@@ -36,6 +36,13 @@ Reopen in Container" task (you can do this by clicking on the blue box in the lo
 left corner of vscode and then selecting the appropriate task).
 
 # Zephyr Example Application
+ 
+<a href="https://zephyrproject-rtos.github.io/example-application">
+  <img alt="Documentation" src="https://img.shields.io/badge/documentation-3D578C?logo=sphinx&logoColor=white">
+</a>
+<a href="https://zephyrproject-rtos.github.io/example-application/doxygen">
+  <img alt="API Documentation" src="https://img.shields.io/badge/API-documentation-3D578C?logo=c&logoColor=white">
+</a>
 
 This repository contains a Zephyr example application. The main purpose of this
 repository is to serve as a reference on how to structure Zephyr-based
@@ -49,8 +56,9 @@ applications. Some of the features demonstrated in this example are:
 - Custom [devicetree bindings][bindings]
 - Out-of-tree [drivers][drivers]
 - Out-of-tree libraries
-- Example CI configuration (using Github Actions)
+- Example CI configuration (using GitHub Actions)
 - Custom [west extension][west_ext]
+- Doxygen and Sphinx documentation boilerplate
 
 This repository is versioned together with the [Zephyr main tree][zephyr]. This
 means that every time that Zephyr is tagged, this repository is tagged as well
@@ -90,6 +98,7 @@ environment. Follow the official
 To build the application, run the following command:
 
 ```shell
+cd example-application
 west build -b $BOARD app
 ```
 
@@ -111,3 +120,44 @@ Once you have built the application, run the following command to flash it:
 ```shell
 west flash
 ```
+
+### Testing
+
+To execute Twister integration tests, run the following command:
+
+```shell
+west twister -T tests --integration
+```
+
+### Documentation
+
+A minimal documentation setup is provided for Doxygen and Sphinx. To build the
+documentation first change to the ``doc`` folder:
+
+```shell
+cd doc
+```
+
+Before continuing, check if you have Doxygen installed. It is recommended to
+use the same Doxygen version used in [CI](.github/workflows/docs.yml). To
+install Sphinx, make sure you have a Python installation in place and run:
+
+```shell
+pip install -r requirements.txt
+```
+
+API documentation (Doxygen) can be built using the following command:
+
+```shell
+doxygen
+```
+
+The output will be stored in the ``_build_doxygen`` folder. Similarly, the
+Sphinx documentation (HTML) can be built using the following command:
+
+```shell
+make html
+```
+
+The output will be stored in the ``_build_sphinx`` folder. You may check for
+other output formats other than HTML by running ``make help``.
