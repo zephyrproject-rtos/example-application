@@ -36,3 +36,7 @@
 	pinctrl-1 = <&uart0_sleep>;
 	pinctrl-names = "default", "sleep";
 };
+
+&gpiote {
+    status = "okay";
+};

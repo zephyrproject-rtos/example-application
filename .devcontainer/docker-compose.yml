@@ -1,24 +1,29 @@
 version: '3.8'
 
 services:
-  container_name:
-    build: .
-    user: mainUser
+  zdev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: "zdev"
+        PROJECT_NAME: "zephyr-docker-example-application"
+    user: zdev
     tty: true
     init: true
     privileged: true
     command: bash
-    working_dir: /home/mainUser/zephyrproject/zephyr_docker_example_application
+    working_dir: /home/zdev/zephyr-docker-example-application
     volumes:
       - type: bind
         source: /dev
         target: /dev
       - type: bind
         source: ../
-        target: /home/mainUser/zephyrproject/zephyr_docker_example_application
+        target: /home/zdev/zephyr-docker-example-application
       - type: bind
         source: ~/.gitconfig
-        target: /home/mainUser/.gitconfig
+        target: /home/zdev/.gitconfig
 
 volumes:
   bashhistory:

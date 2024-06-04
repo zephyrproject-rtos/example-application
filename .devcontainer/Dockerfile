@@ -1,12 +1,22 @@
-# Base Image (ci-base)
-
+# Zephyr base docker image
 FROM ubuntu:22.04
 
-ARG UID=5000
-ARG GID=5000
-ARG USERNAME=mainUser
+# the zephyr repo version is set in .devcontainer/west.yml
+ARG ZEPHYR_SDK_VERSION=0.16.5-1
+
+# These args must be passed in from the docker-compose.yml file.
+ARG USERNAME
+ARG PROJECT_NAME
+
+ARG UID=1000
+ARG GID=1000
 ARG USER_UID=$UID
 ARG USER_GID=$GID
+ARG ZEPHYR_PROG_DIR=/home/${USERNAME}/
+ARG ZEPHYR_REPO_DIR=/home/${USERNAME}/zephyr
+ARG PROJECT_DIR=${ZEPHYR_PROG_DIR}/${PROJECT_NAME}
+
+WORKDIR ${PROJECT_DIR}
 
 # Set default shell during Docker image build to bash
 SHELL ["/bin/bash", "-c"]
@@ -124,41 +134,60 @@ RUN apt-get clean -y && \
 	apt-get autoremove --purge -y && \
 	rm -rf /var/lib/apt/lists/*
 
-# Create User
-RUN groupadd -g $GID -o $USERNAME \
+# Create user account
+RUN groupadd --gid $USER_GID $USERNAME \
 	&& useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME && usermod -a -G dialout,plugdev $USERNAME \
-	&& passwd -d $USERNAME \
-	&& mkdir /home/$USERNAME/bin && chown $USERNAME:$USERNAME /home/$USERNAME/bin \
-	&& echo '$USERN ALL = NOPASSWD: ALL' > /etc/sudoers.d/$USERNAME \
+	&& echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 	&& chmod 0440 /etc/sudoers.d/$USERNAME \
-	&& usermod -aG sudo $USERNAME
-
+	&& cp /etc/skel/.bashrc /home/$USERNAME/ \
+	&& chown -R $USERNAME:$USERNAME /home/$USERNAME/
 USER $USERNAME
-ARG PROJECT_WORK_DIR=zephyr_docker_example_application
 
-# Download SDK
-RUN cd ~ && wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0_linux-x86_64.tar.xz \
-	&& wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/sha256.sum | shasum --check --ignore-missing \
-	&& tar xvf zephyr-sdk-0.16.0_linux-x86_64.tar.xz \
-	&& cd zephyr-sdk-0.16.0 \
+# Download Zephyr SDK
+RUN cd ~ && wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VERSION}/zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-x86_64.tar.xz \
+	&& wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VERSION}/sha256.sum | shasum --check --ignore-missing \
+	&& tar xvf zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-x86_64.tar.xz \
+	&& cd zephyr-sdk-${ZEPHYR_SDK_VERSION} \
 	&& ./setup.sh -t all \
 	&& ./setup.sh -c \
 	&& ./setup.sh -h
 
-# Install zephy dependencies
-RUN pip3 install --user -U west && echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc && source ~/.bashrc \
-	&& west init ~/zephyrproject && cd ~/zephyrproject && west update \
+# Instal west
+RUN pip3 install --user -U west \
+	&& echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc
+
+# Initalize Zephyr workspace
+ARG ZEPHYR_MANIFEST_FILE=${ZEPHYR_PROG_DIR}/west.yml
+COPY west.yml ${ZEPHYR_MANIFEST_FILE}
+RUN cat ${ZEPHYR_MANIFEST_FILE}
+RUN	cd  ${PROJECT_DIR} \
+	&& west init --mf ${ZEPHYR_PROG_DIR}/west.yml -l \
+	&& cd ${ZEPHYR_PROG_DIR} && west update \
 	&& west zephyr-export \
-	&& pip3 install --user -r ~/zephyrproject/zephyr/scripts/requirements.txt
+	&& pip3 install --user -r ${ZEPHYR_PROG_DIR}/zephyr/scripts/requirements.txt \
+    && west completion bash | sudo tee /etc/bash_completion.d/west-completion.bash > /dev/null
 
+# Setup command history volume
+RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
+	&& sudo mkdir /commandhistory \
+	&& sudo touch /commandhistory/.bash_history \
+	&& sudo chown -R $USERNAME /commandhistory \
+	&& sudo echo $SNIPPET >> "/home/$USERNAME/.bashrc"
 
-RUN	sudo apt-get -y update && \
+# Show git branch in terminal
+RUN echo "export GIT_PS1_SHOWDIRTYSTATE=1" >> ~/.bashrc \
+	&& echo "source /usr/lib/git-core/git-sh-prompt" >> ~/.bashrc \
+	&& echo "export PS1='\\[\\033[01;34m\\]\\u \\[\\033[01;32m\\]\\W\\[\\033[00;36m\\]\$(__git_ps1)\\[\\033[01;33m\\] \\$\\[\\033[01;0m\\] '" >> ~/.bashrc
+
+# Final container tweaks. Add all additional apt packages to this list to minimize dev container rebuild time.
+RUN sudo apt-get -y update && \
 	sudo apt-get -y upgrade && \
 	sudo apt-get install --no-install-recommends -y \
 		bash-completion \
 		clang-format \
+		gcc-arm-none-eabi \
 		openocd \
 		vim \
 	&& sudo ln -s /usr/bin/clang-format /usr/bin/clang-format-9
 
-ENTRYPOINT ["sh", "-c", "scripts/docker_setup.sh && bash"]
+ENTRYPOINT ["sh", "-c", "bash"]

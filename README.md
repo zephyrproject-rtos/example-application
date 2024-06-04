@@ -8,6 +8,33 @@ This repository has the following added feature.
 - vscode cortex debugger integration
 - Auto format on save using clang-format
 
+# Configuring The Docker Environment
+The configureation files for this docker environment are in `/.devcontainer`.
+- ``devcontainer.json``: This is file is used by the vscode "Dev Containers" extension.
+    This file selects the docker-compose file you will be using as well as settings to
+    use in the container and extensions to be installed into the container after
+    the docker setup portion is complete.
+- ``docker-compose.yml``: This file points to the Dockerfile you are using and configures
+    args for it. You can modify the USERNAME arg to configure the name of the default user
+    in the dev container. It also contains a list of volumes to be bound to the container.
+- ``Dockerfile``: This contains all of the setup scripts to install all the dependencies
+    for you dec container. This contains things like the zephyr-sdk version you are using.
+- ``west.yml``: This file is used to setup your zephyr environment and contains things like
+    the zephyr version you are using and the modules you want installed. Note: if you make
+    changes to this file in order for them to take affect you will likely have to do a clean
+    rebuild of you dev container. To do this hit ctrl+shift+p then type/select "Dev Containers:
+    Rebuild Container Without Cache". This will take significantly longer than rebuilding
+    with cache so try to do this as infrequently as possible.
+
+# Building The Docker Container
+To get started with your docker container simply clone this repository and open it
+in vscode. The make sure you have the "Dev Containers" vscode extension installed.
+Make sure you have docker and docker-compose installed (instructions for installing
+docker can be found here https://docs.docker.com/engine/install/ubuntu/). Once you
+have everything installed you will need to run the "Dev Container: Rebuild and
+Reopen in Container" task (you can do this by clicking on the blue box in the lower
+left corner of vscode and then selecting the appropriate task).
+
 # Zephyr Example Application
 
 This repository contains a Zephyr example application. The main purpose of this

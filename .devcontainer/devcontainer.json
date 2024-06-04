@@ -3,8 +3,8 @@
 	"dockerComposeFile": [
 		"docker-compose.yml"
 	],
-	"service": "container_name",
-	"workspaceFolder": "/home/mainUser/zephyrproject/zephyr_docker_example_application",
+	"service": "zdev",
+	"workspaceFolder": "/home/zdev/zephyr-docker-example-application",
 	"settings": {
 		"editor.defaultFormatter": "xaver.clang-format",
 		"editor.formatOnSave": false
@@ -21,7 +21,8 @@
 				"mhutchie.git-graph",
 				"eamodio.gitlens",
 				"trond-snekvik.kconfig-lang",
-				"marus25.cortex-debug"
+				"marus25.cortex-debug",
+				"ycsin.zephyrproject-extension-pack"
 			]
 		}
 	}
