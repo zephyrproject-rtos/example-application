@@ -1,0 +1,29 @@
+{
+	"name": "Existing Docker Compose (Extend)",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "zephyr-dev-env",
+	"workspaceFolder": "/home/zephyrUser/example-application",
+	"settings": {
+		"editor.defaultFormatter": "xaver.clang-format",
+		"editor.formatOnSave": false
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"xaver.clang-format",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"trond-snekvik.devicetree",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"trond-snekvik.kconfig-lang",
+				"marus25.cortex-debug",
+				"ycsin.zephyrproject-extension-pack"
+			]
+		}
+	}
+}

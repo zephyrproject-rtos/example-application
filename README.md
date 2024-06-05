@@ -43,10 +43,14 @@ points to the development branch of Zephyr, also `main`.
 ## Getting Started
 
 Before getting started, make sure you have a proper Zephyr development
-environment. Follow the official
+environment setup.
+
+### Option 1: Setup Zephyr Dev Environment on Local Host
+
+Follow the official
 [Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html).
 
-### Initialization
+#### Initialization
 
 The first step is to initialize the workspace folder (``my-workspace``) where
 the ``example-application`` and all Zephyr modules will be cloned. Run the following
@@ -59,6 +63,14 @@ west init -m https://github.com/zephyrproject-rtos/example-application --mr main
 cd my-workspace
 west update
 ```
+
+### Option 2: Setup Zephyr Dev Environment in Docker Container
+
+1. [Setup and install docker](https://docs.docker.com/engine/install/ubuntu/)
+2. Clone this repository
+3. Open repo in vscode
+4. Install the vscode "Dev Containers" extension.
+5. Click on the blue icon in the lower left corner of vscode and select "Dev Containers: Rebuild Container" and wait for the dev container to be setup.
 
 ### Building and running
 
@@ -128,3 +140,23 @@ make html
 
 The output will be stored in the ``_build_sphinx`` folder. You may check for
 other output formats other than HTML by running ``make help``.
+
+### Configuring The Docker Environment
+
+The configureation files for the docker environment are in `/.devcontainer`.
+- ``devcontainer.json``: This is file is used by the vscode "Dev Containers"
+    extension. This file selects the docker-compose file you will be using
+    as well as settings to use in the container and extensions to be installed
+    into the container after the docker setup portion is complete.
+- ``docker-compose.yml``: This file points to the Dockerfile you are using
+    and configures args for it. You can modify the USERNAME arg to configure
+    the name of the default user in the dev container. It also contains a
+    list of volumes to be bound to the container.
+- ``Dockerfile``: This contains all of the setup scripts to install all
+    the dependencies for you dec container. This contains things like the
+    zephyr-sdk version you are using.
+
+Anytime you edit the manifest file ``west.yml`` you will need to do a clean
+rebuild of you dev container. To do this press ``ctrl+shift+p`` then
+type/select ``Dev Containers: Rebuild Container Without Cache``. Note that
+this will take significantly longer than rebuilding with cache.

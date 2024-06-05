@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  zephyr-dev-env:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        USERNAME: "zephyrUser"
+        PROJECT_NAME: "example-application"
+    user: zephyrUser
+    tty: true
+    init: true
+    privileged: true
+    command: bash
+    working_dir: /home/zephyrUser/example-application
+    volumes:
+      - type: bind
+        source: /dev
+        target: /dev
+      - type: bind
+        source: ../
+        target: /home/zephyrUser/example-application
+      - type: bind
+        source: ~/.gitconfig
+        target: /home/zephyrUser/.gitconfig
+
+volumes:
+  bashhistory:
+  ccache:
+    name: zephyr_docker_ccache
