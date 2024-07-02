@@ -53,7 +53,7 @@ static int blink_gpio_led_set_period_ms(const struct device *dev,
 	return 0;
 }
 
-static const struct blink_driver_api blink_gpio_led_api = {
+static DEVICE_API(blink, blink_gpio_led_api) = {
 	.set_period_ms = &blink_gpio_led_set_period_ms,
 };
 
