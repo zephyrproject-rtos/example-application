@@ -34,17 +34,23 @@ jobs:
           mv _build_sphinx/html/* deploy
 
       - name: Setup pages
-        if: github.event_name != 'pull_request'
+        if: |
+          github.event_name != 'pull_request' &&
+          github.repository == 'zephyrproject-rtos/example-application'
         uses: actions/configure-pages@v4
 
       - name: Upload pages artifact
-        if: github.event_name != 'pull_request'
+        if: |
+          github.event_name != 'pull_request' &&
+          github.repository == 'zephyrproject-rtos/example-application'
         uses: actions/upload-pages-artifact@v3
         with:
           path: doc/deploy
 
       - name: Upload artifacts
-        if: github.event_name == 'pull_request'
+        if: |
+          github.event_name == 'pull_request' &&
+          github.repository == 'zephyrproject-rtos/example-application'
         uses: actions/upload-artifact@v4
         with:
           path: doc/deploy
@@ -52,7 +58,9 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     needs: build
-    if: github.event_name != 'pull_request'
+    if: |
+      github.event_name != 'pull_request' &&
+      github.repository == 'zephyrproject-rtos/example-application'
     permissions:
       pages: write
       id-token: write
