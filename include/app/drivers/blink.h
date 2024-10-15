@@ -8,6 +8,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/toolchain.h>
+#include <zephyr/sys/check.h>
 
 /**
  * @defgroup drivers_blink Blink drivers
@@ -82,10 +83,11 @@ __syscall int blink_set_period_ms(const struct device *dev,
 static inline int z_impl_blink_set_period_ms(const struct device *dev,
 					     unsigned int period_ms)
 {
-	const struct blink_driver_api *api =
-		(const struct blink_driver_api *)dev->api;
+	CHECKIF(!DEVICE_API_IS(blink, dev)) {
+		return -ENODEV;
+	}
 
-	return api->set_period_ms(dev, period_ms);
+	return DEVICE_API_GET(blink, dev)->set_period_ms(dev, period_ms);
 }
 
 /**
