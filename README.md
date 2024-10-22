@@ -85,7 +85,7 @@ A sample debug configuration is also provided. To apply it, run the following
 command:
 
 ```shell
-west build -b $BOARD app -- -DOVERLAY_CONFIG=debug.conf
+west build -b $BOARD app -- -DEXTRA_CONF_FILE=debug.conf
 ```
 
 Once you have built the application, run the following command to flash it:
