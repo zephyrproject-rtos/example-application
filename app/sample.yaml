@@ -3,14 +3,20 @@
 # so that you can easily test all of them locally or in CI.
 sample:
   description: Example application
-  name: example-application 
+  name: example-application
 common:
-  build_only: true
   integration_platforms:
-    - custom_plank
-    - nucleo_f302r8
+    - native_sim
 tests:
-  app.default: {}
-  app.debug:
-    extra_overlay_confs:
-      - debug.conf
+  zephyr.test.app:
+    timeout: 5
+    harness: console
+    harness_config:
+      type: multi_line
+      ordered: false
+      regex:
+        - "loop..."
+    tags:
+      - test_app
+    platform_allow:
+      - native_sim

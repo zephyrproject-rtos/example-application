@@ -2,6 +2,5 @@
 # SPDX-License-Identifier: Apache-2.0
 
 menu "Drivers"
-rsource "blink/Kconfig"
 rsource "sensor/Kconfig"
 endmenu
