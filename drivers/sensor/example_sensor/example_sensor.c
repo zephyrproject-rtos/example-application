@@ -27,7 +27,7 @@ static int example_sensor_sample_fetch(const struct device *dev,
 	struct example_sensor_data *data = dev->data;
 
 	data->state = gpio_pin_get_dt(&config->input);
-
+	// data->state ++;
 	return 0;
 }
 
@@ -37,12 +37,16 @@ static int example_sensor_channel_get(const struct device *dev,
 {
 	struct example_sensor_data *data = dev->data;
 
-	if (chan != SENSOR_CHAN_PROX) {
+	if (chan != SENSOR_CHAN_PROX && chan !=  SENSOR_CHAN_AMBIENT_TEMP) {
 		return -ENOTSUP;
 	}
 
-	val->val1 = data->state;
+//	if (chan ==  SENSOR_CHAN_AMBIENT_TEMP){
+//		val->val1 = 100;
+//	}
 
+	//val->val1 = data->state;
+	val->val1 = 100;
 	return 0;
 }
 

@@ -18,6 +18,7 @@ int main(void)
 	struct sensor_value value_x;
 
 	sensor = DEVICE_DT_GET(DT_NODELABEL(example_sensor));
+
 	if (!device_is_ready(sensor)) {
 		LOG_ERR("Sensor not ready");
 		return 0;
@@ -36,7 +37,7 @@ int main(void)
 		}
 
 		ret = sensor_channel_get(sensor, SENSOR_CHAN_PROX, &value_x);
-		printk("sensor_sample_get ret: %d\n", ret);
+		printk("sensor_sample_get ret: %d  valor del sensor: %d\n", ret, value_x.val1);
 
     }
 

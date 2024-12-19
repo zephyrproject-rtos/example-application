@@ -15,6 +15,8 @@
 		input-gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 	};
 
+
+
 };
 
 &gpio0 {
