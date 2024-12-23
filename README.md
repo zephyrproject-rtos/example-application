@@ -27,6 +27,7 @@ applications. Some of the features demonstrated in this example are:
 - Out-of-tree libraries
 - Example CI configuration (using GitHub Actions)
 - Custom [west extension][west_ext]
+- Custom [Zephyr runner][runner_ext]
 - Doxygen and Sphinx documentation boilerplate
 
 This repository is versioned together with the [Zephyr main tree][zephyr]. This
@@ -45,6 +46,7 @@ points to the development branch of Zephyr, also `main`.
 [drivers]: https://docs.zephyrproject.org/latest/reference/drivers/index.html
 [zephyr]: https://github.com/zephyrproject-rtos/zephyr
 [west_ext]: https://docs.zephyrproject.org/latest/develop/west/extensions.html
+[runner_ext]: https://docs.zephyrproject.org/latest/develop/modules.html#external-runners
 
 ## Getting Started
 
