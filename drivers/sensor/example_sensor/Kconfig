@@ -8,3 +8,27 @@ config EXAMPLE_SENSOR
 	select GPIO
 	help
 	  Enable example sensor
+
+config MY_TIMER_INITIAL_DELAY
+    int "Initial delay for my timer (in seconds)"
+    default 100
+    help
+      Configura el retraso inicial para el temporizador en segundos.
+
+config MY_TIMER_PERIOD
+    int "Period for my timer (in seconds)"
+    default 10
+    help
+      Configura el período para el temporizador en segundos.
+
+config PATH_TO_CSV_FILE
+	string "Path to the CSV file"
+	default "/home/nbergall/Desktop/data.csv"
+	help
+	  Configura la ruta al archivo CSV.
+
+config SIZE_LINE_MAX
+	int "Max size of a line in the CSV file"
+	default 10
+	help
+	  Configura el tamaño máximo de una línea en el archivo CSV.
