@@ -26,6 +26,9 @@ int main(void)
 
 	LOG_INF("Zephyr Example Application %s\n", APP_VERSION_STRING);
 
+	init_my_timer();
+	start_my_timer();
+
 	while (1) {
         k_sleep(K_MSEC(2000));
         LOG_INF("loop...");

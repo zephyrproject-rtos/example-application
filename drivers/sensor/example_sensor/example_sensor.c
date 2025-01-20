@@ -16,8 +16,34 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(example_sensor, CONFIG_SENSOR_LOG_LEVEL);
 
-//static FILE *csv_file = NULL;
+// timer expires
+// Declare the timer
+struct k_timer my_timer;
 
+// Timer expiry function
+void my_timer_expiry_function(struct k_timer *timer_id) {
+    LOG_INF("Timer expired");
+}
+
+// Timer stop function - el expires timer doesn't have stop function...
+void my_timer_stop_function(struct k_timer *timer_id) {
+    LOG_INF("Timer stopped");
+}
+
+// Initialize the timer
+void init_my_timer(void) {
+    k_timer_init(&my_timer, my_timer_expiry_function, my_timer_stop_function);
+}
+
+// In your function where you start the timer
+// start a periodic timer that expires once every CONFIG_MY_TIMER_PERIOD
+void start_my_timer(void) {
+    k_timer_start(&my_timer, K_SECONDS(CONFIG_MY_TIMER_INITIAL_DELAY), K_SECONDS(CONFIG_MY_TIMER_PERIOD));
+}
+
+K_TIMER_DEFINE(my_timer, my_timer_expiry_function, NULL);
+
+//static FILE *csv_file = NULL;
 struct example_sensor_data {
     int state;
     FILE *csv_file;
@@ -74,8 +100,7 @@ static int example_sensor_sample_fetch(const struct device *dev, enum sensor_cha
 
 static int example_sensor_channel_get(const struct device * dev,
                                       enum sensor_channel   chan,
-                                      struct sensor_value * val)
-{
+                                      struct sensor_value * val){
     struct example_sensor_data *data = dev->data;
 
     if (chan != SENSOR_CHAN_PROX && chan !=  SENSOR_CHAN_AMBIENT_TEMP) {

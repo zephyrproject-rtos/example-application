@@ -11,13 +11,13 @@ config EXAMPLE_SENSOR
 
 config MY_TIMER_INITIAL_DELAY
     int "Initial delay for my timer (in seconds)"
-    default 100
+    default 5
     help
       Configura el retraso inicial para el temporizador en segundos.
 
 config MY_TIMER_PERIOD
     int "Period for my timer (in seconds)"
-    default 10
+    default 3
     help
       Configura el período para el temporizador en segundos.
 
