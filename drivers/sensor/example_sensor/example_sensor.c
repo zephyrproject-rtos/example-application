@@ -10,7 +10,6 @@
 #include <time.h>
 
 #include <zephyr/device.h>
-#include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/sensor.h>
 
 #include <zephyr/logging/log.h>
@@ -33,6 +32,7 @@ void my_timer_stop_function(struct k_timer *timer_id) {
 // Initialize the timer
 void init_my_timer(void) {
     k_timer_init(&my_timer, my_timer_expiry_function, my_timer_stop_function);
+    LOG_INF("Timer Initialized");
 }
 
 // In your function where you start the timer
@@ -50,20 +50,16 @@ struct example_sensor_data {
 };
 
 struct example_sensor_config {
-    struct gpio_dt_spec input;
+
 };
 
 static int example_sensor_sample_fetch(const struct device *dev, enum sensor_channel chan)
 {
-    const struct example_sensor_config *config = dev->config;
     struct example_sensor_data *data = dev->data;
 
     /*
     Toma la data del sensor...
     */
-    // data->state = gpio_pin_get_dt(&config->input);
-
-    // csv_file = fopen(CONFIG_PATH_TO_CSV_FILE, "r");
 
     if(!data->csv_file){
         data->csv_file = fopen(CONFIG_PATH_TO_CSV_FILE, "r");
@@ -122,23 +118,7 @@ static DEVICE_API(sensor, example_sensor_api) = {
 
 static int example_sensor_init(const struct device *dev)
     {
-
-    const struct example_sensor_config *config = dev->config;
     struct example_sensor_data *data = dev->data;
-    int ret;
-
-    if (!device_is_ready(config->input.port)) {
-        LOG_ERR("Input GPIO not ready");
-        return -ENODEV;
-    }
-
-    ret = gpio_pin_configure_dt(&config->input, GPIO_INPUT);
-
-    if (ret < 0) {
-        LOG_ERR("Could not configure input GPIO (%d)", ret);
-        return ret;
-    }
-
     data->csv_file = NULL;
     return 0;
 }
@@ -147,7 +127,6 @@ static int example_sensor_init(const struct device *dev)
     static struct example_sensor_data example_sensor_data_##i;	       		\
                                                                             \
     static const struct example_sensor_config example_sensor_config_##i = {	\
-        .input = GPIO_DT_SPEC_INST_GET(i, input_gpios),		       			\
     };								       									\
                                                                             \
     DEVICE_DT_INST_DEFINE(i, example_sensor_init, NULL,		       			\

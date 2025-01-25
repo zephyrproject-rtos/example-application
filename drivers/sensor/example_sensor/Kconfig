@@ -5,7 +5,6 @@ config EXAMPLE_SENSOR
 	bool "Example sensor"
 	default y
 	depends on DT_HAS_ZEPHYR_EXAMPLE_SENSOR_ENABLED
-	select GPIO
 	help
 	  Enable example sensor
 
