@@ -7,7 +7,7 @@
 #include <zephyr/drivers/sensor.h>
 #include <zephyr/logging/log.h>
 
-#include <app/drivers/blink.h>
+#include "app/drivers/blink.h"
 
 #include <app_version.h>
 
@@ -25,13 +25,13 @@ int main(void)
 
 	printk("Zephyr Example Application %s\n", APP_VERSION_STRING);
 
-	sensor = DEVICE_DT_GET(DT_NODELABEL(example_sensor));
+	// sensor = DEVICE_DT_GET(DT_NODELABEL(touch));
 	if (!device_is_ready(sensor)) {
 		LOG_ERR("Sensor not ready");
 		return 0;
 	}
 
-	blink = DEVICE_DT_GET(DT_NODELABEL(blink_led));
+	// blink = DEVICE_DT_GET(DT_NODELABEL(blink_led));
 	if (!device_is_ready(blink)) {
 		LOG_ERR("Blink LED not ready");
 		return 0;
