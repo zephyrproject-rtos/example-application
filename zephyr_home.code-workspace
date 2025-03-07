@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+    ],
+    "settings": {
+        "cmake.buildArgs": [
+            "-Cbuild"
+        ],
+        "cmake.configureArgs": [
+            "-Bbuild -GNinja -DBOARD=esp32devkitc_wroom/esp32/procpu app"
+        ],
+        "cmake.buildDirectory": "${workspaceFolder}/build",
+        "cmake.generator": "Ninja",
+        "cmake.configureOnOpen": false,
+        "cmake.buildBeforeRun": true,
+        "cmake.preBuildCommand": "source ./../bin/activate",
+        "files.associations": {
+            "blink.h": "c"
+        }
+    }
+}
