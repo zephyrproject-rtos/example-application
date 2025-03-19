@@ -6,3 +6,5 @@ add_subdirectory_ifdef(CONFIG_BLINK blink)
 
 # Out-of-tree drivers for existing driver classes
 add_subdirectory_ifdef(CONFIG_SENSOR sensor)
+
+# zephyr_library_sources_ifdef(CONFIG_BLINK blink.c)

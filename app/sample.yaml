@@ -3,12 +3,18 @@
 # so that you can easily test all of them locally or in CI.
 sample:
   description: Example application
-  name: example-application 
+  name: example-application
 common:
   build_only: true
   integration_platforms:
-    - custom_plank
-    - nucleo_f302r8
+    - esp32
+build:
+  kconfig: Kconfig
+  cmake: .
+  board: esp32
+  settings:
+    board_root: ../boards
+    dts_root: .
 tests:
   app.default: {}
   app.debug:

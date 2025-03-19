@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.20.3)
 
 #-------------------------------------------
 # Overlay File
-set(DTC_OVERLAY_FILE "boards/esp32.overlay")
+# set(DTC_OVERLAY_FILE "boards/esp32.overlay")
 set(CONFIG_APPLICATION_DEFINED_SYSCALL  TRUE)
 
 #-------------------------------------------
@@ -17,21 +17,28 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 #-------------------------------------------
 # Project
-project(app LANGUAGES C)
+project(app)
 
 #-------------------------------------------
 # Source Files
-target_sources(app PRIVATE src/main.c)
-target_sources(app PRIVATE ../drivers/blink/gpio_led.c)
+target_sources(app PRIVATE src/main.cpp)
+# target_sources(app PRIVATE src/my_syscall.c)
+# target_sources(app PRIVATE ../drivers/blink/gpio_led.c)
 
 #-------------------------------------------
 # Include Directories
-zephyr_syscall_include_directories(./../include/app/drivers/)
-zephyr_include_directories(./../include)
-# target_include_directories(app PRIVATE ./../include/)
+# zephyr_syscall_include_directories(./../include/app/drivers/)
+# zephyr_include_directories(./../include)
+# zephyr_include_directories(./../include/app/drivers/)
 
+target_include_directories(app PRIVATE ./../include/)
 target_include_directories(app PRIVATE ./../include/app/drivers)
 
 #-------------------------------------------
 # System Calls Header Files
-zephyr_syscall_header (./../include/app/drivers/blink.h)
+# zephyr_syscall_header_ifdef (./../include/app/drivers/my_syscall.h)
+# zephyr_syscall_header (./../include/app/drivers/blink.h)
+
+#-------------------------------------------
+# Libraries
+target_link_libraries(app PRIVATE zephyr_interface)
