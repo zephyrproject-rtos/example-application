@@ -8,8 +8,14 @@ cmake_minimum_required(VERSION 3.20.3)
 
 #-------------------------------------------
 # Overlay File
-# set(DTC_OVERLAY_FILE "boards/esp32.overlay")
+set(DTC_OVERLAY_FILE "boards/esp32.overlay")
 set(CONFIG_APPLICATION_DEFINED_SYSCALL  TRUE)
+
+# Define additional overlay configuration files
+# set(OVERLAY_CONFIG "overlay-debug.conf; overlay-enterprise-variable-bufs.conf; overlay-enterprise.conf;")
+
+# Pass configuration files to the build system
+# set_property(GLOBAL PROPERTY OVERLAY_CONFIG "${OVERLAY_CONFIG}")
 
 #-------------------------------------------
 # Include Zephyr SDK

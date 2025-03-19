@@ -12,10 +12,17 @@ build:
   kconfig: Kconfig
   cmake: .
   board: esp32
+  harness: net
   settings:
-    board_root: ../boards
+    board_root: boards/
     dts_root: .
+  tags:
+    - net
+    - wifi
 tests:
+  sample.net.wifi.esp32:
+    extra_args:
+      - CONFIG_BUILD_ONLY_NO_BLOBS=y
   app.default: {}
   app.debug:
     extra_overlay_confs:
