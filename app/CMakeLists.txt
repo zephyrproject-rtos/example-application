@@ -48,3 +48,10 @@ target_include_directories(app PRIVATE ./../include/app/drivers)
 #-------------------------------------------
 # Libraries
 target_link_libraries(app PRIVATE zephyr_interface)
+
+#-------------------------------------------
+# Compiler Options
+target_compile_definitions(app PRIVATE
+    WIFI_SSID="$ENV{WIFI_SSID}"
+    WIFI_PASSWORD="$ENV{WIFI_PASSWORD}"
+)
