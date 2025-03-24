@@ -39,6 +39,7 @@ target_sources(app PRIVATE src/main.cpp)
 
 target_include_directories(app PRIVATE ./../include/)
 target_include_directories(app PRIVATE ./../include/app/drivers)
+target_include_directories(app PRIVATE ./../include/utils/myLogger)
 
 #-------------------------------------------
 # System Calls Header Files

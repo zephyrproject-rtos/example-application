@@ -15,6 +15,8 @@ LOG_MODULE_REGISTER(main, CONFIG_APP_LOG_LEVEL);
 #include <zephyr/net/wifi_mgmt.h>
 #include <zephyr/net/net_event.h>
 
+#include "myLogger.h"
+
 const std::string CONFIG_WIFI_SSID(WIFI_SSID);
 const std::string CONFIG_WIFI_PASSWORD(WIFI_PASSWORD);
 
@@ -37,7 +39,7 @@ void wifi_connect()
     }
     else
     {
-        LOG_INF("Connected to WiFi network!");
+        MYLOG("Connected to WiFi network!");
     }
 }
 
@@ -47,12 +49,12 @@ int main(void)
     struct net_if *iface = net_if_get_default();
 
     /* Main Function */
-    printk("Hello World!\n");
+    MYLOG("Hello World!\n");
 
     if (iface)
     {
         net_if_up(iface);
-        LOG_INF("Network interface found!\n");
+        MYLOG("Network interface found!\n");
     }
     else
     {
