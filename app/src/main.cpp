@@ -135,20 +135,18 @@ int main(void)
         char ip_str[NET_IPV4_ADDR_LEN];
 
         net_addr_ntop(AF_INET, &addr, ip_str, sizeof(ip_str));
-        MYLOG("✅ IP address assigned: %s\n", ip_str);
+        MYLOG("✅ IP address assigned: %s", ip_str);
     }
     else
     {
-        MYLOG("❌ No IPv4 address assigned yet\n");
-
-        /* wait for ip address to be assigned */
-        int64_t start = k_uptime_get();
+        MYLOG("❌ No IPv4 address assigned yet");
 
         /* Wait for the handler to be called */
+        int64_t start = k_uptime_get();
         ipv4_sem_take();
 
         /* wait for ip address to be assigned */
-        int64_t start = k_uptime_get();
+        MYLOG("⏰ Time to wait for IP Address to be assigned: %lld ms",(k_uptime_get() - start));
 
     }
 
