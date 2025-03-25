@@ -28,6 +28,8 @@ project(app)
 #-------------------------------------------
 # Source Files
 target_sources(app PRIVATE src/main.cpp)
+target_sources(app PRIVATE src/handlers.cpp)
+target_sources(app PRIVATE src/wifi.cpp)
 # target_sources(app PRIVATE src/my_syscall.c)
 # target_sources(app PRIVATE ../drivers/blink/gpio_led.c)
 
@@ -38,6 +40,7 @@ target_sources(app PRIVATE src/main.cpp)
 # zephyr_include_directories(./../include/app/drivers/)
 
 target_include_directories(app PRIVATE ./../include/)
+target_include_directories(app PRIVATE ./../include/app/)
 target_include_directories(app PRIVATE ./../include/app/drivers)
 target_include_directories(app PRIVATE ./../include/utils/myLogger)
 

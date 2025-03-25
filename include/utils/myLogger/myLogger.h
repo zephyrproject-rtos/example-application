@@ -4,12 +4,13 @@
 
 #include <zephyr/kernel.h>
 #include <string.h>
+#include <iostream>
 
 /*
     Logging macro with formatted uptime
     and trimmed file path (removes top 2 folders)
 */
-#define MYLOG(msg) do {                                                 \
+#define MYLOG(fmt, ...) do {                                            \
     char __mylog_msg[512];                                              \
                                                                         \
     /* Get full path from __FILE__ */                                   \
@@ -35,9 +36,10 @@
     int64_t __milliseconds = __uptime_ms % 1000;                        \
                                                                         \
     /* Format and print the log message */                              \
-    snprintf(__mylog_msg, sizeof(__mylog_msg),                          \
-             "[%02lld:%02lld:%02lld.%03lld] %s:%d - %s\n",              \
+    printk("[%02lld:%02lld:%02lld.%03lld] %s:%d - ",                    \
              __hours, __minutes, __seconds, __milliseconds,             \
-             __short_file, __LINE__, msg);                              \
-    printk("%s", __mylog_msg);                                          \
+             __short_file, __LINE__);                                   \
+    snprintf(__mylog_msg, sizeof(__mylog_msg), fmt, ##__VA_ARGS__);     \
+    printk("%s\n", __mylog_msg);                                          \
 } while (0)
+
