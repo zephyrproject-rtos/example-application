@@ -150,19 +150,6 @@ int main(void)
 
     }
 
-
-    // // Ping Google DNS 4 times
-    // ping("8.8.8.8", 4);
-
-
-    // printk("\nConnecting to HTTP Server:\n");
-    // sock = connect_socket(&res, 80);
-    // http_get(sock, "iot.beyondlogic.org", "/LoremIpsum.txt");
-    // zsock_close(sock);
-
-    // Stay connected for 30 seconds, then disconnect.
-    // k_sleep(K_SECONDS(30));
-
     MYLOG("Disconnecting WIFI");
     wifi_disconnect();
     MYLOG("WIFI Disconnected");
