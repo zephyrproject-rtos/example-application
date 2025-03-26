@@ -28,12 +28,12 @@ project(app)
 #-------------------------------------------
 # Source Files
 target_sources(app PRIVATE src/main.cpp)
-target_sources(app PRIVATE src/handlers.cpp)
-target_sources(app PRIVATE src/wifi.cpp)
+# target_sources(app PRIVATE src/wifi.cpp)
 # Manager Factory
 target_sources(app PRIVATE src/managerFactory/managerFactory.cpp)
 # Wifi Manager
 target_sources(app PRIVATE src/wifiManager/wifiManager.cpp)
+target_sources(app PRIVATE src/wifiManager/wifiManagerHandlers.cpp)
 # Wifi State Machine
 target_sources(app PRIVATE src/wifiSM/wifiContext.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateConnected.cpp)

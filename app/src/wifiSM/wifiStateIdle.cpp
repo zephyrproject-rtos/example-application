@@ -5,15 +5,32 @@
 wifiStateIdle::wifiStateIdle(wifiStateConnecting* next)
     : connecting(next) {}
 
-void wifiStateIdle::enter(wifiContext& ctx) {
+void wifiStateIdle::enter(wifiContext& ctx)
+{
     MYLOG("🟡 Entered Idle state");
 }
 
-void wifiStateIdle::handle(wifiContext& ctx) {
-    MYLOG("➡️ Transitioning to Connecting...");
-    ctx.setState(connecting);
+void wifiStateIdle::handle(wifiContext& ctx)
+{
+    if (isConnectingCalled)
+    {
+        MYLOG("➡️ Transitioning to Connecting...");
+        ctx.setState(connecting);
+        isConnectingCalled = false;
+    }
 }
 
-const char* wifiStateIdle::name() const {
+const char* wifiStateIdle::name() const
+{
     return "Idle";
+}
+
+void wifiStateIdle::setConnectingCalled(bool value)
+{
+    isConnectingCalled = value;
+}
+
+bool wifiStateIdle::getConnectingCalled()
+{
+    return isConnectingCalled;
 }
