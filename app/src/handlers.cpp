@@ -53,11 +53,11 @@ void handle_wifi_disconnect_result(struct net_mgmt_event_callback *cb)
 
     if (status->status)
     {
-        MYLOG("Disconnection request (%d)\n", status->status);
+        MYLOG("Disconnection request (%d)", status->status);
     }
     else
     {
-        MYLOG("Disconnect Handler: Disconnected\n");
+        MYLOG("Disconnect Handler: Disconnected");
         // k_sem_take(&wifi_connected, K_NO_WAIT);
     }
 }

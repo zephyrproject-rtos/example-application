@@ -23,7 +23,8 @@
         "files.associations": {
             "blink.h": "c",
             "cstddef": "cpp",
-            "limits": "cpp"
+            "limits": "cpp",
+            "typeinfo": "cpp"
         },
         "cmake.additionalCompilerSearchDirs": [
             "home/osama/projects/esp/home_automation/zephyrproject/zephyr/include/"
@@ -43,4 +44,55 @@
             "${workspaceFolder}/build/compile_commands.json",
         ]
     },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Build Flash Monitor",
+                "command": "source ../.venv/bin/activate && clear && west build -b esp32_devkitc_wroom/esp32/procpu app && west flash && west espressif monitor",
+                "type": "shell",
+                "args": [],
+                "problemMatcher": [
+                    "$tsc"
+                ],
+                "presentation": {
+                    "reveal": "always"
+                },
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "Build Only",
+                "command": "source ../.venv/bin/activate && clear && west build -b esp32_devkitc_wroom/esp32/procpu app",
+                "type": "shell",
+                "args": [],
+                "problemMatcher": [
+                    "$tsc"
+                ],
+                "presentation": {
+                    "reveal": "always"
+                },
+                "group": {
+                    "kind": "build",
+                }
+            },
+            {
+                "label": "Flash and Monitor",
+                "command": "source ../.venv/bin/activate && clear && west flash && west espressif monitor",
+                "type": "shell",
+                "args": [],
+                "problemMatcher": [
+                    "$tsc"
+                ],
+                "presentation": {
+                    "reveal": "always"
+                },
+                "group": {
+                    "kind": "build",
+                }
+            }
+        ]
+    }
 }
