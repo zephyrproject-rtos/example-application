@@ -14,6 +14,9 @@ LOG_MODULE_REGISTER(main, CONFIG_APP_LOG_LEVEL);
 #include <zephyr/net/wifi_mgmt.h>
 #include <zephyr/net/net_event.h>
 
+#include "wifiContext.hpp"
+#include "wifiStateImp.hpp"
+
 #include "myLogger.h"
 #include "handlers.h"
 #include "wifi.h"
@@ -153,6 +156,30 @@ int main(void)
     MYLOG("Disconnecting WIFI");
     wifi_disconnect();
     MYLOG("WIFI Disconnected");
+
+    // connectedStateImp connected;
+    // errorStateImp error;  // temporary nullptr for now
+    // connectingStateImp connecting;
+    // scanningStateImp scanning;
+    // idleStateImp idle;
+    // error = errorStateImp(&idle);  // now set correct idle pointer
+
+    wifiStateIdle idle(nullptr);
+    wifiStateDisconnected disconnected(&idle);
+    wifiStateConnected connected(&disconnected);
+    wifiStateConnecting connecting(&connected);
+    idle = wifiStateIdle(&connecting);
+
+    wifiContext wifi(&idle);
+
+    MYLOG("🚀 Starting Wi-Fi State Machine");
+
+    while (true)
+    {
+        wifi.update();
+        k_busy_wait(20000000);
+    }
+
 
     return 0;
 }

@@ -30,6 +30,13 @@ project(app)
 target_sources(app PRIVATE src/main.cpp)
 target_sources(app PRIVATE src/handlers.cpp)
 target_sources(app PRIVATE src/wifi.cpp)
+# Wifi State Machine
+target_sources(app PRIVATE src/wifiSM/wifiContext.cpp)
+target_sources(app PRIVATE src/wifiSM/wifiStateConnected.cpp)
+target_sources(app PRIVATE src/wifiSM/wifiStateConnecting.cpp)
+target_sources(app PRIVATE src/wifiSM/wifiStateDisconnected.cpp)
+target_sources(app PRIVATE src/wifiSM/wifiStateIdle.cpp)
+
 # target_sources(app PRIVATE src/my_syscall.c)
 # target_sources(app PRIVATE ../drivers/blink/gpio_led.c)
 
@@ -38,6 +45,8 @@ target_sources(app PRIVATE src/wifi.cpp)
 # zephyr_syscall_include_directories(./../include/app/drivers/)
 # zephyr_include_directories(./../include)
 # zephyr_include_directories(./../include/app/drivers/)
+
+target_include_directories(app PRIVATE src/wifiSM)
 
 target_include_directories(app PRIVATE ./../include/)
 target_include_directories(app PRIVATE ./../include/app/)
