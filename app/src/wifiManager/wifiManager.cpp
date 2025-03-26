@@ -45,10 +45,31 @@ bool registered = [] {
 void wifiManager::init()
 {
     MYLOG("[wifiManager] Initialization started");
-    // Initialization logic here
+    /* Initialization logic here */
+
+    idle = new wifiStateIdle(nullptr);
+    disconnected = new wifiStateDisconnected(idle);
+    connected = new wifiStateConnected(disconnected);
+    connecting = new wifiStateConnecting(connected);
+
+    /* Connect the loop back */
+    *idle = wifiStateIdle(connecting);
+
+    /* StateMachine Context */
+    context = new wifiContext(idle);
+    MYLOG("🚀 [wifiManager] Starting Wi-Fi State Machine");
+}
+
+void wifiManager::tick()
+{
+    if (context)
+    {
+        context->update();
+    }
 }
 
 const char* wifiManager::name() const
 {
     return "wifiManager";
 }
+
