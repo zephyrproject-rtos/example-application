@@ -30,6 +30,10 @@ project(app)
 target_sources(app PRIVATE src/main.cpp)
 target_sources(app PRIVATE src/handlers.cpp)
 target_sources(app PRIVATE src/wifi.cpp)
+# Manager Factory
+target_sources(app PRIVATE src/managerFactory/managerFactory.cpp)
+# Wifi Manager
+target_sources(app PRIVATE src/wifiManager/wifiManager.cpp)
 # Wifi State Machine
 target_sources(app PRIVATE src/wifiSM/wifiContext.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateConnected.cpp)
@@ -46,6 +50,8 @@ target_sources(app PRIVATE src/wifiSM/wifiStateIdle.cpp)
 # zephyr_include_directories(./../include)
 # zephyr_include_directories(./../include/app/drivers/)
 
+target_include_directories(app PRIVATE src/managerFactory)
+target_include_directories(app PRIVATE src/wifiManager)
 target_include_directories(app PRIVATE src/wifiSM)
 
 target_include_directories(app PRIVATE ./../include/)
