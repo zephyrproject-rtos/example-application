@@ -46,6 +46,7 @@ void wifiManager::handle_wifi_connect_result(struct net_mgmt_event_callback *cb)
     else
     {
         MYLOG("Connect Handler: Wifi Connected");
+        wifi.connecting->setConnectedCalled(true);
         // k_sem_give(&wifi_connected);
     }
 }

@@ -1,21 +1,22 @@
 #include "wifiContext.hpp"
 
-wifiContext::wifiContext(wifiState* initial) : state(initial)
+wifiContext::wifiContext(wifiState* initial, net_if* _iface) : state(initial)
 {
-    state->enter(*this);
+    iface = _iface;
+    state->enter(*this, iface);
 }
 
 void wifiContext::setState(wifiState* newState)
 {
     state = newState;
     MYLOG("🔁 Transitioned to state: %s", state->name());
-    state->enter(*this);
+    state->enter(*this, iface);
 }
 
-void wifiContext::update()
+void wifiContext::update(wifi_iface_status status)
 {
     if (state)
     {
-        state->handle(*this);
+        state->handle(*this, status);
     }
 }
