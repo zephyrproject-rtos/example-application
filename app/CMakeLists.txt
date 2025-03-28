@@ -39,10 +39,8 @@ target_sources(app PRIVATE src/wifiSM/wifiContext.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateConnected.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateConnecting.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateDisconnected.cpp)
+target_sources(app PRIVATE src/wifiSM/wifiStateError.cpp)
 target_sources(app PRIVATE src/wifiSM/wifiStateIdle.cpp)
-
-# target_sources(app PRIVATE src/my_syscall.c)
-# target_sources(app PRIVATE ../drivers/blink/gpio_led.c)
 
 #-------------------------------------------
 # Include Directories
@@ -73,4 +71,11 @@ target_link_libraries(app PRIVATE zephyr_interface)
 target_compile_definitions(app PRIVATE
     WIFI_SSID="$ENV{WIFI_SSID}"
     WIFI_PASSWORD="$ENV{WIFI_PASSWORD}"
+)
+
+#-------------------------------------------
+# GraphViz
+add_custom_target(graphviz
+    COMMAND ${CMAKE_COMMAND} "--graphviz=dependencyGraph.dot" .
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 )

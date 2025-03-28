@@ -96,17 +96,6 @@ void wifiManager::reinit()
     //     MYLOG("Failed to connect to WiFi network! [Error]:%d", ret);
     // }
 
-    /* State Machine Initialization */
-    idle = new wifiStateIdle(nullptr);
-    disconnected = new wifiStateDisconnected(idle);
-    connected = new wifiStateConnected(disconnected);
-    connecting = new wifiStateConnecting(connected);
-
-    /* Connect the loop back */
-    *idle = wifiStateIdle(connecting);
-
-    /* StateMachine Context */
-    context = new wifiContext(idle, iface);
     MYLOG("🚀 [wifiManager] Starting Wi-Fi State Machine");
 
 }
@@ -114,15 +103,38 @@ void wifiManager::reinit()
 void wifiManager::init()
 {
     MYLOG("[wifiManager] Initialization started");
+
     /* Initialization logic here */
 
+    /* State Machine Initialization */
+    idle = new wifiStateIdle(nullptr);
+    disconnected = new wifiStateDisconnected(idle);
+    connected = new wifiStateConnected(disconnected);
+    connecting = new wifiStateConnecting(connected);
+    error = new wifiStateError(idle);
+
+    /* Connect the loop back */
+    *idle = wifiStateIdle(connecting);
+
+    /* Get the WiFi Interface */
+    // for (struct net_if* it = net_if_get_first(); it != NULL; it = net_if_get_next(it))
+    // {
+    //     if (net_if_l2(it) == &NET_L2_GET_NAME(WIFI_MGMT))
+    //     {
+    //         iface = it;
+    //         break;
+    //     }
+    // }
+
+    iface  = net_if_get_first_wifi();
+
+    /* StateMachine Context */
+    context = new wifiContext(idle, iface);
+
+    /* Register the WiFi Event Handlers */
     register_wifi_events();
 
-    struct net_if *_iface;
-    _iface = net_if_get_default();
-    iface = _iface;
-
-    if (_iface)
+    if (iface)
     {
         MYLOG("Network interface found!");
         isError = false;
@@ -133,9 +145,31 @@ void wifiManager::init()
         isError = true;
     }
 
+    if (net_if_is_up(iface))
+    {
+        MYLOG("Network interface is up");
+    }
+    else
+    {
+        MYLOG("Network interface is down");
+        if (net_if_up(iface) != 0)
+        {
+            MYLOG("Couldnt bring Network Interface to up state");
+        }
+        else
+        {
+            MYLOG("Network interface is up");
+        }
+    }
+
     if (!isError)
     {
         reinit();
+    }
+    else
+    {
+        state = ERROR;
+        context->setState(static_cast<wifiState*>(error));
     }
 
 }
@@ -144,38 +178,12 @@ void wifiManager::tick()
 {
     struct wifi_iface_status status = {0};
 
-    // wifi_status();
     status = get_wifi_status(iface);
-
-    // if (isConnecting)
-    // {
-    //     if (status.state >= WIFI_STATE_ASSOCIATED)
-    //     {
-    //         struct net_if_ipv4 *ipv4 = net_if_get_config(iface)->ip.ipv4;
-
-    //         if (ipv4 && ipv4->unicast[0].ipv4.is_used)
-    //         {
-    //             struct in_addr addr = ipv4->unicast[0].ipv4.address.in_addr;
-    //             char ip_str[NET_IPV4_ADDR_LEN];
-
-    //             net_addr_ntop(AF_INET, &addr, ip_str, sizeof(ip_str));
-    //             MYLOG("✅ IP address assigned: %s", ip_str);
-
-    //             isIpObtained = true;
-    //         }
-
-    //         if (isIpObtained)
-    //         {
-    //             isConnecting = false;
-    //             connecting->setConnectedCalled(true);
-    //             context->setState(connected);
-    //         }
-    //     }
-    // }
 
     if (context)
     {
         context->update(status);
+        state = context->getState();
     }
 }
 
@@ -184,49 +192,13 @@ void wifiManager::connect()
     if (!isError)
     {
         MYLOG("🔗 Connecting to Wi-Fi");
-
-        // struct wifi_iface_status status = get_wifi_status(iface);
-        // wifi_status();
-
-        // if (status.state == WIFI_STATE_INACTIVE || status.state == WIFI_STATE_DISCONNECTED)
-        // {
-        //     MYLOG("WiFi is Inactive or Disconnected");
-        //     /* Take the SSID and Password from Environment Variables. */
-        //     const std::string CONFIG_WIFI_SSID(WIFI_SSID);
-        //     const std::string CONFIG_WIFI_PASSWORD(WIFI_PASSWORD);
-
-        //     struct wifi_connect_req_params params =
-        //     {
-        //         .ssid = (const uint8_t*) (CONFIG_WIFI_SSID.c_str()),
-        //         .ssid_length = CONFIG_WIFI_SSID.length(),
-        //         .psk = (const uint8_t*) (CONFIG_WIFI_PASSWORD.c_str()),
-        //         .psk_length = CONFIG_WIFI_PASSWORD.length(),
-        //         .security = WIFI_SECURITY_TYPE_PSK,
-        //     };
-
-        //     MYLOG("Connecting to the Wifi Network [SSID]: %s", CONFIG_WIFI_SSID.c_str());
-
-        //     int ret = net_mgmt(NET_REQUEST_WIFI_CONNECT, iface, &params, sizeof(params));
-        //     if (ret)
-        //     {
-        //         MYLOG("Failed to connect to WiFi network! [Error]:%d", ret);
-        //     }
-        //     else
-        //     {
-                state = CONNECTING;
-                idle->setConnectingCalled(true);
-        //     }
-        // }
-        // else
-        // {
-        //     MYLOG("WiFi is already connected");
-        // }
+        idle->setConnectingCalled(true);
     }
     else
     {
         MYLOG("❌ Error in Wi-Fi Initialization. Cannot Connect");
+        context->setState(static_cast<wifiState*>(error));
     }
-
 }
 
 void wifiManager::disconnect()
@@ -237,10 +209,13 @@ void wifiManager::disconnect()
     if (ret)
     {
         MYLOG("WiFi Disconnection Request Failed");
+        state = ERROR;
+        context->setState(static_cast<wifiState*>(error));
     }
     else
     {
         connected->setDisconnectCalled(true);
+        state = DISCONNECTED;
     }
 }
 
@@ -271,13 +246,18 @@ wifi_iface_status wifiManager::get_wifi_status(struct net_if* iface)
     return status;
 }
 
-wifiManagerState wifiManager::wifi_status()
+wifiStateEnum wifiManager::getWifiState()
+{
+    return state;
+}
+
+wifiStateEnum wifiManager::wifi_status()
 {
     struct wifi_iface_status status = {0};
 
     status = get_wifi_status(iface);
 
-    MYLOG("Wifi Status: %s", wifi_state_txt(static_cast<wifi_iface_state>(status.state)));
+    MYLOG("Wifi Interface Status: %s", wifi_state_txt(static_cast<wifi_iface_state>(status.state)));
 
     if (status.state >= WIFI_STATE_ASSOCIATED)
     {

@@ -17,9 +17,9 @@ public:
     wifiStateDisconnected(wifiStateIdle* next);
     void enter(wifiContext& ctx, net_if* iface) override;
     void handle(wifiContext& ctx, wifi_iface_status status) override;
-    const char* name() const override;
+    int name(void) const override;
     void setConnectCalled(bool value);
-    bool getConnectCalled();
+    bool getConnectCalled(void);
 };
 
 // State: Connected
@@ -33,9 +33,9 @@ public:
     wifiStateConnected(wifiStateDisconnected* next);
     void enter(wifiContext& ctx, net_if* iface) override;
     void handle(wifiContext& ctx, wifi_iface_status status) override;
-    const char* name() const override;
+    int name(void) const override;
     void setDisconnectCalled(bool value);
-    bool getDisconnectCalled();
+    bool getDisconnectCalled(void);
 };
 
 // State: Connecting
@@ -46,14 +46,15 @@ private:
     bool isAssociated = false;
     struct net_if* iface;
     wifiStateConnected* connected;
+    wifiStateConnected* error;
 
 public:
     wifiStateConnecting(wifiStateConnected* next);
     void enter(wifiContext& ctx, net_if* iface) override;
     void handle(wifiContext& ctx, wifi_iface_status status) override;
-    const char* name() const override;
+    int name(void) const override;
     void setConnectedCalled(bool value);
-    bool getConnectedCalled();
+    bool getConnectedCalled(void);
 };
 
 // State: Idle
@@ -68,9 +69,9 @@ public:
     wifiStateIdle(wifiStateConnecting* next);
     void enter(wifiContext& ctx, net_if* iface) override;
     void handle(wifiContext& ctx, wifi_iface_status status) override;
-    const char* name() const override;
+    int name(void) const override;
     void setConnectingCalled(bool value);
-    bool getConnectingCalled();
+    bool getConnectingCalled(void);
 };
 
 // State: Error
@@ -83,5 +84,5 @@ public:
     wifiStateError(wifiStateIdle* idleState);
     void enter(wifiContext& ctx, net_if* iface) override;
     void handle(wifiContext& ctx, wifi_iface_status status) override;
-    const char* name() const override;
+    int name(void) const override;
 };

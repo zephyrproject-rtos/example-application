@@ -7,8 +7,10 @@
 #include <zephyr/net/wifi_mgmt.h>
 #include <zephyr/net/net_event.h>
 
-wifiStateConnected::wifiStateConnected(wifiStateDisconnected* next)
-    : disconnected(next) {}
+wifiStateConnected::wifiStateConnected(wifiStateDisconnected* next): disconnected(next)
+{
+
+}
 
 void wifiStateConnected::enter(wifiContext& ctx, net_if* iface)
 {
@@ -42,9 +44,9 @@ void wifiStateConnected::handle(wifiContext& ctx, wifi_iface_status status)
     }
 }
 
-const char* wifiStateConnected::name() const
+int wifiStateConnected::name() const
 {
-    return "Connected";
+    return static_cast<int>(CONNECTED);
 }
 
 void wifiStateConnected::setDisconnectCalled(bool value)

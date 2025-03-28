@@ -2,7 +2,6 @@
 #include "myLogger.h"
 #include "wifi.h"
 
-
 static K_SEM_DEFINE(ipv4_address_obtained, 0, 1);
 
 extern wifiManager wifi;
@@ -47,7 +46,6 @@ void wifiManager::handle_wifi_connect_result(struct net_mgmt_event_callback *cb)
     {
         MYLOG("Connect Handler: Wifi Connected");
         wifi.connecting->setConnectedCalled(true);
-        // k_sem_give(&wifi_connected);
     }
 }
 
@@ -55,14 +53,18 @@ void wifiManager::handle_wifi_disconnect_result(struct net_mgmt_event_callback *
 {
     const struct wifi_status *status = (const struct wifi_status *)cb->info;
 
-    if (status->status)
+    if (DISCONNECTED != wifi.state)
     {
-        MYLOG("Disconnection request (%d)", status->disconn_reason);
+        if (status->status)
+        {
+            MYLOG("[Disconnect Handler] ❌ Wifi Disconnected without Disconnect being called Before");
+            MYLOG("[Disconnect Handler] Reason: Disconnection request (%d)", status->disconn_reason);
+            wifi.context->setState(static_cast<wifiState *>(wifi.error));
+        }
     }
     else
     {
-        MYLOG("Disconnect Handler: Disconnected");
-        // k_sem_take(&wifi_connected, K_NO_WAIT);
+        MYLOG("[Disconnect Handler] ❌ Wifi Disconnected");
     }
 }
 
@@ -117,9 +119,6 @@ void wifiManager::ipv4_mgmt_event_handler(struct net_mgmt_event_callback *cb,
     {
         MYLOG("❌ IPv4 address removed");
     }
-    // if (mgmt_event & NET_EVENT_IPV4_GATEWAY_ADD) {
-    //     printk("🚪 IPv4 gateway assigned\n");
-    // }
 
     MYLOG("Raw event: 0x%08X", mgmt_event);
 }

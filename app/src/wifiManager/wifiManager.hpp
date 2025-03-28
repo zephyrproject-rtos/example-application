@@ -12,15 +12,6 @@
 #include <zephyr/net/wifi_mgmt.h>
 #include <zephyr/net/net_event.h>
 
-typedef enum
-{
-    IDLE = 0,
-    CONNECTING,
-    CONNECTED,
-    DISCONNECTED,
-    ERROR,
-} wifiManagerState;
-
 class wifiManager : public iManager
 {
 private:
@@ -29,12 +20,14 @@ private:
     bool isIpObtained = false;
     bool isScanComplete = false;
 
-    wifiManagerState state;
+    wifiStateEnum state;
+
     wifiContext* context;
     wifiStateIdle* idle;
     wifiStateDisconnected* disconnected;
     wifiStateConnected* connected;
     wifiStateConnecting* connecting;
+    wifiStateError* error;
 
     struct net_if *iface;
 
@@ -66,6 +59,7 @@ public:
     void connect();
     void disconnect();
     void scan();
-    wifiManagerState wifi_status();
+    wifiStateEnum wifi_status();
+    wifiStateEnum getWifiState();
     wifi_iface_status get_wifi_status(struct net_if *iface);
 };

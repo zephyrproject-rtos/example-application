@@ -32,13 +32,44 @@ int main(void)
 
     wifi.init();
 
-    /* Now Connect with Wifi */
-    wifi.connect();
-    MYLOG("Waiting for Wifi to connect");
+    wifi.tick();
+    int64_t start = k_uptime_get();
+
+    bool isConnectRequested = false;
+    wifiStateEnum state;
 
     while (true)
     {
         wifi.tick();
+        state = wifi.getWifiState();
+
+        if (wifiStateEnum::IDLE == state)
+        {
+            /* If 500ms have passed we can connect using Wifi */
+            if ((k_uptime_get() - start > 500) && !isConnectRequested)
+            {
+                MYLOG("Waiting for Wifi to connect");
+                wifi.connect();
+                isConnectRequested = true;
+            }
+        }
+        else if (wifiStateEnum::CONNECTING == state)
+        {
+            /* Wait for Connection to be established */
+        }
+        else if (wifiStateEnum::CONNECTED == state)
+        {
+            /* Do WiFI Stuff after this */
+            isConnectRequested = false;
+        }
+        else if (wifiStateEnum::ERROR == state)
+        {
+            if (k_uptime_get() - start > 10000)
+            {
+                MYLOG("❌ Error in Wifi Initialization. ReInitializing");
+                wifi.connect();
+            }
+        }
     }
 
     return 0;

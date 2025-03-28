@@ -38,6 +38,7 @@ void wifiStateConnecting::enter(wifiContext& ctx, net_if* _iface)
     if (ret)
     {
         MYLOG("Failed to connect to WiFi network! [Error]:%d", ret);
+        ctx.setState(static_cast<wifiState*>(error));
     }
     else
     {
@@ -47,16 +48,6 @@ void wifiStateConnecting::enter(wifiContext& ctx, net_if* _iface)
 
 void wifiStateConnecting::handle(wifiContext& ctx, wifi_iface_status status)
 {
-    // struct wifi_iface_status status = {0};
-
-    // int ret = net_mgmt(NET_REQUEST_WIFI_IFACE_STATUS, iface, &status,
-    //                         sizeof(struct wifi_iface_status));
-
-    // if (ret)
-    // {
-    //     MYLOG("WiFi Status Request Failed");
-    // }
-
     if (status.state >= WIFI_STATE_ASSOCIATED && !isAssociated)
     {
         MYLOG("WiFi is Associated");
@@ -87,9 +78,9 @@ void wifiStateConnecting::handle(wifiContext& ctx, wifi_iface_status status)
     }
 }
 
-const char* wifiStateConnecting::name() const
+int wifiStateConnecting::name() const
 {
-    return "Connecting";
+    return static_cast<int>(CONNECTING);
 }
 
 void wifiStateConnecting::setConnectedCalled(bool value)

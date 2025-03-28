@@ -1,20 +1,24 @@
 #include "wifiStateImp.hpp"
 #include "myLogger.h"
 
+wifiStateError::wifiStateError(wifiStateIdle* idleState)
+{
 
-void wifiStateError::enter(wifiContext& ctx)
+}
+
+void wifiStateError::enter(wifiContext& ctx, net_if* iface)
 {
     MYLOG("🛑 Entered Error state");
 }
 
-void wifiStateError::handle(wifiContext& ctx)
+void wifiStateError::handle(wifiContext& ctx, wifi_iface_status status)
 {
     MYLOG("⚠️ Handling error... staying here");
     // Optionally retry or escalate
 }
 
-const char* name()
+int wifiStateError::name() const
 {
-    return "Error";
+    return static_cast<int>(ERROR);
 }
 

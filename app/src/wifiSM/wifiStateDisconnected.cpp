@@ -28,9 +28,9 @@ void wifiStateDisconnected::handle(wifiContext& ctx, wifi_iface_status status)
     // }
 }
 
-const char* wifiStateDisconnected::name() const
+int wifiStateDisconnected::name() const
 {
-    return "Disconnected";
+    return static_cast<int>(CONNECTED);
 }
 
 void wifiStateDisconnected::setConnectCalled(bool value)
