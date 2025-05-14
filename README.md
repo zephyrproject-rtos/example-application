@@ -54,6 +54,25 @@ Before getting started, make sure you have a proper Zephyr development
 environment. Follow the official
 [Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html).
 
+
+### Python VENV
+
+To get started its recommended to initialize a virtual-environment for python.
+
+```
+mkdir -p my-workspace
+cd my-workspace
+python -m venv .venv
+source .venv/bin/activate   # note. activate.{fish,csh} etc for other shells!
+```
+
+From there you can install west and all the required python dependencies for zephyr's build system
+without touching your system's python installation.
+
+```
+pip install west
+```
+
 ### Initialization
 
 The first step is to initialize the workspace folder (``my-workspace``) where
@@ -66,6 +85,12 @@ west init -m https://github.com/zephyrproject-rtos/example-application --mr main
 # update Zephyr modules
 cd my-workspace
 west update
+```
+
+Before building, ensure all required python packages are installed
+
+```
+west packages pip --install
 ```
 
 ### Building and running
