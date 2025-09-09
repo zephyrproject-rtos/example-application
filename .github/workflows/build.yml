@@ -29,6 +29,7 @@ jobs:
         with:
           app-path: example-application
           toolchains: arm-zephyr-eabi
+          ccache-cache-key: ${{ matrix.os }}
 
       - name: Build firmware
         working-directory: example-application
