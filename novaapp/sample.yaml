@@ -1,0 +1,16 @@
+# This file is provided so that the application can be compiled using Twister,
+# the Zephyr testing tool. In this file, multiple combinations can be specified,
+# so that you can easily test all of them locally or in CI.
+sample:
+  description: Example application
+  name: example-application 
+common:
+  build_only: true
+  integration_platforms:
+    - custom_plank
+    - nucleo_f302r8
+tests:
+  app.default: {}
+  app.debug:
+    extra_overlay_confs:
+      - debug.conf
