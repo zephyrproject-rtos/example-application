@@ -1,0 +1,4 @@
+west:
+  command: C:\Users\Jaque\zephyr-env\Scripts\west build -b nucleo_l476rg .
+  topdir: C:\Users\Jaque\my-workspace
+  version: 1.5.0

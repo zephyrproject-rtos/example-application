@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "C:/Users/Jaque/my-workspace/zephyr/boards/st/nucleo_l476rg/Kconfig.nucleo_l476rg"
