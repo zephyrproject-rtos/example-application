@@ -1,0 +1,9 @@
+# Zephyr / build artefacts
+build/
+zephyr/.cache/
+**/.vscode/
+**/.idea/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
