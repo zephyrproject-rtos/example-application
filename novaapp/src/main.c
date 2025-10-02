@@ -1,7 +1,8 @@
+
 #include <zephyr.h>
 #include <sys/printk.h>
 
 void main(void)
 {
-    printk("Nova aplicacao!\n");
+    printk("Hello from minha nova app!\n");
 }
