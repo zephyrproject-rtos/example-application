@@ -1,5 +1,0 @@
-set(kconfig_env_dirs)
-list(APPEND kconfig_env_dirs ZEPHYR_ZEPHYR_APP_UFSM00292_GIT_MODULE_DIR=C:/Users/Jaque/my-workspace/zephyr-app-ufsm00292.git)
-list(APPEND kconfig_env_dirs ZEPHYR_CMSIS_6_MODULE_DIR=C:/Users/Jaque/my-workspace/modules/hal/cmsis_6)
-list(APPEND kconfig_env_dirs ZEPHYR_HAL_NORDIC_MODULE_DIR=C:/Users/Jaque/my-workspace/modules/hal/nordic)
-list(APPEND kconfig_env_dirs ZEPHYR_HAL_STM32_MODULE_DIR=C:/Users/Jaque/my-workspace/modules/hal/stm32)
