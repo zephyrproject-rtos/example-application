@@ -1,9 +1,6 @@
-Para: Prof. Carlos Henrique Barriquello 
-De: Frederico de Souza Sicorra
+# Relatório de Progresso Semanal
+Integrante: Frederico de Souza Sicorra
 Data: 02 de outubro de 2025
-Assunto: Relatório de Progresso Semanal – Atividades Iniciais
-
-Prezado Professor,
 
 Este documento relata as atividades iniciais desenvolvidas para o projeto final da disciplina UFSM00292 - Projeto de Sistemas Embarcados. O foco desta primeira semana foi o estudo das tecnologias envolvidas e a preparação do ambiente de desenvolvimento necessário para as contribuições futuras.
 
@@ -18,6 +15,4 @@ Conforme a sugestão de utilizar ferramentas de simulação e emulação para o 
 Próximos Passos
 Com o ambiente de desenvolvimento preparado, o próximo passo será realizar o fork do repositório central do projeto no GitHub e iniciar os primeiros testes de compilação de uma aplicação básica com o Zephyr, visando a preparação para a primeira contribuição via pull request.
 
-Atenciosamente,
-
-Frederio de Souza Sicorra
+Lucas Marchesan da Silva
