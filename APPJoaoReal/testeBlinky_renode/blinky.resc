@@ -1,0 +1,29 @@
+$name?="samr21_xpro"
+$repl?=$ORIGIN/blinky.repl
+$bin?=$ORIGIN/blinky.elf
+
+using sysbus
+mach create $name
+
+machine LoadPlatformDescription $repl
+
+
+showAnalyzer sercom0
+
+sercom0 RecordToAsciinema $ORIGIN/blinky-asciinema
+set osPanicHook
+"""
+self.ErrorLog("OS Panicked")
+"""
+cpu0 AddSymbolHook "z_fatal_error" $osPanicHook
+
+
+macro reset
+"""
+    sysbus LoadELF $bin 
+    cpu0 VectorTableOffset `sysbus GetSymbolAddress "_vector_table"`
+    cpu0 EnableZephyrMode
+    cpu0 EnableProfilerCollapsedStack $ORIGIN/blinky-profile true 62914560 maximumNestedContexts=10
+"""
+
+runMacro $reset
