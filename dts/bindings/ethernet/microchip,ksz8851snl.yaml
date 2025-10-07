@@ -1,0 +1,32 @@
+# Copyright (c) 2024 Zephyr Project
+# SPDX-License-Identifier: Apache-2.0
+
+description: KSZ8851SNL standalone 10/100BASE-T Ethernet controller with SPI interface
+
+compatible: "microchip,ksz8851snl"
+
+include: [spi-device.yaml, ethernet-controller.yaml]
+
+properties:
+  int-gpios:
+    type: phandle-array
+    required: true
+    description: Interrupt pin.
+
+      The interrupt pin of KSZ8851SNL is active low.
+      If connected directly the MCU pin should be configured
+      as active low.
+
+  reset-gpios:
+    type: phandle-array
+    description: Reset pin.
+
+      The reset pin of KSZ8851SNL is active low.
+      If connected directly the MCU pin should be configured
+      as active low.
+
+  full-duplex:
+    type: boolean
+    description: |
+      Optional feature flag - Enables full duplex operation.
+      If not specified, the driver will auto-negotiate.
