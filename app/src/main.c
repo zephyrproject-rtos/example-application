@@ -10,6 +10,7 @@
 #include <app/drivers/blink.h>
 
 #include <app_version.h>
+#include "ethernet_example.h"
 
 LOG_MODULE_REGISTER(main, CONFIG_APP_LOG_LEVEL);
 
@@ -24,6 +25,9 @@ int main(void)
 	struct sensor_value last_val = { 0 }, val;
 
 	printk("Zephyr Example Application %s\n", APP_VERSION_STRING);
+
+	/* Initialize Ethernet */
+	ethernet_example_init();
 
 	sensor = DEVICE_DT_GET(DT_NODELABEL(example_sensor));
 	if (!device_is_ready(sensor)) {

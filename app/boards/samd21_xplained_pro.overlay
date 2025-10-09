@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2024 Zephyr Project
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * KSZ8851SNL Ethernet Controller overlay for SAMD21
+ *
+ * NOTE: Adjust the following based on your hardware connections:
+ * - SERCOM number (sercom4 below - change if using different SERCOM)
+ * - CS pin (PA18 below)
+ * - INT pin (PA19 below)
+ * - RESET pin (PA20 below)
+ * - SPI pins in pinctrl
+ */
+
+&pinctrl {
+	sercom4_spi_default: sercom4_spi_default {
+		group1 {
+			pinmux = <PA12C_SERCOM4_PAD0>,  /* MISO */
+			         <PB10D_SERCOM4_PAD2>,  /* MOSI */
+			         <PB11D_SERCOM4_PAD3>;  /* SCK */
+		};
+	};
+};
+
+&sercom4 {
+	status = "okay";
+	compatible = "atmel,sam0-spi";
+	dipo = <0>;  /* MISO on PAD0 */
+	dopo = <1>;  /* MOSI on PAD2, SCK on PAD3 */
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	pinctrl-0 = <&sercom4_spi_default>;
+	pinctrl-names = "default";
+
+	cs-gpios = <&porta 18 GPIO_ACTIVE_LOW>;
+
+	ksz8851snl: ksz8851snl@0 {
+		compatible = "microchip,ksz8851snl";
+		reg = <0>;
+		spi-max-frequency = <25000000>;  /* 25 MHz max for KSZ8851SNL */
+		int-gpios = <&porta 19 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&porta 20 GPIO_ACTIVE_LOW>;
+
+		/* Optional: Set a specific MAC address
+		 * If not specified, a random MAC will be generated
+		 */
+		/* local-mac-address = [00 04 A3 12 34 56]; */
+	};
+};
+
+/* Ensure GPIO ports are enabled */
+&porta {
+	status = "okay";
+};
+
+&portb {
+	status = "okay";
+};
