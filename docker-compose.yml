@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  zephyr-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: zephyr-app:latest
+    container_name: zephyr-app-dev
+    
+    # Required for flashing to hardware
+    privileged: true
+    
+    # Mount device files for flashing
+    volumes:
+      - /dev:/dev
+      - ./build:/workspace/zephyr-app-ufsm00292/build
+      
+    # Set your target board
+    environment:
+      - BOARD=custom_plank
+      
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+    
+    # Alternative command for direct build
+    # command: build-and-flash.sh
+    
+    working_dir: /workspace/zephyr-app-ufsm00292
