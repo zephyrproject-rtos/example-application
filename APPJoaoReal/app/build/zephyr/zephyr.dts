@@ -1,0 +1,645 @@
+/dts-v1/;
+
+/* node '/' defined in zephyr\dts\common\skeleton.dtsi:9 */
+/ {
+	#address-cells = < 0x1 >;        /* in zephyr\dts\common\skeleton.dtsi:10 */
+	#size-cells = < 0x1 >;           /* in zephyr\dts\common\skeleton.dtsi:11 */
+	model = "SAM R21 Xplained Pro";  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:15 */
+	compatible = "samr21,xpro",
+	             "atmel,samr21g18a",
+	             "atmel,samr21";     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:16 */
+
+	/* node '/chosen' defined in zephyr\dts\common\skeleton.dtsi:13 */
+	chosen {
+		zephyr,flash-controller = &nvmctrl; /* in zephyr\dts\arm\atmel\samd2x.dtsi:37 */
+		zephyr,console = &sercom0;          /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:19 */
+		zephyr,shell-uart = &sercom0;       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:20 */
+		zephyr,sram = &sram0;               /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:21 */
+		zephyr,flash = &flash0;             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:22 */
+		zephyr,ieee802154 = &ieee802154;    /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:23 */
+	};
+
+	/* node '/aliases' defined in zephyr\dts\common\skeleton.dtsi:15 */
+	aliases {
+		adc-0 = &adc;         /* in zephyr\dts\arm\atmel\samd2x.dtsi:17 */
+		port-a = &porta;      /* in zephyr\dts\arm\atmel\samd2x.dtsi:19 */
+		port-b = &portb;      /* in zephyr\dts\arm\atmel\samd2x.dtsi:20 */
+		rtc = &rtc;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:22 */
+		sercom-0 = &sercom0;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:24 */
+		sercom-1 = &sercom1;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:25 */
+		sercom-2 = &sercom2;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:26 */
+		sercom-3 = &sercom3;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:27 */
+		sercom-4 = &sercom4;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:28 */
+		sercom-5 = &sercom5;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:29 */
+		tc-4 = &tc4;          /* in zephyr\dts\arm\atmel\samd2x.dtsi:31 */
+		watchdog0 = &wdog;    /* in zephyr\dts\arm\atmel\samd2x.dtsi:33 */
+		tc-6 = &tc6;          /* in zephyr\dts\arm\atmel\samd21.dtsi:12 */
+		tcc-0 = &tcc0;        /* in zephyr\dts\arm\atmel\samd21.dtsi:14 */
+		tcc-1 = &tcc1;        /* in zephyr\dts\arm\atmel\samd21.dtsi:15 */
+		tcc-2 = &tcc2;        /* in zephyr\dts\arm\atmel\samd21.dtsi:16 */
+		port-c = &portc;      /* in zephyr\dts\arm\atmel\samr21.dtsi:12 */
+		led0 = &led0;         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:28 */
+		pwm-led0 = &pwm_led0; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:29 */
+		sw0 = &user_button;   /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:30 */
+		i2c-0 = &sercom1;     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:31 */
+	};
+
+	/* node '/soc' defined in zephyr\dts\arm\armv6-m.dtsi:6 */
+	soc {
+		#address-cells = < 0x1 >;     /* in zephyr\dts\arm\armv6-m.dtsi:7 */
+		#size-cells = < 0x1 >;        /* in zephyr\dts\arm\armv6-m.dtsi:8 */
+		compatible = "simple-bus";    /* in zephyr\dts\arm\armv6-m.dtsi:9 */
+		interrupt-parent = < &nvic >; /* in zephyr\dts\arm\armv6-m.dtsi:10 */
+		ranges;                       /* in zephyr\dts\arm\armv6-m.dtsi:11 */
+
+		/* node '/soc/interrupt-controller@e000e100' defined in zephyr\dts\arm\armv6-m.dtsi:13 */
+		nvic: interrupt-controller@e000e100 {
+			#address-cells = < 0x1 >;            /* in zephyr\dts\arm\armv6-m.dtsi:14 */
+			compatible = "arm,v6m-nvic";         /* in zephyr\dts\arm\armv6-m.dtsi:15 */
+			reg = < 0xe000e100 0xc00 >;          /* in zephyr\dts\arm\armv6-m.dtsi:16 */
+			interrupt-controller;                /* in zephyr\dts\arm\armv6-m.dtsi:17 */
+			#interrupt-cells = < 0x2 >;          /* in zephyr\dts\arm\armv6-m.dtsi:18 */
+			arm,num-irq-priority-bits = < 0x2 >; /* in zephyr\dts\arm\atmel\samd2x.dtsi:223 */
+			phandle = < 0x1 >;                   /* in zephyr\dts\arm\armv6-m.dtsi:10 */
+		};
+
+		/* node '/soc/timer@e000e010' defined in zephyr\dts\arm\armv6-m.dtsi:21 */
+		systick: timer@e000e010 {
+			compatible = "arm,armv6m-systick"; /* in zephyr\dts\arm\armv6-m.dtsi:22 */
+			reg = < 0xe000e010 0x10 >;         /* in zephyr\dts\arm\armv6-m.dtsi:23 */
+		};
+
+		/* node '/soc/nvmctrl@41004000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:65 */
+		nvmctrl: nvmctrl@41004000 {
+			compatible = "atmel,sam0-nvmctrl"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:66 */
+			reg = < 0x41004000 0x22 >;         /* in zephyr\dts\arm\atmel\samd2x.dtsi:67 */
+			interrupts = < 0x5 0x0 >;          /* in zephyr\dts\arm\atmel\samd2x.dtsi:68 */
+			#address-cells = < 0x1 >;          /* in zephyr\dts\arm\atmel\samd2x.dtsi:70 */
+			#size-cells = < 0x1 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:71 */
+			lock-regions = < 0x10 >;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:73 */
+
+			/* node '/soc/nvmctrl@41004000/flash@0' defined in zephyr\dts\arm\atmel\samd2x.dtsi:75 */
+			flash0: flash@0 {
+				compatible = "soc-nv-flash"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:76 */
+				write-block-size = < 0x4 >;  /* in zephyr\dts\arm\atmel\samd2x.dtsi:78 */
+				reg = < 0x0 0x40000 >;       /* in zephyr\dts\arm\atmel\samx2xx18.dtsi:14 */
+
+				/* node '/soc/nvmctrl@41004000/flash@0/partitions' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:235 */
+				partitions {
+					compatible = "fixed-partitions"; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:236 */
+					#address-cells = < 0x1 >;        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:237 */
+					#size-cells = < 0x1 >;           /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:238 */
+
+					/* node '/soc/nvmctrl@41004000/flash@0/partitions/partition@3c000' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:245 */
+					storage_partition: partition@3c000 {
+						label = "storage";        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:246 */
+						reg = < 0x3c000 0x4000 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:247 */
+					};
+				};
+			};
+		};
+
+		/* node '/soc/pm@40000400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:82 */
+		pm: pm@40000400 {
+			compatible = "atmel,sam0-mclk"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:83 */
+			reg = < 0x40000400 0x400 >;     /* in zephyr\dts\arm\atmel\samd2x.dtsi:84 */
+			interrupts = < 0x0 0x0 >;       /* in zephyr\dts\arm\atmel\samd2x.dtsi:85 */
+			#clock-cells = < 0x2 >;         /* in zephyr\dts\arm\atmel\samd2x.dtsi:87 */
+			phandle = < 0x3 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:110 */
+		};
+
+		/* node '/soc/gclk@40000c00' defined in zephyr\dts\arm\atmel\samd2x.dtsi:90 */
+		gclk: gclk@40000c00 {
+			compatible = "atmel,sam0-gclk";        /* in zephyr\dts\arm\atmel\samd2x.dtsi:91 */
+			reg = < 0x40000c00 0x400 >;            /* in zephyr\dts\arm\atmel\samd2x.dtsi:92 */
+			#clock-cells = < 0x1 >;                /* in zephyr\dts\arm\atmel\samd2x.dtsi:94 */
+			#atmel,assigned-clock-cells = < 0x1 >; /* in zephyr\dts\arm\atmel\samd2x.dtsi:95 */
+			phandle = < 0x2 >;                     /* in zephyr\dts\arm\atmel\samd21.dtsi:110 */
+		};
+
+		/* node '/soc/eic@40001800' defined in zephyr\dts\arm\atmel\samd2x.dtsi:98 */
+		eic: eic@40001800 {
+			compatible = "atmel,sam0-eic"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:99 */
+			reg = < 0x40001800 0x1c >;     /* in zephyr\dts\arm\atmel\samd2x.dtsi:100 */
+			interrupts = < 0x4 0x0 >;      /* in zephyr\dts\arm\atmel\samd2x.dtsi:101 */
+		};
+
+		/* node '/soc/pinmux@41004400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:104 */
+		pinmux_a: pinmux@41004400 {
+			compatible = "atmel,sam0-pinmux"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:105 */
+			reg = < 0x41004400 0x80 >;        /* in zephyr\dts\arm\atmel\samd2x.dtsi:106 */
+		};
+
+		/* node '/soc/pinmux@41004480' defined in zephyr\dts\arm\atmel\samd2x.dtsi:109 */
+		pinmux_b: pinmux@41004480 {
+			compatible = "atmel,sam0-pinmux"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:110 */
+			reg = < 0x41004480 0x80 >;        /* in zephyr\dts\arm\atmel\samd2x.dtsi:111 */
+		};
+
+		/* node '/soc/watchdog@40001000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:114 */
+		wdog: watchdog@40001000 {
+			compatible = "atmel,sam0-watchdog"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:115 */
+			reg = < 0x40001000 0x9 >;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:116 */
+			interrupts = < 0x2 0x0 >;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:117 */
+		};
+
+		/* node '/soc/sercom@42000800' defined in zephyr\dts\arm\atmel\samd2x.dtsi:120 */
+		sercom0: ext1_serial: sercom@42000800 {
+			reg = < 0x42000800 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:122 */
+			interrupts = < 0x9 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:109 */
+			clocks = < &gclk 0x14 >,
+			         < &pm 0x20 0x2 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:110 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:111 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:112 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:113 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:147 */
+			compatible = "atmel,sam0-uart";        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:148 */
+			current-speed = < 0x1c200 >;           /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:149 */
+			rxpo = < 0x1 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:150 */
+			txpo = < 0x0 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:151 */
+			pinctrl-0 = < &sercom0_uart_default >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:153 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:154 */
+		};
+
+		/* node '/soc/sercom@42000c00' defined in zephyr\dts\arm\atmel\samd2x.dtsi:126 */
+		sercom1: ext1_i2c: ext2_i2c: sercom@42000c00 {
+			reg = < 0x42000c00 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:128 */
+			interrupts = < 0xa 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:117 */
+			clocks = < &gclk 0x15 >,
+			         < &pm 0x20 0x3 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:118 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:119 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:120 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:121 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:158 */
+			compatible = "atmel,sam0-i2c";         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:159 */
+			clock-frequency = < 0x61a80 >;         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:160 */
+			#address-cells = < 0x1 >;              /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:161 */
+			#size-cells = < 0x0 >;                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:162 */
+			pinctrl-0 = < &sercom1_i2c_default >;  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:164 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:165 */
+		};
+
+		/* node '/soc/sercom@42001000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:132 */
+		sercom2: sercom@42001000 {
+			compatible = "atmel,sam0-sercom";      /* in zephyr\dts\arm\atmel\samd2x.dtsi:133 */
+			reg = < 0x42001000 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:134 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:135 */
+			interrupts = < 0xb 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:125 */
+			clocks = < &gclk 0x16 >,
+			         < &pm 0x20 0x4 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:126 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:127 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:128 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:129 */
+		};
+
+		/* node '/soc/sercom@42001400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:138 */
+		sercom3: sercom@42001400 {
+			compatible = "atmel,sam0-sercom";      /* in zephyr\dts\arm\atmel\samd2x.dtsi:139 */
+			reg = < 0x42001400 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:140 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:141 */
+			interrupts = < 0xc 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:133 */
+			clocks = < &gclk 0x17 >,
+			         < &pm 0x20 0x5 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:134 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:135 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:136 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:137 */
+		};
+
+		/* node '/soc/sercom@42001800' defined in zephyr\dts\arm\atmel\samd2x.dtsi:144 */
+		sercom4: sercom@42001800 {
+			reg = < 0x42001800 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:146 */
+			interrupts = < 0xd 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:141 */
+			clocks = < &gclk 0x18 >,
+			         < &pm 0x20 0x6 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:142 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:143 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:144 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:145 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:169 */
+			compatible = "atmel,sam0-spi";         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:170 */
+			dipo = < 0x0 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:175 */
+			dopo = < 0x1 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:176 */
+			#address-cells = < 0x1 >;              /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:177 */
+			#size-cells = < 0x0 >;                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:178 */
+			pinctrl-0 = < &sercom4_spi_default >;  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:180 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:181 */
+			cs-gpios = < &portb 0x1f 0x1 >;        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:183 */
+
+			/* node '/soc/sercom@42001800/rf2xx@0' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:185 */
+			ieee802154: rf2xx@0 {
+				compatible = "atmel,rf2xx";                                                                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:186 */
+				reg = < 0x0 >;                                                                                    /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:187 */
+				spi-max-frequency = < 0x5b8d80 >;                                                                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:188 */
+				irq-gpios = < &portb 0x0 0x20 >;                                                                  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:189 */
+				reset-gpios = < &portb 0xf 0x1 >;                                                                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:190 */
+				slptr-gpios = < &porta 0x14 0x0 >;                                                                /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:191 */
+				dig2-gpios = < &portb 0x11 0x20 >;                                                                /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:192 */
+				status = "okay";                                                                                  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:193 */
+				tx-pwr-min = [ 01 11 ];                                                                           /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:194 */
+				tx-pwr-max = [ 00 04 ];                                                                           /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:195 */
+				tx-pwr-table = [ 00 01 03 04 05 05 06 06 07 07 07 08 08 09 09 0A 0A 0A 0B 0B 0B 0B 0C 0C 0C 0C 0D
+				                 0D 0D 0D 0D 0D 0D 0D 0E 0E 0E 0E 0E 0E 0E 0E 0E 0E 0E 0E 0F 0F ];                /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:196 */
+			};
+		};
+
+		/* node '/soc/sercom@42001c00' defined in zephyr\dts\arm\atmel\samd2x.dtsi:150 */
+		sercom5: ext1_spi: ext2_spi: sercom@42001c00 {
+			reg = < 0x42001c00 0x40 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:152 */
+			interrupts = < 0xe 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:149 */
+			clocks = < &gclk 0x19 >,
+			         < &pm 0x20 0x7 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:150 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:151 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:152 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:153 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:206 */
+			compatible = "atmel,sam0-spi";         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:207 */
+			dipo = < 0x0 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:208 */
+			dopo = < 0x2 >;                        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:209 */
+			#address-cells = < 0x1 >;              /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:210 */
+			#size-cells = < 0x0 >;                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:211 */
+			pinctrl-0 = < &sercom5_spi_default >;  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:213 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:214 */
+		};
+
+		/* node '/soc/tc@42003000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:156 */
+		tc4: tc@42003000 {
+			compatible = "atmel,sam0-tc32";        /* in zephyr\dts\arm\atmel\samd2x.dtsi:157 */
+			reg = < 0x42003000 0x20 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:158 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:159 */
+			interrupts = < 0x13 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:157 */
+			clocks = < &gclk 0x1c >,
+			         < &pm 0x20 0xc >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:158 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:159 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:160 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:161 */
+		};
+
+		/* node '/soc/pinctrl@41004400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:162 */
+		pinctrl: pinctrl@41004400 {
+			compatible = "atmel,sam0-pinctrl";        /* in zephyr\dts\arm\atmel\samd2x.dtsi:163 */
+			#address-cells = < 0x1 >;                 /* in zephyr\dts\arm\atmel\samd2x.dtsi:166 */
+			#size-cells = < 0x1 >;                    /* in zephyr\dts\arm\atmel\samd2x.dtsi:167 */
+			ranges = < 0x41004400 0x41004400 0x180 >; /* in zephyr\dts\arm\atmel\samr21.dtsi:17 */
+
+			/* node '/soc/pinctrl@41004400/gpio@41004400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:169 */
+			porta: gpio@41004400 {
+				compatible = "atmel,sam0-gpio"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:170 */
+				reg = < 0x41004400 0x80 >;      /* in zephyr\dts\arm\atmel\samd2x.dtsi:171 */
+				#atmel,pin-cells = < 0x2 >;     /* in zephyr\dts\arm\atmel\samd2x.dtsi:173 */
+				#gpio-cells = < 0x2 >;          /* in zephyr\dts\arm\atmel\samd2x.dtsi:174 */
+				gpio-controller;                /* in zephyr\dts\arm\atmel\samd2x.dtsi:176 */
+				phandle = < 0x8 >;              /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:191 */
+			};
+
+			/* node '/soc/pinctrl@41004400/gpio@41004480' defined in zephyr\dts\arm\atmel\samd2x.dtsi:179 */
+			portb: gpio@41004480 {
+				compatible = "atmel,sam0-gpio"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:180 */
+				reg = < 0x41004480 0x80 >;      /* in zephyr\dts\arm\atmel\samd2x.dtsi:181 */
+				#atmel,pin-cells = < 0x2 >;     /* in zephyr\dts\arm\atmel\samd2x.dtsi:183 */
+				#gpio-cells = < 0x2 >;          /* in zephyr\dts\arm\atmel\samd2x.dtsi:184 */
+				gpio-controller;                /* in zephyr\dts\arm\atmel\samd2x.dtsi:186 */
+				phandle = < 0x7 >;              /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:183 */
+			};
+
+			/* node '/soc/pinctrl@41004400/gpio@41004500' defined in zephyr\dts\arm\atmel\samr21.dtsi:19 */
+			portc: gpio@41004500 {
+				compatible = "atmel,sam0-gpio"; /* in zephyr\dts\arm\atmel\samr21.dtsi:20 */
+				reg = < 0x41004500 0x80 >;      /* in zephyr\dts\arm\atmel\samr21.dtsi:21 */
+				#atmel,pin-cells = < 0x2 >;     /* in zephyr\dts\arm\atmel\samr21.dtsi:23 */
+				#gpio-cells = < 0x2 >;          /* in zephyr\dts\arm\atmel\samr21.dtsi:24 */
+				gpio-controller;                /* in zephyr\dts\arm\atmel\samr21.dtsi:26 */
+			};
+
+			/* node '/soc/pinctrl@41004400/adc_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:9 */
+			adc_default: adc_default {
+				phandle = < 0xa >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:126 */
+
+				/* node '/soc/pinctrl@41004400/adc_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:10 */
+				group1 {
+					pinmux = < 0x1260 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:11 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/pwm_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:15 */
+			pwm_default: pwm_default {
+				phandle = < 0xc >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:136 */
+
+				/* node '/soc/pinctrl@41004400/pwm_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:16 */
+				group1 {
+					pinmux = < 0x5330 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:17 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/sercom1_i2c_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:21 */
+			sercom1_i2c_default: sercom1_i2c_default {
+				phandle = < 0x5 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:164 */
+
+				/* node '/soc/pinctrl@41004400/sercom1_i2c_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:22 */
+				group1 {
+					pinmux = < 0x2300 >,
+					         < 0x2310 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:23 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/sercom4_spi_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:28 */
+			sercom4_spi_default: sercom4_spi_default {
+				phandle = < 0x6 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:180 */
+
+				/* node '/soc/pinctrl@41004400/sercom4_spi_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:29 */
+				group1 {
+					pinmux = < 0x5332 >,
+					         < 0x53f1 >,
+					         < 0x53e1 >,
+					         < 0x5322 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:30 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/sercom5_spi_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:37 */
+			sercom5_spi_default: sercom5_spi_default {
+				phandle = < 0x9 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:213 */
+
+				/* node '/soc/pinctrl@41004400/sercom5_spi_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:38 */
+				group1 {
+					pinmux = < 0x3221 >,
+					         < 0x3361 >,
+					         < 0x3371 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:39 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/sercom0_uart_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:45 */
+			sercom0_uart_default: sercom0_uart_default {
+				phandle = < 0x4 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:153 */
+
+				/* node '/soc/pinctrl@41004400/sercom0_uart_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:46 */
+				group1 {
+					pinmux = < 0x3240 >,
+					         < 0x3250 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:47 */
+				};
+			};
+
+			/* node '/soc/pinctrl@41004400/usb_dc_default' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:52 */
+			usb_dc_default: usb_dc_default {
+				phandle = < 0xb >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:220 */
+
+				/* node '/soc/pinctrl@41004400/usb_dc_default/group1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:53 */
+				group1 {
+					pinmux = < 0x6390 >,
+					         < 0x6380 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro-pinctrl.dtsi:54 */
+				};
+			};
+		};
+
+		/* node '/soc/rtc@40001400' defined in zephyr\dts\arm\atmel\samd2x.dtsi:190 */
+		rtc: rtc@40001400 {
+			compatible = "atmel,sam0-rtc";         /* in zephyr\dts\arm\atmel\samd2x.dtsi:191 */
+			reg = < 0x40001400 0x1c >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:192 */
+			interrupts = < 0x3 0x0 >;              /* in zephyr\dts\arm\atmel\samd2x.dtsi:193 */
+			alarms-count = < 0x1 >;                /* in zephyr\dts\arm\atmel\samd2x.dtsi:198 */
+			cal-constant = < 0xf4000 >;            /* in zephyr\dts\arm\atmel\samd2x.dtsi:199 */
+			clocks = < &gclk 0x4 >,
+			         < &pm 0x18 0x5 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:102 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:103 */
+			atmel,assigned-clocks = < &gclk 0x4 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:104 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:105 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:141 */
+			counter-mode = "clock";                /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:142 */
+			prescaler = < 0x400 >;                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:143 */
+		};
+
+		/* node '/soc/adc@42004000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:202 */
+		adc: adc@42004000 {
+			compatible = "atmel,sam0-adc";         /* in zephyr\dts\arm\atmel\samd2x.dtsi:203 */
+			reg = < 0x42004000 0x2b >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:204 */
+			#io-channel-cells = < 0x1 >;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:207 */
+			prescaler = < 0x4 >;                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:209 */
+			interrupts = < 0x17 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:165 */
+			interrupt-names = "resrdy";            /* in zephyr\dts\arm\atmel\samd21.dtsi:166 */
+			clocks = < &gclk 0x1e >,
+			         < &pm 0x20 0x10 >;            /* in zephyr\dts\arm\atmel\samd21.dtsi:167 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:168 */
+			atmel,assigned-clocks = < &gclk 0x3 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:174 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:175 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:125 */
+			pinctrl-0 = < &adc_default >;          /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:126 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:127 */
+		};
+
+		/* node '/soc/dac@42004800' defined in zephyr\dts\arm\atmel\samd2x.dtsi:212 */
+		dac0: dac@42004800 {
+			compatible = "atmel,sam0-dac";         /* in zephyr\dts\arm\atmel\samd2x.dtsi:213 */
+			reg = < 0x42004800 0x10 >;             /* in zephyr\dts\arm\atmel\samd2x.dtsi:214 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:215 */
+			#io-channel-cells = < 0x0 >;           /* in zephyr\dts\arm\atmel\samd2x.dtsi:217 */
+			interrupts = < 0x19 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:94 */
+			clocks = < &gclk 0x21 >,
+			         < &pm 0x20 0x12 >;            /* in zephyr\dts\arm\atmel\samd21.dtsi:95 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:96 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:97 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:98 */
+		};
+
+		/* node '/soc/usb@41005000' defined in zephyr\dts\arm\atmel\samd21.dtsi:20 */
+		usb0: zephyr_udc0: usb@41005000 {
+			compatible = "atmel,sam0-usb";   /* in zephyr\dts\arm\atmel\samd21.dtsi:21 */
+			reg = < 0x41005000 0x1000 >;     /* in zephyr\dts\arm\atmel\samd21.dtsi:22 */
+			interrupts = < 0x7 0x0 >;        /* in zephyr\dts\arm\atmel\samd21.dtsi:23 */
+			num-bidir-endpoints = < 0x8 >;   /* in zephyr\dts\arm\atmel\samd21.dtsi:26 */
+			status = "okay";                 /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:218 */
+			pinctrl-0 = < &usb_dc_default >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:220 */
+			pinctrl-names = "default";       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:221 */
+		};
+
+		/* node '/soc/dmac@41004800' defined in zephyr\dts\arm\atmel\samd21.dtsi:29 */
+		dmac: dmac@41004800 {
+			compatible = "atmel,sam0-dmac"; /* in zephyr\dts\arm\atmel\samd21.dtsi:30 */
+			reg = < 0x41004800 0x50 >;      /* in zephyr\dts\arm\atmel\samd21.dtsi:31 */
+			interrupts = < 0x6 0x0 >;       /* in zephyr\dts\arm\atmel\samd21.dtsi:32 */
+			status = "disabled";            /* in zephyr\dts\arm\atmel\samd21.dtsi:33 */
+			#dma-cells = < 0x2 >;           /* in zephyr\dts\arm\atmel\samd21.dtsi:35 */
+		};
+
+		/* node '/soc/tc@42003800' defined in zephyr\dts\arm\atmel\samd21.dtsi:38 */
+		tc6: tc@42003800 {
+			compatible = "atmel,sam0-tc32";        /* in zephyr\dts\arm\atmel\samd21.dtsi:39 */
+			reg = < 0x42003800 0x20 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:40 */
+			interrupts = < 0x15 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:41 */
+			clocks = < &gclk 0x1d >,
+			         < &pm 0x20 0xe >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:42 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:43 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:44 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:45 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd21.dtsi:46 */
+		};
+
+		/* node '/soc/tcc@42002000' defined in zephyr\dts\arm\atmel\samd21.dtsi:49 */
+		tcc0: tcc@42002000 {
+			reg = < 0x42002000 0x80 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:51 */
+			interrupts = < 0xf 0x0 >;              /* in zephyr\dts\arm\atmel\samd21.dtsi:52 */
+			clocks = < &gclk 0x1a >,
+			         < &pm 0x20 0x8 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:53 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:54 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:55 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:56 */
+			channels = < 0x4 >;                    /* in zephyr\dts\arm\atmel\samd21.dtsi:59 */
+			counter-size = < 0x18 >;               /* in zephyr\dts\arm\atmel\samd21.dtsi:60 */
+			status = "okay";                       /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:131 */
+			compatible = "atmel,sam0-tcc-pwm";     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:132 */
+			prescaler = < 0x4 >;                   /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:133 */
+			#pwm-cells = < 0x2 >;                  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:134 */
+			pinctrl-0 = < &pwm_default >;          /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:136 */
+			pinctrl-names = "default";             /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:137 */
+			phandle = < 0xd >;                     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:47 */
+		};
+
+		/* node '/soc/tcc@42002400' defined in zephyr\dts\arm\atmel\samd21.dtsi:63 */
+		tcc1: tcc@42002400 {
+			compatible = "atmel,sam0-tcc";         /* in zephyr\dts\arm\atmel\samd21.dtsi:64 */
+			reg = < 0x42002400 0x80 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:65 */
+			interrupts = < 0x10 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:66 */
+			clocks = < &gclk 0x1a >,
+			         < &pm 0x20 0x9 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:67 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:68 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:69 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:70 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd21.dtsi:71 */
+			channels = < 0x2 >;                    /* in zephyr\dts\arm\atmel\samd21.dtsi:73 */
+			counter-size = < 0x18 >;               /* in zephyr\dts\arm\atmel\samd21.dtsi:74 */
+		};
+
+		/* node '/soc/tcc@42002800' defined in zephyr\dts\arm\atmel\samd21.dtsi:77 */
+		tcc2: tcc@42002800 {
+			compatible = "atmel,sam0-tcc";         /* in zephyr\dts\arm\atmel\samd21.dtsi:78 */
+			reg = < 0x42002800 0x80 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:79 */
+			interrupts = < 0x11 0x0 >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:80 */
+			clocks = < &gclk 0x1b >,
+			         < &pm 0x20 0xa >;             /* in zephyr\dts\arm\atmel\samd21.dtsi:81 */
+			clock-names = "GCLK",
+			              "PM";                    /* in zephyr\dts\arm\atmel\samd21.dtsi:82 */
+			atmel,assigned-clocks = < &gclk 0x0 >; /* in zephyr\dts\arm\atmel\samd21.dtsi:83 */
+			atmel,assigned-clock-names = "GCLK";   /* in zephyr\dts\arm\atmel\samd21.dtsi:84 */
+			status = "disabled";                   /* in zephyr\dts\arm\atmel\samd21.dtsi:85 */
+			channels = < 0x2 >;                    /* in zephyr\dts\arm\atmel\samd21.dtsi:87 */
+			counter-size = < 0x10 >;               /* in zephyr\dts\arm\atmel\samd21.dtsi:88 */
+		};
+
+		/* node '/soc/pinmux@41004500' defined in zephyr\dts\arm\atmel\samr21.dtsi:30 */
+		pinmux_c: pinmux@41004500 {
+			compatible = "atmel,sam0-pinmux"; /* in zephyr\dts\arm\atmel\samr21.dtsi:31 */
+			reg = < 0x41004500 0x80 >;        /* in zephyr\dts\arm\atmel\samr21.dtsi:32 */
+		};
+	};
+
+	/* node '/cpus' defined in zephyr\dts\arm\atmel\samd2x.dtsi:40 */
+	cpus {
+		#address-cells = < 0x1 >; /* in zephyr\dts\arm\atmel\samd2x.dtsi:41 */
+		#size-cells = < 0x0 >;    /* in zephyr\dts\arm\atmel\samd2x.dtsi:42 */
+
+		/* node '/cpus/cpu@0' defined in zephyr\dts\arm\atmel\samd2x.dtsi:44 */
+		cpu0: cpu@0 {
+			compatible = "arm,cortex-m0+";   /* in zephyr\dts\arm\atmel\samd2x.dtsi:45 */
+			reg = < 0x0 >;                   /* in zephyr\dts\arm\atmel\samd2x.dtsi:46 */
+			device_type = "cpu";             /* in zephyr\dts\arm\atmel\samd2x.dtsi:48 */
+			clock-frequency = < 0x2dc6c00 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:121 */
+		};
+	};
+
+	/* node '/memory@20000000' defined in zephyr\dts\arm\atmel\samd2x.dtsi:52 */
+	sram0: memory@20000000 {
+		compatible = "mmio-sram";    /* in zephyr\dts\arm\atmel\samd2x.dtsi:53 */
+		reg = < 0x20000000 0x8000 >; /* in zephyr\dts\arm\atmel\samx2xx18.dtsi:10 */
+	};
+
+	/* node '/device_id@80a00c' defined in zephyr\dts\arm\atmel\samd2x.dtsi:56 */
+	id: device_id@80a00c {
+		compatible = "atmel,sam0-id"; /* in zephyr\dts\arm\atmel\samd2x.dtsi:57 */
+		reg = < 0x80a00c 0x4 >,
+		      < 0x80a040 0x4 >,
+		      < 0x80a044 0x4 >,
+		      < 0x80a048 0x4 >;       /* in zephyr\dts\arm\atmel\samd2x.dtsi:58 */
+	};
+
+	/* node '/leds' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:34 */
+	leds {
+		compatible = "gpio-leds"; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:35 */
+
+		/* node '/leds/led_0' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:37 */
+		led0: led_0 {
+			gpios = < &porta 0x13 0x1 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:38 */
+			label = "Yellow LED";        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:39 */
+		};
+	};
+
+	/* node '/pwmleds' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:43 */
+	pwmleds {
+		compatible = "pwm-leds"; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:44 */
+
+		/* node '/pwmleds/pwm_led_0' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:46 */
+		pwm_led0: pwm_led_0 {
+			pwms = < &tcc0 0x3 0x1312d00 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:47 */
+		};
+	};
+
+	/* node '/buttons' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:51 */
+	buttons {
+		compatible = "gpio-keys"; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:52 */
+
+		/* node '/buttons/button_0' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:54 */
+		user_button: button_0 {
+			gpios = < &porta 0x1c 0x11 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:55 */
+			label = "SW0";                /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:56 */
+			zephyr,code = < 0xb >;        /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:57 */
+		};
+	};
+
+	/* node '/xplained-pro-connector1' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:61 */
+	ext1_header: xplained-pro-connector1 {
+		compatible = "atmel-xplained-pro-header";  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:62 */
+		#gpio-cells = < 0x2 >;                     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:63 */
+		gpio-map-mask = < 0xffffffff 0xffffffc0 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:64 */
+		gpio-map-pass-thru = < 0x0 0x3f >;         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:65 */
+		gpio-map = < 0x0 0x0 &porta 0x6 0x0 >,
+		           < 0x1 0x0 &porta 0x7 0x0 >,
+		           < 0x2 0x0 &porta 0xd 0x0 >,
+		           < 0x3 0x0 &porta 0x1c 0x0 >,
+		           < 0x4 0x0 &porta 0x12 0x0 >,
+		           < 0x5 0x0 &porta 0x13 0x0 >,
+		           < 0x6 0x0 &porta 0x16 0x0 >,
+		           < 0x7 0x0 &porta 0x17 0x0 >,
+		           < 0x8 0x0 &porta 0x10 0x0 >,
+		           < 0x9 0x0 &porta 0x11 0x0 >,
+		           < 0xa 0x0 &porta 0x5 0x0 >,
+		           < 0xb 0x0 &porta 0x4 0x0 >,
+		           < 0xc 0x0 &portb 0x3 0x0 >,
+		           < 0xd 0x0 &portb 0x16 0x0 >,
+		           < 0xe 0x0 &portb 0x2 0x0 >,
+		           < 0xf 0x0 &portb 0x17 0x0 >;    /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:69 */
+	};
+
+	/* node '/xplained-pro-connector2' defined in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:90 */
+	ext2_header: xplained-pro-connector2 {
+		compatible = "atmel-xplained-pro-header";  /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:91 */
+		#gpio-cells = < 0x2 >;                     /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:92 */
+		gpio-map-mask = < 0xffffffff 0xffffffc0 >; /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:93 */
+		gpio-map-pass-thru = < 0x0 0x3f >;         /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:94 */
+		gpio-map = < 0x2 0x0 &porta 0xf 0x0 >,
+		           < 0x7 0x0 &porta 0x8 0x0 >,
+		           < 0x8 0x0 &porta 0x10 0x0 >,
+		           < 0x9 0x0 &porta 0x11 0x0 >,
+		           < 0xc 0x0 &porta 0xe 0x0 >,
+		           < 0xd 0x0 &portb 0x16 0x0 >,
+		           < 0xe 0x0 &portb 0x2 0x0 >,
+		           < 0xf 0x0 &portb 0x17 0x0 >;    /* in zephyr\boards\atmel\sam0\samr21_xpro\samr21_xpro.dts:98 */
+	};
+};
