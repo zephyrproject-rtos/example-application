@@ -3,8 +3,6 @@
 ## 1. Objetivo
 O objetivo desta fase inicial foi a criação e validação de um ambiente de desenvolvimento completo no **Windows** para o **Zephyr RTOS**, com foco na simulação de firmware para a placa **SAMR21**, utilizando o simulador de hardware **Renode**.
 
----
-
 ## 2. Etapas Concluídas
 
 ### a. Instalação do Ambiente de Desenvolvimento
@@ -26,9 +24,11 @@ Foram instaladas e configuradas todas as ferramentas necessárias para o desenvo
 
 ---
 
-## 3. Status Atual
-✅ Ambiente de desenvolvimento e simulação instalado, configurado e validado.  
+# Entrega 2 - Compilação de uma aplicação Zephyr e simulação com o Renode / Pesquisa sobre os periféricos da SAMR21 já portados para o Zephyr
 
-➡️ **Próximos passos:** compilar uma aplicação customizada a partir do código-fonte utilizando `west build`, e simular o binário gerado no Renode.
+- Durante esta semana foi compilada uma aplicação Zephyr que consiste em um simples contador utilizando a função printk, a aplicação foi simulada com sucesso com o Renode.
 
----
+- Além disso, foram iniciadas pesquisas sobre os periféricos da placa de desenvolvimento SAMR21 para análise de possíveis aplicações Zephyr utilizando os seus drivers já portados para o RTOS.
+
+➡️ **Próximos passos:** Começar o desenvolvimento de uma aplicação Zephyr mais robusta.
+

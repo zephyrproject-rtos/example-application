@@ -1,0 +1,58 @@
+cmake:
+  application:
+    configuration-dir: 'C:/zephyrproject/my-app/APPJoaoReal/app'
+    source-dir: 'C:/zephyrproject/my-app/APPJoaoReal/app'
+  board:
+    name: 'samr21_xpro'
+    path:
+     - 'C:/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro'
+    qualifiers: 'samr21g18a'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'C:/zephyrproject/zephyr/dts/bindings'
+    files:
+     - 'C:/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro/samr21_xpro.dts'
+    include-dirs:
+     - 'C:/zephyrproject/modules/hal/ambiq/dts'
+     - 'C:/zephyrproject/modules/hal/atmel/include'
+     - 'C:/zephyrproject/modules/hal/bouffalolab/include'
+     - 'C:/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - 'C:/zephyrproject/modules/hal/gigadevice/include'
+     - 'C:/zephyrproject/modules/hal/microchip/include'
+     - 'C:/zephyrproject/modules/hal/microchip/dts'
+     - 'C:/zephyrproject/modules/hal/nuvoton/dts'
+     - 'C:/zephyrproject/modules/hal/nxp/dts'
+     - 'C:/zephyrproject/modules/hal/stm32/dts'
+     - 'C:/zephyrproject/modules/hal/ti/dts'
+     - 'C:/zephyrproject/zephyr/include'
+     - 'C:/zephyrproject/zephyr/include/zephyr'
+     - 'C:/zephyrproject/zephyr/dts/common'
+     - 'C:/zephyrproject/zephyr/dts/vendor'
+     - 'C:/zephyrproject/zephyr/dts/rx'
+     - 'C:/zephyrproject/zephyr/dts/x86'
+     - 'C:/zephyrproject/zephyr/dts/xtensa'
+     - 'C:/zephyrproject/zephyr/dts/sparc'
+     - 'C:/zephyrproject/zephyr/dts/riscv'
+     - 'C:/zephyrproject/zephyr/dts/posix'
+     - 'C:/zephyrproject/zephyr/dts/arm64'
+     - 'C:/zephyrproject/zephyr/dts/arm'
+     - 'C:/zephyrproject/zephyr/dts/arc'
+     - 'C:/zephyrproject/zephyr/dts'
+  kconfig:
+    files:
+     - 'C:/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro/samr21_xpro_defconfig'
+     - 'C:/zephyrproject/my-app/APPJoaoReal/app/prj.conf'
+    user-files:
+     - 'C:/zephyrproject/my-app/APPJoaoReal/app/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: 'C:/Users/joaos/zephyr-sdk-0.17.4'
+  zephyr:
+    version: '4.2.99'
+    zephyr-base: 'C:/zephyrproject/zephyr'
+version: '0.1.0'
+west:
+  command: 'C:\zephyrproject\.venv\Scripts\west build -b samr21_xpro -p'
+  topdir: 'C:\zephyrproject'
+  version: '1.5.0'
