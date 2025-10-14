@@ -1,0 +1,22 @@
+De: Frederico de Souza Sicorra
+Para: Prof. Carlos Henrique Barriquello
+Data: 08 de outubro de 2025
+Assunto: Relatório de Progresso – Estudo de Hardware
+
+Prezado Professor,
+
+Este documento resume as atividades realizadas para o projeto final da disciplina UFSM00292 - Projeto de Sistemas Embarcados, com foco no estudo e compreensão das placas de desenvolvimento que serão utilizadas. As atividades consistiram em analisar a documentação técnica das placas SAMD21 Xplained Pro e Atmel BTLC1000 Xplained Pro, que compõem o kit de hardware do projeto.
+
+Atividades Realizadas
+Estudo da SAMD21 Xplained Pro
+A placa SAMD21 Xplained Pro é a nossa principal unidade de processamento. Trata-se de uma placa de avaliação baseada no microcontrolador SAM D21J18A, que utiliza um núcleo ARM Cortex-M0+. Este estudo teve como objetivo entender suas principais características, como a arquitetura do microcontrolador, a pinagem e as interfaces de comunicação disponíveis (USB, UART, SPI, I2C). O conhecimento aprofundado dessa placa é crucial, pois ela será responsável por executar o sistema operacional Zephyr e gerenciar toda a lógica da aplicação.
+
+Estudo da Atmel BTLC1000 Xplained Pro
+A placa Atmel BTLC1000 Xplained Pro é o nosso módulo de comunicação Bluetooth. Ela é uma placa de expansão (add-on board) que se conecta à SAMD21 Xplained Pro, adicionando a funcionalidade de comunicação sem fio via Bluetooth Low Energy (BLE). O estudo focou em como essa placa se integra com a placa principal, quais são os protocolos de comunicação utilizados (geralmente SPI ou UART) e como o Zephyr gerencia e interage com o hardware de Bluetooth.
+
+Próximos Passos
+Com o conhecimento aprofundado das capacidades e interfaces de cada placa, o próximo passo será a integração inicial do hardware com o ambiente de desenvolvimento. Isso inclui a configuração do SDK do Zephyr para reconhecer e interagir corretamente com a SAMD21 Xplained Pro e, posteriormente, a implementação dos drivers e das chamadas de API necessárias para utilizar o módulo Bluetooth, preparando o terreno para os primeiros testes de comunicação.
+
+Atenciosamente,
+
+Frederico de Souza Sicorra

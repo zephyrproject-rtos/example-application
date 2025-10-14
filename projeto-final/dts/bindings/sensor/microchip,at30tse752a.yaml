@@ -1,0 +1,19 @@
+# Device tree binding para sensor AT30TSE752A
+
+description: Microchip AT30TSE752A Temperature Sensor
+
+compatible: "microchip,at30tse752a"
+
+include: i2c-device.yaml
+
+properties:
+  reg:
+    required: true
+    description: I2C address of the sensor
+
+  resolution:
+    type: int
+    required: false
+    description: |
+      Sensor resolution in bits (9, 10, 11, or 12)
+    default: 12
