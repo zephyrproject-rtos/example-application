@@ -1,0 +1,3 @@
+Erasing device... OK
+Programming Flash... OK
+Verifying Flash... OK
