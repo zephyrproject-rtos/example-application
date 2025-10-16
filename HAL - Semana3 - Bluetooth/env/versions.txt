@@ -1,0 +1,9 @@
+Microchip Studio: 7.x.x
+SAMD21 Device Pack: <preencher>
+BluSDK / ASF: <preencher>
+EDBG firmware: <preencher se exibido>
+Windows: <preencher>
+iOS (nRF Connect): <preencher>
+Device signature: 0x10010300
+Target voltage: 3.3 V
+BLE module (ZR/MR): <preencher>

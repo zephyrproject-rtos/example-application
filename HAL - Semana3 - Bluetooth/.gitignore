@@ -1,0 +1,25 @@
+# Microchip/Atmel Studio build artifacts
+Debug/
+Release/
+*.elf
+*.hex
+*.bin
+*.lss
+*.map
+*.d
+*.o
+*.a
+*.dep
+*.user
+*.aps
+*.atsuo
+*.atsln.ide
+*.cproj.user
+*.atsln.user
+.ipch/
+.vs/
+*.suo
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
