@@ -30,5 +30,14 @@ Foram instaladas e configuradas todas as ferramentas necessárias para o desenvo
 
 - Além disso, foram iniciadas pesquisas sobre os periféricos da placa de desenvolvimento SAMR21 para análise de possíveis aplicações Zephyr utilizando os seus drivers já portados para o RTOS.
 
-➡️ **Próximos passos:** Começar o desenvolvimento de uma aplicação Zephyr mais robusta.
+---
+
+
+# Entrega 3 - Escolha de projeto -Comunicação entre duas SAMR21 com OpenThread-
+
+- Durante esta semana foi escolhida como parte do meu desenvolvimento para a aplicação zephyr a comunicação com openthread entre duas placas utilizando as antenas padrão IEEE802154.
+
+➡️ **Próximos passos:** Compilar o exemplo coap openthread do zephyr para a placa SAMR21.
+
+
 
