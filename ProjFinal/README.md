@@ -50,11 +50,11 @@ O objetivo desta fase é construir e validar toda a lógica de software no compu
 #### Fase 2: Integração com o Hardware
 Com a lógica validada, o próximo passo é integrar o software com o hardware real e garantir a comunicação.
 
-- [ ] Sanity Check: Compilar e gravar o exemplo "Blinky" na SAM R21 Xplained Pro para validar o toolchain e a conexão com a placa.
+- [x] Sanity Check: Compilar e gravar o exemplo "Blinky" na SAM R21 Xplained Pro para validar o toolchain e a conexão com a placa.
 
-- [ ] Validar e ajustar o Device Tree Overlay (boards/samr21_xpro.overlay) para a correta configuração do barramento I²C.
+- [x] Validar e ajustar o Device Tree Overlay (boards/samr21_xpro.overlay) para a correta configuração do barramento I²C.
 
-- [ ] Implementar as chamadas de baixo nível da API I²C do Zephyr no driver do sensor.
+- [x] Implementar as chamadas de baixo nível da API I²C do Zephyr no driver do sensor.
 
 - [ ] Realizar testes de integração para ler os dados brutos diretamente do sensor.
 
