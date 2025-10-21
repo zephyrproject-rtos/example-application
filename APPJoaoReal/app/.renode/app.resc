@@ -1,0 +1,29 @@
+$name?="samr21_xpro"
+$repl?=$ORIGIN/app.repl
+$bin?=$ORIGIN/../build/zephyr/zephyr.elf
+
+using sysbus
+mach create $name
+
+machine LoadPlatformDescription $repl
+
+
+showAnalyzer sercom0
+
+sercom0 RecordToAsciinema $ORIGIN/app-asciinema
+set osPanicHook
+"""
+self.ErrorLog("OS Panicked")
+"""
+cpu0 AddSymbolHook "z_fatal_error" $osPanicHook
+
+
+macro reset
+"""
+    sysbus LoadELF $bin 
+    cpu0 VectorTableOffset `sysbus GetSymbolAddress "_vector_table"`
+    cpu0 EnableZephyrMode
+    cpu0 EnableProfilerCollapsedStack $ORIGIN/app-profile true 62914560 maximumNestedContexts=10
+"""
+
+runMacro $reset

@@ -19,4 +19,5 @@ manifest:
         name-allowlist:
           - cmsis_6    # required by the ARM port for Cortex-M
           - hal_nordic # required by the custom_plank board (Nordic based)
+          - hal_atmel  
           - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)

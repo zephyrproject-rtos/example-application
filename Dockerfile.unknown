@@ -1,0 +1,112 @@
+# Use Ubuntu 22.04 as base image
+FROM ubuntu:22.04
+
+# Set environment variables to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Install base dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    cmake \
+    ninja-build \
+    gperf \
+    ccache \
+    dfu-util \
+    device-tree-compiler \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-setuptools \
+    python3-tk \
+    python3-wheel \
+    xz-utils \
+    file \
+    make \
+    gcc \
+    gcc-multilib \
+    g++-multilib \
+    libsdl2-dev \
+    libmagic1 \
+    udev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install additional tools for flashing
+RUN apt-get update && apt-get install -y \
+    libusb-1.0-0-dev \
+    libftdi1-dev \
+    libhidapi-dev \
+    usbutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up working directory
+WORKDIR /workspace
+
+# Install west and required Python packages
+RUN pip3 install --no-cache-dir \
+    west \
+    pyelftools \
+    pyyaml \
+    pykwalify \
+    canopen \
+    packaging \
+    progress \
+    psutil \
+    pylink-square \
+    anytree \
+    intelhex \
+    junitparser
+
+# Download and install Zephyr SDK
+ENV ZEPHYR_SDK_VERSION=0.16.5
+ENV ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-${ZEPHYR_SDK_VERSION}
+
+RUN wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VERSION}/zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-x86_64.tar.xz && \
+    tar -xf zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-x86_64.tar.xz -C /opt && \
+    rm zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-x86_64.tar.xz && \
+    cd ${ZEPHYR_SDK_INSTALL_DIR} && \
+    ./setup.sh -t all -h -c
+
+# Set up udev rules for the SDK (for flashing)
+RUN if [ -f ${ZEPHYR_SDK_INSTALL_DIR}/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules ]; then \
+        cp ${ZEPHYR_SDK_INSTALL_DIR}/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d/; \
+    fi
+
+# Initialize west workspace with your application
+RUN west init -m https://github.com/pamateus-henrique/zephyr-app-ufsm00292 --mr main /workspace
+
+# Update all Zephyr modules
+WORKDIR /workspace
+RUN west update
+
+# Set environment variables for Zephyr
+ENV ZEPHYR_BASE=/workspace/zephyr
+ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
+ENV ZEPHYR_SDK_INSTALL_DIR=${ZEPHYR_SDK_INSTALL_DIR}
+
+# Install Python dependencies from Zephyr
+RUN pip3 install --no-cache-dir -r ${ZEPHYR_BASE}/scripts/requirements.txt
+
+# Create a script to build and flash
+RUN echo '#!/bin/bash\n\
+set -e\n\
+BOARD=${BOARD:-custom_plank}\n\
+cd /workspace/zephyr-app-ufsm00292\n\
+echo "Building for board: $BOARD"\n\
+west build -b $BOARD app --pristine\n\
+if [ "$1" = "flash" ]; then\n\
+    echo "Flashing to board..."\n\
+    west flash\n\
+fi\n\
+' > /usr/local/bin/build-and-flash.sh && \
+chmod +x /usr/local/bin/build-and-flash.sh
+
+WORKDIR /workspace/zephyr-app-ufsm00292
+
+# Default command
+CMD ["/bin/bash"]
+
+# Usage:
+# Build: docker run --rm -e BOARD=custom_plank zephyr-app build-and-flash.sh
+# Build and flash: docker run --rm --privileged -v /dev:/dev -e BOARD=custom_plank zephyr-app build-and-flash.sh flash

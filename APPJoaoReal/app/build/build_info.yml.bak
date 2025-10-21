@@ -1,0 +1,4 @@
+west:
+  command: C:\zephyrproject\.venv\Scripts\west build -b samr21_xpro -p
+  topdir: C:\zephyrproject
+  version: 1.5.0

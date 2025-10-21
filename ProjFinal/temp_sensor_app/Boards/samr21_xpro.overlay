@@ -1,0 +1,39 @@
+/*
+ * Overlay para a placa SAM R21 Xplained Pro.
+ *
+ * Este arquivo adiciona a descrição do sensor de temperatura AT30TSE752A
+ * que está na placa I/O1 Xplained Pro, assumindo que ele está conectado
+ * ao barramento I2C do header de extensão EXT1.
+ */
+
+/*
+ * De acordo com a documentação da placa SAM R21 Xplained Pro, o periférico
+ * de comunicação serial SERCOM3 é geralmente conectado ao header EXT1.
+ * Estamos referenciando (&sercom3) e ativando-o.
+ */
+&sercom3 {
+	status = "okay";
+
+	/*
+	 * Aqui, configuramos o SERCOM3 para operar em modo I2C.
+	 */
+	i2c@3 {
+		compatible = "atmel,sam0-i2c";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <3>; // O número do registrador para o SERCOM3
+		status = "okay";
+
+		/*
+		 * Finalmente, definimos o nosso sensor de temperatura neste barramento I2C.
+		 * O nome 'temp_sensor' antes dos dois pontos é um 'label' (rótulo).
+		 * Podemos usar este label no nosso código C para obter uma referência
+		 * a este dispositivo de forma fácil.
+		 */
+		temp_sensor: at30tse752a@48 {
+			compatible = "atmel,at30tse752a";
+			reg = <0x48>; // O endereço I2C do sensor (hexadecimal 0x48).
+			label = "AT30TSE752A";
+		};
+	};
+};

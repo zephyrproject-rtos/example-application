@@ -1,0 +1,30 @@
+Compreender como é feita a interface entre microcontrolador e o mundo externo.
+
+
+A interação é feita por meio de portas e pinos.
+
+Pinos são contatos elétricos que transportam sinais analógicos ou digitais.
+
+Uma porta é uma organização hierárquica dos pinos.
+
+Portas são identificadas por letras e pinos por números.
+
+Pino "PA00" é o pino de número 00 da porta A.
+
+Pinos com funções especiais(VDD, GND, CLOCK, RESET, DEBUG).
+
+Os periféricos se conectam via barramento (BUS) entre si, à memória (via DMA) e ao processador (CPU).
+
+Pinos são multiplexados para abarcar mais aplicações.
+
+
+
+Acesso ao periférico(p)
+
+Polling - o processador permanece verificando os registradores de estado do p para detectar alterações de estado.(gasta mais tempo e energia)
+
+Interrupção - o p informa ao processador alterações de estado de seus registradores através do controlador de interrupções.
+
+Eventos síncronos ou assíncronos podem ocorrer durante a execução das instruções.
+
+O microcontrolador deve interromper o que está fazendo e executar o código de tratamento do evento.
