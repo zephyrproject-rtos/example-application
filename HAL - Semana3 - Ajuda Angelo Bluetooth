@@ -1,0 +1,45 @@
+Teste BLE iBeacon - SAMD21 Xplained Pro + BTLC1000 Xplained Pro
+Este projeto demonstra a implementação de um iBeacon (Bluetooth Low Energy) utilizando o kit de desenvolvimento SAMD21 Xplained Pro com o módulo de extensão BTLC1000 Xplained Pro.
+
+O iBeacon é configurado como um dispositivo de anúncio não-conectável (Non-Connectable Advertising), visível apenas em aplicativos específicos de scanner BLE, como o nRF Connect.
+
+⚙️ Hardware Utilizado
+Base: SAMD21 Xplained Pro (ATSAMD21J18A)
+
+Extensão BLE: Atmel BTLC1000 Xplained Pro (ZR/MR) – Conectado em EXT1.
+
+Alimentação: USB DEBUG (EDBG).
+
+💻 Software e Ambiente de Desenvolvimento
+IDE: Microchip Studio 7 (ex-Atmel Studio)
+
+Device Pack: SAMD21
+
+SDK/Exemplo: BluSDK / ASF com o projeto de exemplo iBeacon.
+
+Terminal Serial: TeraTerm/PuTTY (115200 8N1 na porta EDBG Virtual COM).
+
+Scanner BLE (iOS): nRF Connect
+
+📝 Procedimento Executado
+Criação do Projeto:
+
+File → New → Example Project...
+
+Busca e seleção do exemplo iBeacon para a variante SAMD21.
+
+Compilação e Gravação:
+
+Compilação: Build → Build Solution.
+
+Gravação: Utilização do Tools → Device Programming via EDBG para gravar o arquivo .elf na placa ATSAMD21J18A.
+
+Validação do iBeacon:
+
+Abertura do terminal serial.
+
+Reset da placa e pressão em SW0 para iniciar o advertising (ou pausar).
+
+No aplicativo nRF Connect (iOS), foi realizado o Scan e observada a detecção do anúncio.
+
+Identificação: Presença do Manufacturer Data com o Company ID 0x004C (Apple), confirmando o protocolo iBeacon.
