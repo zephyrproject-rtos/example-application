@@ -1,72 +1,76 @@
+# Sistema de Monitoramento e Comunicação de Sensores
 
-# Monitoramento de temperatura
+Este projeto, desenvolvido em equipe, consiste na criação de um sistema de monitoramento completo. O firmware principal, baseado no Zephyr RTOS para a placa SAM R21 Xplained Pro, é responsável por ler dados de dois sensores distintos.
 
-Este projeto consiste no desenvolvimento de um firmware para a placa SAM R21 Xplained Pro, utilizando o Zephyr RTOS, com o objetivo de ler a temperatura de um sensor AT30TSE752A presente na placa de expansão I/O1 Xplained Pro.
+Após a coleta e processamento, os dados dos sensores são transmitidos para uma segunda placa receptora. Esta placa, por sua vez, é responsável por receber os sinais e exibi-los em uma interface gráfica para o usuário.
 
-O grande diferencial deste projeto é a adoção da metodologia TDD (Test-Driven Development), garantindo que a lógica de negócio seja robusta e verificável de forma independente do hardware, utilizando o framework de testes Ztest nativo do Zephyr.
+A metodologia TDD (Test-Driven Development) é mantida como pilar para o desenvolvimento dos drivers e da lógica de negócio no transmissor, utilizando o framework Ztest para garantir a robustez e a verificabilidade do código.
+
 ## Principais Tecnologias e Metodologias
 
--   Microcontrolador: ATSAMR21G18A
+### Bloco Transmissor (SAM R21)
+-   **Microcontrolador:** ATSAMR21G18A
+-   **Placa de Desenvolvimento:** Microchip SAM R21 Xplained Pro
+-   **Sistema Operacional:** Zephyr RTOS
+-   **Metodologia:** Test-Driven Development (TDD)
+-   **Framework de Teste:** Ztest
+-   **Sensor 1 (Temperatura):** Atmel AT30TSE752A (via I²C) na placa I/O1 Xplained Pro
+-   **Sensor 2:** **[Definir Modelo e Barramento do Sensor 2 (ex: LDR via ADC)]**
 
--   Placa de Desenvolvimento: Microchip SAM R21 Xplained Pro
-
--   Sensor: Atmel AT30TSE752A (via I²C) na placa I/O1 Xplained Pro
-
--   Sistema Operacional: Zephyr RTOS
-
--   Metodologia: Test-Driven Development (TDD)
-
-Framework de Teste: Ztest
+### Bloco Receptor e Comunicação
+-   **Protocolo de Comunicação:** **[Definir Protocolo (ex: UART, BLE, LoRa)]**
+-   **Placa Receptora:** **[Definir Placa (ex: ESP32, Raspberry Pi, outra SAM R21)]**
+-   **Interface Gráfica (GUI):** **[Definir Tecnologia (ex: LVGL, Aplicação Web, Python/Tkinter)]**
 
 ### 🛠️ Hardware Necessário
--  Placa SAM R21 Xplained Pro
-
--   Placa de expansão I/O1 Xplained Pro
-
--   Cabo Micro-USB
+-   Placa SAM R21 Xplained Pro (Transmissor)
+-   Placa de expansão I/O1 Xplained Pro
+-   **[Hardware do Sensor 2]**
+-   **[Placa Receptora]**
+-   Cabos Micro-USB e de conexão entre placas (conforme protocolo)
 
 ### ⚙️ Software e Toolchain
+-   Zephyr SDK (para o transmissor)
+-   **[Ambiente de Desenvolvimento da Placa Receptora e GUI]**
 
-Para compilar e testar este projeto, você precisará ter o ambiente de desenvolvimento do Zephyr completamente configurado.
-
--   Zephyr SDK (incluindo west, toolchain, etc.)
 ## Roadmap
 
-Este projeto foi estruturado em fases claras para garantir um desenvolvimento progressivo e testável.
+O projeto foi reestruturado para acomodar a arquitetura de dois sensores e a comunicação entre placas.
 
-#### Fase 1: Fundação e Teste da Lógica (Desenvolvimento no Host)
-O objetivo desta fase é construir e validar toda a lógica de software no computador local, sem depender do hardware físico.
+#### Fase 1: Integração Sensor 1 (Temperatura)
+Foco em validar o primeiro sensor e a base TDD.
 
-- [x] Definição da arquitetura e estrutura de pastas do projeto.
-
+- [x] Definição da arquitetura e estrutura de pastas.
 - [x] Criação dos arquivos de configuração do Zephyr (CMakeLists.txt, prj.conf).
-
 - [x] Definição da interface do driver do sensor (driver_temp_at30tse.h).
-
 - [x] Desenvolvimento TDD da lógica de conversão de dados brutos para graus Celsius.
-
-- [x] Execução e validação dos testes de lógica no host com o alvo native_posix.
-
-#### Fase 2: Integração com o Hardware
-Com a lógica validada, o próximo passo é integrar o software com o hardware real e garantir a comunicação.
-
-- [x] Sanity Check: Compilar e gravar o exemplo "Blinky" na SAM R21 Xplained Pro para validar o toolchain e a conexão com a placa.
-
-- [x] Validar e ajustar o Device Tree Overlay (boards/samr21_xpro.overlay) para a correta configuração do barramento I²C.
-
-- [x] Implementar as chamadas de baixo nível da API I²C do Zephyr no driver do sensor.
-
-- [ ] Realizar testes de integração para ler os dados brutos diretamente do sensor.
-
+- [x] Execução e validação dos testes de lógica no host (native_posix).
+- [x] Validação do Device Tree Overlay (boards/samr21_xpro.overlay) para o I²C.
+- [ ] Realizar testes de integração para ler os dados brutos diretamente do sensor AT30TSE752A.
 - [ ] Validar a leitura completa da temperatura em Celsius utilizando o hardware.
 
-#### Fase 3: Funcionalidades da Aplicação
-Com o driver funcionando, esta fase foca em construir a aplicação final.
+#### Fase 2: Integração Sensor 2
+Incorporar o segundo sensor ao firmware do SAM R21.
 
-- [ ] Criar um loop principal (main.c) para realizar leituras de temperatura periódicas.
+- [ ] Definição da interface do driver para o **[Sensor 2]**.
+- [ ] Desenvolvimento TDD da lógica de processamento/conversão dos dados do **[Sensor 2]**.
+- [ ] Ajustar o Device Tree (se necessário) para o barramento do **[Sensor 2]**.
+- [ ] Implementar as chamadas de baixo nível da API Zephyr (ex: ADC, SPI, GPIO) para o driver.
+- [ ] Realizar testes de integração para ler os dados brutos do **[Sensor 2]**.
+- [ ] Integrar a leitura dos dois sensores no loop principal da aplicação.
 
-- [ ] Utilizar o sistema de logs do Zephyr para exibir as temperaturas lidas no console.
+#### Fase 3: Comunicação entre Placas
+Estabelecer o link de dados entre o transmissor (SAM R21) e o receptor.
 
-- [ ] (Opcional) Implementar um shell customizado para solicitar leituras de temperatura sob demanda.
+- [ ] Definir o formato da mensagem/payload para enviar os dados dos dois sensores.
+- [ ] Configurar e implementar o driver de comunicação **[Protocolo]** no SAM R21.
+- [ ] Implementar a lógica de recepção dos dados na **[Placa Receptora]**.
+- [ ] Realizar testes de transmissão e recepção para validar a integridade dos dados.
 
-- [ ] (Opcional) Enviar os dados de temperatura via interface UART.
+#### Fase 4: Interface Gráfica (GUI)
+Desenvolver a interface de usuário no bloco receptor.
+
+- [ ] Definir o layout e os componentes da interface gráfica.
+- [ ] Desenvolver a GUI utilizando **[Tecnologia da GUI]**.
+- [ ] Integrar os dados recebidos (da Fase 3) para atualização em tempo real na GUI.
+- [ ] Validar o sistema completo (Sensores -> SAM R21 -> Comunicação -> Receptor -> GUI).
