@@ -1,5 +1,5 @@
 #include <zephyr/ztest.h>
-#include "driver_temp_at30tse.h" // Inclui a interface do driver que vamos testar
+#include "driver_temp.h" // Inclui a interface do driver que vamos testar
 
 /**
  * @brief Define um "conjunto de testes" (Test Suite).

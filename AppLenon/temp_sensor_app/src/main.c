@@ -7,7 +7,7 @@
  * Esta função é executada quando o firmware inicia na placa.
  * Ela NÃO é executada quando rodamos os testes com `west test`.
  */
-void main(void)
+int main(void)
 {
     printk("Aplicação do Sensor de Temperatura Iniciada.\n");
     printk("Aguardando integração com o hardware...\n");

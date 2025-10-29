@@ -13,5 +13,5 @@ target_include_directories(app PRIVATE include)
 # ao construir para testes, ele não deve incluir o main.c.
 target_sources(app PRIVATE
 	src/main.c
-	src/driver_temp_at30tse.c
+	src/driver_temp.c
 )

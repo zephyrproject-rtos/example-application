@@ -1,4 +1,4 @@
-#include "driver_temp_at30tse.h"
+#include "driver_temp.h"
 #include <zephyr/logging/log.h>
 
 // Registra um módulo de log para este arquivo, o que nos permitirá imprimir
@@ -18,11 +18,11 @@ float convert_raw_to_celsius(uint16_t raw_temp)
 
     // O dado de temperatura real está nos 12 bits mais significativos.
     // Primeiro, isolamos esses 12 bits.
-    int16_t temp_12bit = (int16_t)(raw_temp & 0x0FFF);
+    int16_t temp_12bit = (int16_t)(raw_temp >> 4);
 
     // O valor é negativo se o 12º bit (bit de sinal) for 1.
     // Usamos a máscara 0x0800 para verificar.
-    if (temp_12bit & 0x0800) {
+    if ((temp_12bit & 0x0800) != 0) {
         // Se for negativo, precisamos "estender o sinal" para que o
         // compilador entenda que é um número negativo de 16 bits.
         // Isso é feito preenchendo os 4 bits mais altos com 1s.
