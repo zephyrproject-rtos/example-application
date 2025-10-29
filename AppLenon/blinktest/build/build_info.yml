@@ -1,0 +1,58 @@
+cmake:
+  application:
+    configuration-dir: 'C:/Users/Lenon/zephyrproject/blinktest'
+    source-dir: 'C:/Users/Lenon/zephyrproject/blinktest'
+  board:
+    name: 'samr21_xpro'
+    path:
+     - 'C:/Users/Lenon/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro'
+    qualifiers: 'samr21g18a'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/bindings'
+    files:
+     - 'C:/Users/Lenon/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro/samr21_xpro.dts'
+    include-dirs:
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/ambiq/dts'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/atmel/include'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/bouffalolab/include'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/gigadevice/include'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/microchip/include'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/microchip/dts'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/nuvoton/dts'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/nxp/dts'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/stm32/dts'
+     - 'C:/Users/Lenon/zephyrproject/modules/hal/ti/dts'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/include'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/include/zephyr'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/common'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/vendor'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/rx'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/x86'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/xtensa'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/sparc'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/riscv'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/posix'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/arm64'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/arm'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts/arc'
+     - 'C:/Users/Lenon/zephyrproject/zephyr/dts'
+  kconfig:
+    files:
+     - 'C:/Users/Lenon/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro/samr21_xpro_defconfig'
+     - 'C:/Users/Lenon/zephyrproject/blinktest/prj.conf'
+    user-files:
+     - 'C:/Users/Lenon/zephyrproject/blinktest/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: 'C:/zephyr-sdk-0.16.8'
+  zephyr:
+    version: '4.2.99'
+    zephyr-base: 'C:/Users/Lenon/zephyrproject/zephyr'
+version: '0.1.0'
+west:
+  command: 'C:\Users\lenon\zephyrproject\.venv\Scripts\west build -b samr21_xpro'
+  topdir: 'C:\Users\lenon\zephyrproject'
+  version: '1.5.0'

@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "C:/Users/Lenon/zephyrproject/zephyr/boards/atmel/sam0/samr21_xpro/Kconfig.samr21_xpro"

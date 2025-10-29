@@ -1,0 +1,13 @@
+# Define a seção de testes
+tests:
+  # Define um nome único para o nosso caso de teste.
+  # A convenção é 'categoria.grupo.nome_do_teste'
+  testing.driver.temp_sensor_logic:
+
+    # Tags para filtrar ou agrupar testes no futuro.
+    tags: tdd driver logic
+
+    # Lista de plataformas em que este teste tem permissão para rodar.
+    # 'native_posix' é o seu computador (Linux/macOS).
+    # 'samr21_xpro' é a sua placa de hardware real.
+    platform_allow: native_posix samr21_xpro
