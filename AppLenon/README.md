@@ -46,15 +46,15 @@ Foco em validar o primeiro sensor e a base TDD.
 - [x] Desenvolvimento TDD da lógica de conversão de dados brutos para graus Celsius.
 - [x] Execução e validação dos testes de lógica no host (native_posix).
 - [x] Validação do Device Tree Overlay (boards/samr21_xpro.overlay) para o I²C.
-- [ ] Realizar testes de integração para ler os dados brutos diretamente do sensor AT30TSE752A.
-- [ ] Validar a leitura completa da temperatura em Celsius utilizando o hardware.
+- [x] Realizar testes de integração para ler os dados brutos diretamente do sensor AT30TSE752A.
+- [x] Validar a leitura completa da temperatura em Celsius utilizando o hardware.
 
 #### Fase 2: Integração Sensor 2
 Incorporar o segundo sensor ao firmware do SAM R21.
 
-- [ ] Definição da interface do driver para o **[Sensor 2]**.
-- [ ] Desenvolvimento TDD da lógica de processamento/conversão dos dados do **[Sensor 2]**.
-- [ ] Ajustar o Device Tree (se necessário) para o barramento do **[Sensor 2]**.
+- [x] Definição da interface do driver para o **[Sensor 2]**.
+- [x] Desenvolvimento TDD da lógica de processamento/conversão dos dados do **[Sensor 2]**.
+- [x] Ajustar o Device Tree (se necessário) para o barramento do **[Sensor 2]**.
 - [ ] Implementar as chamadas de baixo nível da API Zephyr (ex: ADC, SPI, GPIO) para o driver.
 - [ ] Realizar testes de integração para ler os dados brutos do **[Sensor 2]**.
 - [ ] Integrar a leitura dos dois sensores no loop principal da aplicação.
