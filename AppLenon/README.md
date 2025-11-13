@@ -55,17 +55,17 @@ Incorporar o segundo sensor ao firmware do SAM R21.
 - [x] Definição da interface do driver para o **[Sensor 2]**.
 - [x] Desenvolvimento TDD da lógica de processamento/conversão dos dados do **[Sensor 2]**.
 - [x] Ajustar o Device Tree (se necessário) para o barramento do **[Sensor 2]**.
-- [ ] Implementar as chamadas de baixo nível da API Zephyr (ex: ADC, SPI, GPIO) para o driver.
-- [ ] Realizar testes de integração para ler os dados brutos do **[Sensor 2]**.
-- [ ] Integrar a leitura dos dois sensores no loop principal da aplicação.
+- [x] Implementar as chamadas de baixo nível da API Zephyr (ex: ADC, SPI, GPIO) para o driver.
+- [x] Realizar testes de integração para ler os dados brutos do **[Sensor 2]**.
+- [x] Integrar a leitura dos dois sensores no loop principal da aplicação.
 
 #### Fase 3: Comunicação entre Placas
 Estabelecer o link de dados entre o transmissor (SAM R21) e o receptor.
 
-- [ ] Definir o formato da mensagem/payload para enviar os dados dos dois sensores.
-- [ ] Configurar e implementar o driver de comunicação **[Protocolo]** no SAM R21.
-- [ ] Implementar a lógica de recepção dos dados na **[Placa Receptora]**.
-- [ ] Realizar testes de transmissão e recepção para validar a integridade dos dados.
+- [x] Definir o formato da mensagem/payload para enviar os dados dos dois sensores.
+- [x] Configurar e implementar o driver de comunicação **[Protocolo]** no SAM R21.
+- [x] Implementar a lógica de recepção dos dados na **[Placa Receptora]**.
+- [x] Realizar testes de transmissão e recepção para validar a integridade dos dados.
 
 #### Fase 4: Interface Gráfica (GUI)
 Desenvolver a interface de usuário no bloco receptor.

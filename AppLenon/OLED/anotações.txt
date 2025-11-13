@@ -1,0 +1,2 @@
+# Exemplo de comando de build:
+# west build -b [sua_placa_principal_xpro] -- -DSHIELD=atmel_oled1_xpro
