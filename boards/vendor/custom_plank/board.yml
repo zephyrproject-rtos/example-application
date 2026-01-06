@@ -3,6 +3,7 @@
 
 board:
   name: custom_plank
+  full_name: Custom Plank
   vendor: vendor
   socs:
     - name: nrf52840
