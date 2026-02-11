@@ -7,7 +7,6 @@
 Example of a west extension in the example-application repository.'''
 
 from west.commands import WestCommand  # your extension must subclass this
-from west import log                   # use this for user output
 
 class ExampleWestCommand(WestCommand):
 
@@ -45,5 +44,5 @@ endings.''')
         #   $ west my-command-name -o FOO BAR
         #   --optional is FOO
         #   required is BAR
-        log.inf('--optional is', args.optional)
-        log.inf('required is', args.required)
+        self.inf('--optional is', args.optional)
+        self.inf('required is', args.required)
