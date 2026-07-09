@@ -103,7 +103,7 @@ static inline int blink_off(const struct device *dev)
 	return blink_set_period_ms(dev, 0);
 }
 
-#include <syscalls/blink.h>
+#include <zephyr/syscalls/blink.h>
 
 /** @} */
 
