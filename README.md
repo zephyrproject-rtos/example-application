@@ -52,7 +52,7 @@ points to the development branch of Zephyr, also `main`.
 
 Before getting started, make sure you have a proper Zephyr development
 environment. Follow the official
-[Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html).
+[Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
 
 ### Initialization
 
