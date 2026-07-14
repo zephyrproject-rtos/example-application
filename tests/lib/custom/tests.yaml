@@ -2,7 +2,7 @@ common:
   tags: extensibility
   integration_platforms:
     - custom_plank
-    - qemu_cortex_m0
+    - qemu_cortex_m3
 tests:
   lib.custom: {}
   lib.custom.non_default:
