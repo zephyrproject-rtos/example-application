@@ -1,0 +1,7 @@
+/ {
+	chosen {
+		zephyr,code-partition = &app_partition;
+	};
+};
+
+

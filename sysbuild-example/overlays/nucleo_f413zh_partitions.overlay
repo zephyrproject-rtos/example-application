@@ -1,0 +1,42 @@
+/delete-node/ &slot0_partition;
+/delete-node/ &slot1_partition;
+/delete-node/ &scratch_partition;
+
+&flash0 {
+	/*
+	 * Setting the erase/write block sizes for stm32f4xx
+	 * Its not defined in the main dts because the devices
+	 * have varying sector sizes.
+	 *
+	 * However we can use 128K as a working size across
+	 * the mcuboot slots.
+	 */
+    erase-block-size = <DT_SIZE_K(128)>;
+    write-block-size = <1>;
+
+	partitions {
+        /*
+         * 
+         */
+        app_partition: app_partition@a {
+            label = "app-max-size";
+            reg = <0x00020000 DT_SIZE_K(512)>;
+        };
+
+		/*
+		 * This paritition layout is for SWAP_WITH_MOVE, 
+		 * Where the primary slot must be 1 sector bigger than the secondary slot!
+		 */
+		slot0_partition: partition@20000 {
+			label = "image-0";
+			reg = <0x00020000 DT_SIZE_K(512 + 128)>;
+
+		};
+
+		slot1_partition: partition@C0000 {
+			label = "image-1";
+			reg = <0x000C0000 DT_SIZE_K(512)>;
+		};
+	};
+};
+
