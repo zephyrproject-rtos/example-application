@@ -50,6 +50,6 @@ jobs:
         shell: bash
         run: |
           if [ "${{ runner.os }}" = "Windows" ]; then
-            EXTRA_TWISTER_FLAGS="--short-build-path -O/tmp/twister-out"
+            EXTRA_TWISTER_FLAGS="--short-build-path -O/tmp/twister-out --jobs 1"
           fi
           west twister -T tests -v --inline-logs --integration $EXTRA_TWISTER_FLAGS
