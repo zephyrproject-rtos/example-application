@@ -17,7 +17,7 @@ jobs:
         doxygen-version: [1.9.6, 1.14.0]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -42,17 +42,17 @@ jobs:
 
       - name: Setup pages
         if: github.event_name != 'pull_request' && matrix.doxygen-version == '1.14.0'
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - name: Upload pages artifact
         if: github.event_name != 'pull_request' && matrix.doxygen-version == '1.14.0'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: doc/deploy
 
       - name: Upload artifacts
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: docs-doxygen-${{ matrix.doxygen-version }}
           path: doc/deploy
@@ -67,4 +67,4 @@ jobs:
       id-token: write
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
