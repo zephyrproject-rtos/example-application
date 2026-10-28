@@ -1,0 +1,119 @@
+name: Compliance Checks
+
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  check_compliance:
+    runs-on: ubuntu-24.04
+    name: Run compliance checks on patch series (PR)
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: example-application
+          fetch-depth: 0
+
+      - name: Rebase onto the target branch
+        working-directory: example-application
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git config --global --add safe.directory $PWD
+          git remote -v
+          # Ensure there's no merge commits in the PR
+          [[ "$(git rev-list --merges --count origin/${BASE_REF}..)" == "0" ]] || \
+          (echo "::error ::Merge commits not allowed, rebase instead";false)
+          rm -fr ".git/rebase-apply"
+          rm -fr ".git/rebase-merge"
+          git rebase origin/${BASE_REF}
+          git clean -f -d
+          # debug
+          git log  --pretty=oneline | head -n 10
+
+      - name: Install west
+        shell: bash
+        run: |
+          if ! command -v west &> /dev/null; then
+            echo "west could not be found, installing..."
+            python -m pip install west==1.5.0
+          fi
+
+      - name: Initialize west workspace
+        shell: bash
+        run: |
+          west init -l example-application
+
+      - name: Update west workspace
+        shell: bash
+        run: |
+          west update -o=--depth=1 -n
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          pip install -r zephyr/scripts/requirements-compliance.txt
+
+      - name: Run Compliance Tests
+        continue-on-error: true
+        id: compliance
+        working-directory: example-application
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          UNDEF_KCONFIG_OUTSIDE_ALLOWLIST_FILE:
+            ${{ github.workspace }}/example-application/scripts/undef_kconfig_allowlist.txt
+        run: |
+          export ZEPHYR_BASE=$PWD/../zephyr
+          # debug
+          ls -la
+          git log  --pretty=oneline | head -n 10
+          ./scripts/repo_compliance.py --annotate -e SysbuildKconfig \
+          -c origin/${BASE_REF}..
+
+      - name: upload-results
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        continue-on-error: true
+        with:
+          name: compliance.xml
+          path: example-application/compliance.xml
+
+      - name: check-warns
+        shell: bash
+        working-directory: example-application
+        run: |
+          if [[ ! -s "compliance.xml" ]]; then
+            exit 1;
+          fi
+
+          warns=("ClangFormat" "LicenseAndCopyrightCheck")
+          files=($(./scripts/repo_compliance.py -l))
+
+          for file in "${files[@]}"; do
+            f="${file}.txt"
+            if [[ -s $f ]]; then
+              results=$(cat $f)
+              results="${results//'%'/'%25'}"
+              results="${results//$'\n'/'%0A'}"
+              results="${results//$'\r'/'%0D'}"
+              if [[ "${warns[@]}" =~ "${file}" ]]; then
+                echo "::warning file=${f}::$results"
+              else
+                echo "::error file=${f}::$results"
+                exit=1
+              fi
+            fi
+          done
+
+          if [ "${exit}" == "1" ]; then
+            exit 1;
+          fi
