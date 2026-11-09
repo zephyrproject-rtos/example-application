@@ -18,6 +18,9 @@ build:
     # `<dts_root>/dts/bindings` for additional dts binding files. The `.` is
     # the root of this repository.
     dts_root: .
+    # Zephyr will use the `<snippet_root>/snippets` for additional snippets.
+    # The `.` is the root of this repository.
+    snippet_root: .
 runners:
   # Additional runners, Zephyr will import these when discovering
   # subclasses of the `ZephyrBinaryRunner` class.

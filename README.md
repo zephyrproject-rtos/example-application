@@ -29,6 +29,7 @@ applications. Some of the features demonstrated in this example are:
 - Custom [west extension][west_ext]
 - Custom [Zephyr runner][runner_ext]
 - Doxygen and Sphinx documentation boilerplate
+- [Build snippets][snippet]
 
 This repository is versioned together with the [Zephyr main tree][zephyr]. This
 means that every time that Zephyr is tagged, this repository is tagged as well
@@ -47,6 +48,7 @@ points to the development branch of Zephyr, also `main`.
 [zephyr]: https://github.com/zephyrproject-rtos/zephyr
 [west_ext]: https://docs.zephyrproject.org/latest/develop/west/extensions.html
 [runner_ext]: https://docs.zephyrproject.org/latest/develop/modules.html#external-runners
+[snippet]: https://docs.zephyrproject.org/latest/build/snippets/index.html
 
 ## Getting Started
 
@@ -83,11 +85,18 @@ You can use the `custom_plank` board found in this
 repository. Note that Zephyr sample boards may be used if an
 appropriate overlay is provided (see `app/boards`).
 
-A sample debug configuration is also provided. To apply it, run the following
+A sample debug configuration is also provided as snippet. To apply it, run the following
 command:
 
 ```shell
-west build -b $BOARD app -- -DEXTRA_CONF_FILE=debug.conf
+west build -b $BOARD -S debugging app
+```
+
+The sample also contains a logging configuration fragment in the `app` folder.
+To apply it, run the following command:
+
+```shell
+west build -b $BOARD app -- -DEXTRA_CONF_FILE=logging.conf
 ```
 
 Once you have built the application, run the following command to flash it:
