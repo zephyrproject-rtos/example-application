@@ -1,0 +1,10 @@
+# List of additional Kconfigs in this repo that
+# should not be flagged as undefined Kconfigs by
+# the CI checks
+BLINK
+BLINK_GPIO_LED
+BLINK_INIT_PRIORITY
+BLINK_LOG_LEVEL
+CUSTOM
+CUSTOM_GET_VALUE_DEFAULT
+EXAMPLE_SENSOR
